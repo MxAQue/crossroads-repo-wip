@@ -1,0 +1,66 @@
+[gd_scene load_steps=5 format=3 uid="uid://soed5dksqull"]
+
+[ext_resource type="Script" uid="uid://bgkpcpyapbhsc" path="res://npcs/scripts/patrol-location.gd" id="1_jqfge"]
+[ext_resource type="FontFile" uid="uid://heb5g0smtkn3" path="res://assets/fonts/m5x7.ttf" id="2_r4pcr"]
+
+[sub_resource type="Gradient" id="Gradient_14mdo"]
+offsets = PackedFloat32Array(0.6953125, 0.8535156, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jqfge"]
+gradient = SubResource("Gradient_14mdo")
+width = 24
+height = 24
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[node name="PatrolLocation" type="Node2D"]
+show_behind_parent = true
+script = ExtResource("1_jqfge")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.5019608)
+texture = SubResource("GradientTexture2D_jqfge")
+
+[node name="Line2D" type="Line2D" parent="Sprite2D"]
+points = PackedVector2Array(0, 0, 12, 0)
+width = 1.0
+default_color = Color(1, 1, 1, 0.5882353)
+
+[node name="Label" type="Label" parent="Sprite2D"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -32.0
+offset_top = -12.0
+offset_right = 8.0
+offset_bottom = 11.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_r4pcr")
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WaitLabel" type="Label" parent="Sprite2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -2.0
+offset_right = 5.0
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_r4pcr")
+text = "wait: 0.0s"
+horizontal_alignment = 1
+vertical_alignment = 1

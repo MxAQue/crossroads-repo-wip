@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="NPCResource" load_steps=6 format=3 uid="uid://dnrlqfaav458s"]
+
+[ext_resource type="Texture2D" uid="uid://dgfbxwsgbuhtt" path="res://assets/character/bases/03fot1/fbas_03fot1_boots_00a.png" id="1_3t2o5"]
+[ext_resource type="Texture2D" uid="uid://brw5isxf22hux" path="res://assets/character/bases/13hair/fbas_13hair_ponytail1_00.png" id="2_s7jmw"]
+[ext_resource type="Texture2D" uid="uid://dptxvdtvh1yrb" path="res://assets/character/bases/06lwr2/fbas_06lwr2_overallsboobs_00a.png" id="3_vjwub"]
+[ext_resource type="Texture2D" uid="uid://ckugfrd6cec5e" path="res://assets/character/bases/05shrt/fbas_05shrt_shortshirt_00a.png" id="4_2n0mr"]
+[ext_resource type="Script" uid="uid://d3atdt6lnpa8l" path="res://npcs/scripts/npc_resource.gd" id="5_pxkct"]
+
+[resource]
+script = ExtResource("5_pxkct")
+npc_name = "Oren"
+npc_pronouns = "She / It"
+dialogue_audio_pitch = 1.5
+npc_skin_colour = 10
+npc_foot = ExtResource("1_3t2o5")
+npc_foot_colour = 32
+npc_shirt = ExtResource("4_2n0mr")
+npc_shirt_colour = 17
+npc_overalls = ExtResource("3_vjwub")
+npc_overalls_colour = 5
+npc_hair = ExtResource("2_s7jmw")
+npc_hair_colour = 17
+metadata/_custom_type_script = "uid://d3atdt6lnpa8l"

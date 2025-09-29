@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://bgmtmn2xu6bdw"]
+
+[ext_resource type="Script" uid="uid://mkuk45wjyuqq" path="res://Interactables/Puzzles/pushable_crate.gd" id="1_q8tg7"]
+[ext_resource type="Texture2D" uid="uid://de3cv6pi5bsm1" path="res://assets/tilesets/catacombs_dungeon_extras.png" id="2_yrxbo"]
+[ext_resource type="AudioStream" uid="uid://dvxawuq8bsij" path="res://assets/audio/stone_dragging_thanvannispen_loop.wav" id="3_yrxbo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yrxbo"]
+size = Vector2(11.999999, 16)
+
+[node name="PushableCrate" type="RigidBody2D"]
+collision_layer = 16
+collision_mask = 273
+gravity_scale = 0.0
+lock_rotation = true
+script = ExtResource("1_q8tg7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -10)
+texture = ExtResource("2_yrxbo")
+region_enabled = true
+region_rect = Rect2(0, 16, 16, 32)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_yrxbo")
+bus = &"SFX"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2.3841858e-07)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_yrxbo")

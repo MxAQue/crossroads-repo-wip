@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="NPCResource" load_steps=6 format=3 uid="uid://eh6iwll4ko7y"]
+
+[ext_resource type="Texture2D" uid="uid://dgfbxwsgbuhtt" path="res://assets/character/bases/03fot1/fbas_03fot1_boots_00a.png" id="1_3a82m"]
+[ext_resource type="Texture2D" uid="uid://clqnwwq6v7ybx" path="res://assets/character/bases/13hair/fbas_13hair_bushy_00.png" id="2_3a82m"]
+[ext_resource type="Texture2D" uid="uid://b8lxa3jhvu33b" path="res://assets/character/bases/04lwr1/fbas_04lwr1_longpants_00a.png" id="3_xonn6"]
+[ext_resource type="Texture2D" uid="uid://ckugfrd6cec5e" path="res://assets/character/bases/05shrt/fbas_05shrt_shortshirt_00a.png" id="4_t8ue2"]
+[ext_resource type="Script" uid="uid://d3atdt6lnpa8l" path="res://npcs/scripts/npc_resource.gd" id="5_67euy"]
+
+[resource]
+script = ExtResource("5_67euy")
+npc_name = "Nero"
+npc_pronouns = "They / He"
+dialogue_audio_pitch = 0.8
+npc_skin_colour = 16
+npc_foot = ExtResource("1_3a82m")
+npc_foot_colour = 20
+npc_legs = ExtResource("3_xonn6")
+npc_shirt = ExtResource("4_t8ue2")
+npc_shirt_colour = 47
+npc_hair = ExtResource("2_3a82m")
+npc_hair_colour = 3
+metadata/_custom_type_script = "uid://d3atdt6lnpa8l"

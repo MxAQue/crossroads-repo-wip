@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5fskyuf2l05g"]
+
+[ext_resource type="Texture2D" uid="uid://bkndxrxeua3ce" path="res://assets/character/bases/01body/fbas_01body_human_00.png" id="1_lldu1"]
+[ext_resource type="Script" uid="uid://cmqhdm4qb4ct7" path="res://Regions/Scripts/player_spawn.gd" id="1_usbxr"]
+
+[node name="PlayerSpawn" type="Node2D"]
+top_level = true
+script = ExtResource("1_usbxr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.23921569, 0.39607844, 0.47058824, 0.5764706)
+texture = ExtResource("1_lldu1")
+hframes = 16
+vframes = 16

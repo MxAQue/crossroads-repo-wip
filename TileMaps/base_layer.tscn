@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://carisusg1ix80"]
+
+[ext_resource type="TileSet" uid="uid://cb52uc5udwfcv" path="res://TileMaps/Scripts/GameTileSets.tres" id="1_rw10a"]
+[ext_resource type="Script" uid="uid://yltyf58iivdq" path="res://TileMaps/Scripts/map_layer.gd" id="38_ofhf5"]
+
+[node name="BaseLayer" type="TileMapLayer"]
+z_index = -1
+tile_set = ExtResource("1_rw10a")
+script = ExtResource("38_ofhf5")
