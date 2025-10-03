@@ -11,6 +11,13 @@ class_name Player extends CharacterBody2D
 @onready var name_label = $"Skeleton/Name"
 @onready var hit_box : HitBox = $HitBox
 @onready var audio: AudioStreamPlayer2D = $Effects/AudioStreamPlayer2D
+@onready var held_item: Node2D = $Skeleton/held_item
+@onready var carry: State_Carry = $StateMachine/Carry
+
+
+
+# State refs
+@onready var lift: State_Lift = $StateMachine/Lift
 
 
 # Outfit refs
@@ -30,13 +37,13 @@ class_name Player extends CharacterBody2D
 @onready var face = $"Skeleton/12face"
 @onready var hair = $"Skeleton/13hair"
 @onready var head = $"Skeleton/14head"
+@onready var ears: Sprite2D = $"Skeleton/14ears"
 @onready var over = $"Skeleton/15over"
 @onready var thirtytwo = $"Skeleton/32x32_anims"
 
 # Signals
 signal direction_changed( new_direction:Vector2 )
 signal player_damaged( hurt_box: HurtBox )
-
 
 var invulnerable : bool = false
 var health : int = 6
@@ -75,24 +82,24 @@ func _process(_delta):
 func _physics_process(_delta):
 	move_and_slide()
 
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_test"):
+		GlobalPlayerManager.shake_camera()
+
 # Animation Direction
 func set_direction() -> bool:
 	if direction == Vector2.ZERO:
 		return false
-	
 	var direction_id : int = int( round( (direction + cardinal_direction * 0.1).angle() / TAU * DIR_4.size() ))
 	var new_dir = DIR_4[ direction_id ]
-	
 	if new_dir == cardinal_direction:
 		return false
-	
 	cardinal_direction = new_dir
 	direction_changed.emit(new_dir)
 	return true
 
 func update_animation( state : String ) -> void:
 	animation_player.play( state + "_" + anim_direction() )
-	pass
 
 func anim_direction() -> String:
 	if cardinal_direction == Vector2.DOWN:
@@ -109,13 +116,9 @@ func anim_direction() -> String:
 func _take_damage(hurt_box : HurtBox) -> void:
 	if invulnerable == true:
 		return
-		
 	if health > 0:
+		update_health(-hurt_box.damage)
 		player_damaged.emit(hurt_box)
-	else:
-		player_damaged.emit(hurt_box)
-		update_health(99)
-	update_health(-hurt_box.damage)
 
 func update_health(delta : int) -> void:
 	health = clampi(health + delta, 0, max_health)
@@ -127,6 +130,18 @@ func make_invulnerable(_duration : float = 1.0) -> void:
 	await get_tree().create_timer(_duration).timeout
 	invulnerable = false
 	hit_box.monitoring = true
+
+func revive_player() -> void:
+	update_health(9999)
+	state_machine.change_state($StateMachine/Idle)
+
+# --------------------- INTERACTIONS ----------
+
+func pickup_item(_t : Throwable) -> void:
+	state_machine.change_state(lift)
+	carry.throwable = _t
+
+
 
 # --------------------- PLAYER DESIGN ----------
 

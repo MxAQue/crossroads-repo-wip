@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://bm3pgiiqdwuw1"]
+
+[ext_resource type="Script" uid="uid://duq82dfnhg7nr" path="res://gui/pause_menu/inventory/scripts/inventory_slot_ui.gd" id="1_75g76"]
+[ext_resource type="Texture2D" uid="uid://dnt07ksx3f2ee" path="res://assets/items/items.png" id="1_v4kb8"]
+[ext_resource type="FontFile" uid="uid://do6g4q03tl1gj" path="res://assets/fonts/Schr”dinger.ttf" id="3_segxe"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_75g76"]
+atlas = ExtResource("1_v4kb8")
+region = Rect2(0, 0, 32, 32)
+
+[node name="InventorySlot" type="Button"]
+custom_minimum_size = Vector2(32, 32)
+offset_right = 32.0
+offset_bottom = 32.0
+script = ExtResource("1_75g76")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("AtlasTexture_75g76")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="TextureRect"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 12.0
+theme_override_fonts/font = ExtResource("3_segxe")
+theme_override_font_sizes/font_size = 10
+text = "99"
+horizontal_alignment = 2

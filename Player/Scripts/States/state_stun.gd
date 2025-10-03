@@ -4,6 +4,7 @@ class_name State_Stun extends State
 
 # References
 @onready var idle : State = $"../Idle"
+@onready var death: State_Death = $"../Death"
 
 # Variables
 @export var knockback_speed : float = 200.0
@@ -12,7 +13,6 @@ class_name State_Stun extends State
 
 var hurt_box : HurtBox
 var direction : Vector2
-
 
 var next_state : State = null
 
@@ -31,6 +31,8 @@ func enter() -> void:
 	player.update_animation("hurt")
 	player.make_invulnerable(invulnerable_duration)
 	player.effect_animation_player.play("damaged")
+	
+	GlobalPlayerManager.shake_camera(hurt_box.damage)
 
 # What happens when the player exits this state?
 func exit() -> void:
@@ -48,7 +50,11 @@ func physics( _delta: float ) -> State:
 
 func _player_damaged(_hurt_box : HurtBox) -> void:
 	hurt_box = _hurt_box
-	state_machine.change_state(self)
+	if state_machine.current_state != death:
+		state_machine.change_state(self)
+	
 
 func _animation_finished(_a : String) -> void:
 	next_state = idle
+	if player.health <= 0:
+		next_state = death

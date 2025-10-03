@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2478q8kc0ssd"]
+
+[ext_resource type="Script" uid="uid://des7a4qvstcxp" path="res://interactables/throwables/throwable.gd" id="1_55fv4"]
+[ext_resource type="PackedScene" uid="uid://dslwgjxc8xvap" path="res://general/hurt_box/hurt_box.tscn" id="2_qixnb"]
+
+[node name="Throwable" type="Area2D"]
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+audio_bus_name = &"SFX"
+script = ExtResource("1_55fv4")
+
+[node name="HurtBox" parent="." instance=ExtResource("2_qixnb")]
+collision_mask = 256

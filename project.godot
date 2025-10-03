@@ -12,11 +12,12 @@ config_version=5
 
 config/name="Crossroads"
 run/main_scene="uid://byppvylp5b133"
+run/print_header=false
 config/features=PackedStringArray("4.5", "GL Compatibility")
 
 [audio]
 
-buses/default_bus_layout="res://assets/default_bus_layout.tres"
+buses/default_bus_layout="res://assets/materials/default_bus_layout.tres"
 
 [autoload]
 
@@ -24,12 +25,12 @@ Global="*res://globals/global.gd"
 GlobalAudioManager="*res://globals/global_audio_manager.gd"
 GlobalRegionManager="*res://globals/global_region_manager.gd"
 PaletteSwaps="*res://globals/shaders/palette_swaps.gd"
-PlayerHUD="*res://GUI/PlayerHUD/player_hud.tscn"
+PlayerHUD="*res://gui/player_hud/player_hud.tscn"
 GlobalPlayerManager="*res://globals/global_player_manager.gd"
-SceneTransition="*res://GUI/SceneTransitions/scene_transition.tscn"
+SceneTransition="*res://gui/scene_transitions/scene_transition.tscn"
 GlobalSaveManager="*res://globals/global_save_manager.gd"
-PauseMenu="*res://GUI/PauseMenu/pause_menu.tscn"
-DialogueSystem="*res://GUI/dialogue_system/dialogue_system.tscn"
+PauseMenu="*res://gui/pause_menu/pause_menu.tscn"
+DialogueSystem="*res://gui/dialogue_system/dialogue_system.tscn"
 
 [display]
 

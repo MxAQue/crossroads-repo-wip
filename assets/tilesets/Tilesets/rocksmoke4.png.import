@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cmlap04c5msd3"
-path="res://.godot/imported/rocksmoke4.png-694f26db558cf5b9e1877ad2b84381e6.ctex"
+path="res://.godot/imported/rocksmoke4.png-2bbd37ff3f813a3d32dde5e841ec86f2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tilesets/Tilesets/rocksmoke4.png"
-dest_files=["res://.godot/imported/rocksmoke4.png-694f26db558cf5b9e1877ad2b84381e6.ctex"]
+source_file="res://assets/tilesets/tilesets/rocksmoke4.png"
+dest_files=["res://.godot/imported/rocksmoke4.png-2bbd37ff3f813a3d32dde5e841ec86f2.ctex"]
 
 [params]
 

@@ -1,10 +1,11 @@
-## State.gd
+## state.gd
 
 class_name State extends Node
 
 static var player: Player
 static var state_machine : PlayerStateMachine
 
+## ---------------- FUNCTIONS -------------------
 
 func _ready():
 	pass

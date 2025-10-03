@@ -12,6 +12,8 @@ signal letter_added(letter : String)
 # Variables
 var is_active : bool = false
 var text_in_progress : bool = false
+var waiting_for_choice : bool = false
+
 
 var text_speed : float = 0.02
 var text_length : int = 0
@@ -31,25 +33,27 @@ var dialogue_item_index : int = 0
 @onready var timer: Timer = $DialogueUI/Timer
 @onready var audio_stream_player: AudioStreamPlayer = $DialogueUI/AudioStreamPlayer
 @onready var portrait_area: DialoguePortrait = $DialogueUI/PortraitArea
+@onready var choice_options: VBoxContainer = $DialogueUI/VBoxContainer
 
 
 # Outfit refs
-@onready var underneath_sprite = $"DialogueUI/PortraitArea/Skeleton/00undr"
-@onready var body_sprite = $"DialogueUI/PortraitArea/Skeleton/01body"
-@onready var sock_sprite = $"DialogueUI/PortraitArea/Skeleton/02sock"
-@onready var foot_sprite = $"DialogueUI/PortraitArea/Skeleton/03fot1"
-@onready var legs_sprite = $"DialogueUI/PortraitArea/Skeleton/04lwr1"
-@onready var shirt_sprite = $"DialogueUI/PortraitArea/Skeleton/05shrt"
-@onready var overalls_sprite = $"DialogueUI/PortraitArea/Skeleton/06lwr2"
-@onready var boots_sprite = $"DialogueUI/PortraitArea/Skeleton/07fot2"
-@onready var skirt_sprite = $"DialogueUI/PortraitArea/Skeleton/08lwr3"
-@onready var hands_sprite = $"DialogueUI/PortraitArea/Skeleton/09hand"
-@onready var outerwear_sprite = $"DialogueUI/PortraitArea/Skeleton/10outr"
-@onready var neck_sprite = $"DialogueUI/PortraitArea/Skeleton/11neck"
-@onready var face_sprite = $"DialogueUI/PortraitArea/Skeleton/12face"
-@onready var hair_sprite = $"DialogueUI/PortraitArea/Skeleton/13hair"
-@onready var head_sprite = $"DialogueUI/PortraitArea/Skeleton/14head"
-@onready var over_sprite = $"DialogueUI/PortraitArea/Skeleton/15over"
+@onready var underneath_sprite: Sprite2D = $"DialogueUI/PortraitArea/Skeleton/00undr"
+@onready var body_sprite: Sprite2D = $"DialogueUI/PortraitArea/Skeleton/01body"
+@onready var sock_sprite: Sprite2D = $"DialogueUI/PortraitArea/Skeleton/02sock"
+@onready var foot_sprite: Sprite2D = $"DialogueUI/PortraitArea/Skeleton/03fot1"
+@onready var legs_sprite: Sprite2D = $"DialogueUI/PortraitArea/Skeleton/04lwr1"
+@onready var shirt_sprite: Sprite2D = $"DialogueUI/PortraitArea/Skeleton/05shrt"
+@onready var overalls_sprite: Sprite2D = $"DialogueUI/PortraitArea/Skeleton/06lwr2"
+@onready var boots_sprite: Sprite2D = $"DialogueUI/PortraitArea/Skeleton/07fot2"
+@onready var skirt_sprite: Sprite2D = $"DialogueUI/PortraitArea/Skeleton/08lwr3"
+@onready var hands_sprite: Sprite2D = $"DialogueUI/PortraitArea/Skeleton/09hand"
+@onready var outerwear_sprite: Sprite2D = $"DialogueUI/PortraitArea/Skeleton/10outr"
+@onready var neck_sprite: Sprite2D = $"DialogueUI/PortraitArea/Skeleton/11neck"
+@onready var face_sprite: Sprite2D = $"DialogueUI/PortraitArea/Skeleton/12face"
+@onready var hair_sprite: Sprite2D = $"DialogueUI/PortraitArea/Skeleton/13hair"
+@onready var head_sprite: Sprite2D = $"DialogueUI/PortraitArea/Skeleton/14head"
+@onready var ears_sprite: Sprite2D = $"DialogueUI/PortraitArea/Skeleton/14ears"
+@onready var over_sprite: Sprite2D = $"DialogueUI/PortraitArea/Skeleton/15over"
 
 ## ----------- FUNCTIONS -----------
 
@@ -77,6 +81,8 @@ func _unhandled_input(event: InputEvent) -> void:
 			text_in_progress = false
 			show_dialogue_progress_indicator(true)
 			return
+		elif waiting_for_choice == true:
+			return
 		advance_dialogue()
 
 func advance_dialogue() -> void:
@@ -94,6 +100,8 @@ func show_dialogue(_items : Array[DialogueItem]) -> void:
 	dialogue_ui.process_mode = Node.PROCESS_MODE_ALWAYS
 	dialogue_items = _items
 	dialogue_item_index = 0
+	GlobalPlayerManager.player.update_animation("idle")
+	await get_tree().create_timer(0.1).timeout
 	get_tree().paused = true
 	await get_tree().process_frame
 	if dialogue_items.size() == 0:
@@ -104,6 +112,7 @@ func show_dialogue(_items : Array[DialogueItem]) -> void:
 
 func hide_dialogue() -> void:
 	is_active = false
+	choice_options.visible = false
 	dialogue_ui.visible = false
 	dialogue_ui.process_mode = Node.PROCESS_MODE_DISABLED
 	get_tree().paused = false
@@ -112,15 +121,67 @@ func hide_dialogue() -> void:
 
 # Starts the dialogue
 func start_dialogue() -> void:
+	waiting_for_choice = false
 	show_dialogue_progress_indicator(false)
 	var _d: DialogueItem = dialogue_items[dialogue_item_index]
-	set_dialogue_data(_d)
+	
+	if _d is DialogueText:
+		set_dialogue_text(_d as DialogueText)
+	elif _d is DialogueChoice:
+		set_dialogue_choice(_d as DialogueChoice)
+	
+	#set_dialogue_data(_d)
+
+
+func set_dialogue_text(_d : DialogueText) -> void:
+	content.text = _d.text
+	choice_options.visible = false
+	name_label.text = _d.npc_info.npc_name
+	pronouns_label.text = _d.npc_info.npc_pronouns
+	portrait_area.audio_pitch_base = _d.npc_info.dialogue_audio_pitch
+	set_npc_appearance(_d)
+	var npc_pose = _d.pose
+	var npc_pose_two = _d.pose_two
+	#var loop_wait = _d.loop_period
+	dialogue_animation.play(npc_pose)
+	if npc_pose_two:
+		dialogue_animation.play(npc_pose)
+		await dialogue_animation.animation_finished
+		dialogue_animation.play(npc_pose_two)
 	
 	content.visible_characters = 0
 	text_length = content.get_total_character_count()
 	plain_text = content.get_parsed_text()
 	text_in_progress = true
 	start_timer()
+
+
+func set_dialogue_choice(_d : DialogueChoice) -> void:
+	choice_options.visible = true
+	waiting_for_choice = true
+	
+	for c in choice_options.get_children():
+		c.queue_free()
+	
+	for i in _d.dialogue_branches.size():
+		var _new_choice : Button = Button.new()
+		_new_choice.text = _d.dialogue_branches[i].text
+		_new_choice.alignment = HORIZONTAL_ALIGNMENT_LEFT
+		_new_choice.pressed.connect(_dialogue_choice_selected.bind(_d.dialogue_branches[i]))
+		choice_options.add_child(_new_choice)
+	
+	if Engine.is_editor_hint():
+		return
+	
+	await get_tree().process_frame
+	await get_tree().process_frame
+	choice_options.get_child(0).grab_focus()
+
+
+func _dialogue_choice_selected(_d : DialogueBranch) -> void:
+	choice_options.visible = false
+	show_dialogue(_d.dialogue_items)
+	pass
 
 
 func _on_timer_timeout() -> void:
@@ -143,21 +204,6 @@ func start_timer() -> void:
 	#	timer.wait_time *= 2
 	timer.start()
 
-func set_dialogue_data(_d : DialogueItem) -> void:
-	if _d is DialogueText:
-		content.text = _d.text
-	name_label.text = _d.npc_info.npc_name
-	pronouns_label.text = _d.npc_info.npc_pronouns
-	portrait_area.audio_pitch_base = _d.npc_info.dialogue_audio_pitch
-	set_npc_appearance(_d)
-	var npc_pose = _d.pose
-	#var npc_pose_two = _d.pose_two
-	#portrait_area.pose_one = npc_pose
-	#print(portrait_area.pose_one)
-	#portrait_area.pose_two = npc_pose_two
-	dialogue_animation.play(npc_pose)
-
-
 func show_dialogue_progress_indicator(_is_visible : bool) -> void:
 	dialogue_progress_indicator.visible = _is_visible
 	if dialogue_item_index + 1 < dialogue_items.size():
@@ -174,6 +220,7 @@ var farmer_base_path = "res://assets/character/"
 func set_npc_appearance(_d : DialogueItem) -> void:
 	if _d.npc_info:
 		if body_sprite:
+			body_sprite.texture = _d.npc_info.npc_body
 			body_sprite.material = get_palette_shader(palettes["skincolor"]["base"], palettes["skincolor"]["palettes"][_d.npc_info.npc_skin_colour])
 		if underneath_sprite:
 			underneath_sprite.texture = _d.npc_info.npc_underneath
@@ -217,6 +264,9 @@ func set_npc_appearance(_d : DialogueItem) -> void:
 		if head_sprite:
 			head_sprite.texture = _d.npc_info.npc_head
 			head_sprite.material = get_palette_shader(palettes["4color"]["base"], palettes["4color"]["palettes"][_d.npc_info.npc_head_colour])
+		if ears_sprite:
+			ears_sprite.texture = _d.npc_info.npc_ears
+			ears_sprite.material = get_palette_shader(palettes["skincolor"]["base"], palettes["skincolor"]["palettes"][_d.npc_info.npc_skin_colour])
 		if over_sprite:
 			over_sprite.texture = _d.npc_info.npc_over
 			over_sprite.material = get_palette_shader(palettes["3color"]["base"], palettes["3color"]["palettes"][_d.npc_info.npc_over_colour])

@@ -1,20 +1,19 @@
-[gd_scene load_steps=31 format=3 uid="uid://c16sn3dcxel00"]
+[gd_scene load_steps=30 format=3 uid="uid://c16sn3dcxel00"]
 
-[ext_resource type="Script" uid="uid://cgdjv1ywtcxy2" path="res://GUI/dialogue_system/scripts/dialogue_system.gd" id="1_7r5wx"]
+[ext_resource type="Script" uid="uid://cgdjv1ywtcxy2" path="res://gui/dialogue_system/scripts/dialogue_system.gd" id="1_7r5wx"]
 [ext_resource type="Texture2D" uid="uid://cfq4tmorevkaa" path="res://assets/npcs/text-bubble.png" id="2_icgm8"]
 [ext_resource type="FontFile" uid="uid://ccad3y4qkybu1" path="res://assets/fonts/Abaddon Light.ttf" id="3_drgf3"]
 [ext_resource type="FontFile" uid="uid://bjnoh35ax06ho" path="res://assets/fonts/Abaddon Bold.ttf" id="4_mcufe"]
-[ext_resource type="Script" uid="uid://ryt83ekxlh06" path="res://GUI/dialogue_system/scripts/dialogue_portrait.gd" id="5_boj3t"]
+[ext_resource type="Script" uid="uid://ryt83ekxlh06" path="res://gui/dialogue_system/scripts/dialogue_portrait.gd" id="5_boj3t"]
 [ext_resource type="FontFile" uid="uid://heb5g0smtkn3" path="res://assets/fonts/m5x7.ttf" id="6_mcufe"]
 [ext_resource type="Texture2D" uid="uid://4tnjs26vqqk6" path="res://assets/character/effects/farmer props 32x32 v00.png" id="6_vrkfi"]
 [ext_resource type="Texture2D" uid="uid://dr0wr4wedkc2g" path="res://assets/character/bases/fbas_XXfldr_blank_sheet.png" id="7_boj3t"]
-[ext_resource type="Texture2D" uid="uid://bkndxrxeua3ce" path="res://assets/character/bases/01body/fbas_01body_human_00.png" id="8_f4ggq"]
-[ext_resource type="Texture2D" uid="uid://csc3iksm0cntx" path="res://assets/character/bases/03fot1/fbas_03fot1_sandals_00a.png" id="9_l1u4g"]
-[ext_resource type="Texture2D" uid="uid://cua8dsfn6oa83" path="res://assets/character/bases/04lwr1/fbas_04lwr1_shorts_00a.png" id="10_660d5"]
-[ext_resource type="Texture2D" uid="uid://c6r2fc1a682y" path="res://assets/character/bases/05shrt/fbas_05shrt_tanktop_00a.png" id="11_2e7dp"]
-[ext_resource type="Texture2D" uid="uid://bo3sotrow4pnt" path="res://assets/character/bases/11neck/fbas_11neck_scarf_00b.png" id="12_t2niu"]
-[ext_resource type="Texture2D" uid="uid://dvjo0imeyf4rw" path="res://assets/character/bases/13hair/fbas_13hair_longwavy_00.png" id="13_boj3t"]
+[ext_resource type="Texture2D" uid="uid://bkndxrxeua3ce" path="res://assets/character/bases/01body/fbas_01body_human_00.png" id="8_6i00n"]
+[ext_resource type="Texture2D" uid="uid://g14isek2fadb" path="res://assets/character/bases/05shrt/fbas_05shrt_longshirt_00a.png" id="9_xny1t"]
+[ext_resource type="Texture2D" uid="uid://cxnfiwjpuegdt" path="res://assets/character/bases/13hair/fbas_13hair_afro_00.png" id="10_80lde"]
+[ext_resource type="Texture2D" uid="uid://5kvbypqybr10" path="res://assets/character/bases/14ears/fbas_14head_elfears_00.png" id="11_80lde"]
 [ext_resource type="AudioStream" uid="uid://0wvkwafqn3ut" path="res://assets/audio/voice_blip.wav" id="13_vrkfi"]
+[ext_resource type="Theme" uid="uid://dvcwibhdj4mkr" path="res://gui/dialogue_system/dialogue_choice_theme.tres" id="16_f4ggq"]
 
 [sub_resource type="Gradient" id="Gradient_p5aig"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -241,6 +240,18 @@ tracks/16/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("14ears:frame")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_nel3r"]
 resource_name = "default"
@@ -449,12 +460,24 @@ tracks/16/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("14ears:frame")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_boj3t"]
 resource_name = "fidget"
 length = 0.6
 loop_mode = 1
-step = 0.0
+step = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -659,12 +682,24 @@ tracks/16/keys = {
 "update": 1,
 "values": [13, 0]
 }
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("14ears:frame")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [13, 0]
+}
 
 [sub_resource type="Animation" id="Animation_mgwk3"]
 resource_name = "impatient"
 length = 0.6
 loop_mode = 1
-step = 0.0
+step = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -864,6 +899,18 @@ tracks/16/path = NodePath("15over:frame")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [193, 194]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("14ears:frame")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
 "times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
@@ -1079,6 +1126,18 @@ tracks/16/keys = {
 "update": 1,
 "values": [246, 247]
 }
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("14ears:frame")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [246]
+}
 
 [sub_resource type="Animation" id="Animation_vrkfi"]
 resource_name = "sing"
@@ -1284,6 +1343,18 @@ tracks/16/path = NodePath("15over:frame")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
+"times": PackedFloat32Array(0, 0.18),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [60, 61]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("14ears:frame")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
 "times": PackedFloat32Array(0, 0.18),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
@@ -1497,6 +1568,18 @@ tracks/16/keys = {
 "update": 1,
 "values": [192]
 }
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("14ears:frame")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [192]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pk60v"]
 _data = {
@@ -1559,7 +1642,7 @@ _data = {
 
 [node name="DialogueSystem" type="CanvasLayer"]
 process_mode = 3
-layer = 0
+layer = 3
 script = ExtResource("1_7r5wx")
 
 [node name="DialogueUI" type="Control" parent="."]
@@ -1601,7 +1684,6 @@ theme_override_colors/default_color = Color(0.4392157, 0.39607844, 0.32156864, 1
 theme_override_fonts/normal_font = ExtResource("3_drgf3")
 theme_override_fonts/bold_font = ExtResource("4_mcufe")
 bbcode_enabled = true
-text = "This is a long amount of text. [b]This is bold text...[/b] [wave]This is a wave. [/wave] [shake][color=orangered]This is a shake.[/color][/shake] [rainbow]This is a rainbow. [/rainbow]"
 scroll_active = false
 scroll_following_visible_characters = true
 
@@ -1681,7 +1763,7 @@ hframes = 16
 vframes = 16
 
 [node name="01body" type="Sprite2D" parent="DialogueUI/PortraitArea/Skeleton"]
-texture = ExtResource("8_f4ggq")
+texture = ExtResource("8_6i00n")
 hframes = 16
 vframes = 16
 
@@ -1691,17 +1773,17 @@ hframes = 16
 vframes = 16
 
 [node name="03fot1" type="Sprite2D" parent="DialogueUI/PortraitArea/Skeleton"]
-texture = ExtResource("9_l1u4g")
+texture = ExtResource("7_boj3t")
 hframes = 16
 vframes = 16
 
 [node name="04lwr1" type="Sprite2D" parent="DialogueUI/PortraitArea/Skeleton"]
-texture = ExtResource("10_660d5")
+texture = ExtResource("7_boj3t")
 hframes = 16
 vframes = 16
 
 [node name="05shrt" type="Sprite2D" parent="DialogueUI/PortraitArea/Skeleton"]
-texture = ExtResource("11_2e7dp")
+texture = ExtResource("9_xny1t")
 hframes = 16
 vframes = 16
 
@@ -1731,25 +1813,27 @@ hframes = 16
 vframes = 16
 
 [node name="11neck" type="Sprite2D" parent="DialogueUI/PortraitArea/Skeleton"]
-texture = ExtResource("12_t2niu")
+texture = ExtResource("7_boj3t")
 hframes = 16
 vframes = 16
 
 [node name="12face" type="Sprite2D" parent="DialogueUI/PortraitArea/Skeleton"]
 texture = ExtResource("7_boj3t")
-flip_h = true
 hframes = 16
 vframes = 16
 
 [node name="13hair" type="Sprite2D" parent="DialogueUI/PortraitArea/Skeleton"]
-texture = ExtResource("13_boj3t")
-flip_h = true
+texture = ExtResource("10_80lde")
 hframes = 16
 vframes = 16
 
 [node name="14head" type="Sprite2D" parent="DialogueUI/PortraitArea/Skeleton"]
 texture = ExtResource("7_boj3t")
-flip_h = true
+hframes = 16
+vframes = 16
+
+[node name="14ears" type="Sprite2D" parent="DialogueUI/PortraitArea/Skeleton"]
+texture = ExtResource("11_80lde")
 hframes = 16
 vframes = 16
 
@@ -1779,7 +1863,7 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -45.0
-offset_top = -25.0
+offset_top = -28.0
 offset_right = -10.0
 offset_bottom = -10.0
 grow_horizontal = 0
@@ -1800,3 +1884,30 @@ libraries = {
 &"": SubResource("AnimationLibrary_8q62r")
 }
 autoplay = "default"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DialogueUI"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -230.0
+offset_top = -270.0
+offset_right = -30.0
+offset_bottom = -104.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("16_f4ggq")
+alignment = 2
+
+[node name="Button" type="Button" parent="DialogueUI/VBoxContainer"]
+layout_mode = 2
+text = "Choose"
+alignment = 0
+
+[node name="Button2" type="Button" parent="DialogueUI/VBoxContainer"]
+layout_mode = 2
+text = "Choose"
+alignment = 0

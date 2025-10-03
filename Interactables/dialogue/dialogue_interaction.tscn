@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://dwnxl4a3lh2hs"]
 
-[ext_resource type="Script" uid="uid://dxjxgpj4dchi" path="res://Interactables/dialogue/scripts/dialogue_interaction.gd" id="1_b4cj5"]
+[ext_resource type="Script" uid="uid://dxjxgpj4dchi" path="res://interactables/dialogue/scripts/dialogue_interaction.gd" id="1_b4cj5"]
 [ext_resource type="Texture2D" uid="uid://b8wnw6nxsqtmn" path="res://assets/npcs/dialog_interactable.png" id="2_mdqmn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e0mvr"]

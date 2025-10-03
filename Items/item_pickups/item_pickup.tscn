@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://b15v1b4nlynu1"]
 
-[ext_resource type="Script" uid="uid://c3hfnnvyny2js" path="res://Items/item_pickups/item_pickup.gd" id="1_ck6ct"]
+[ext_resource type="Script" uid="uid://c3hfnnvyny2js" path="res://items/item_pickups/item_pickup.gd" id="1_ck6ct"]
 [ext_resource type="AudioStream" uid="uid://c7clo0lkdnrov" path="res://assets/audio/item_pickup.wav" id="2_pqnr6"]
 [ext_resource type="Texture2D" uid="uid://4tnjs26vqqk6" path="res://assets/character/effects/farmer props 32x32 v00.png" id="2_sxrrn"]
 [ext_resource type="Texture2D" uid="uid://dnt07ksx3f2ee" path="res://assets/items/items.png" id="3_ae0w1"]

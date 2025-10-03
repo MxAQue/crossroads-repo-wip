@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bgmtmn2xu6bdw"]
 
-[ext_resource type="Script" uid="uid://mkuk45wjyuqq" path="res://Interactables/Puzzles/pushable_crate.gd" id="1_q8tg7"]
+[ext_resource type="Script" uid="uid://mkuk45wjyuqq" path="res://interactables/puzzles/pushable_crate.gd" id="1_q8tg7"]
 [ext_resource type="Texture2D" uid="uid://de3cv6pi5bsm1" path="res://assets/tilesets/catacombs_dungeon_extras.png" id="2_yrxbo"]
 [ext_resource type="AudioStream" uid="uid://dvxawuq8bsij" path="res://assets/audio/stone_dragging_thanvannispen_loop.wav" id="3_yrxbo"]
 

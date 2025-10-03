@@ -1,0 +1,84 @@
+[gd_scene load_steps=9 format=3 uid="uid://dxdubpc4wvi30"]
+
+[ext_resource type="Texture2D" uid="uid://dixyfeqqh8pf6" path="res://assets/tilesets/animated/lights/fire3.png" id="1_3tbyb"]
+[ext_resource type="Script" uid="uid://co0nqukavmstr" path="res://props/lights/light_flicker.gd" id="2_s4pgn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s4pgn"]
+size = Vector2(20, 8)
+
+[sub_resource type="Animation" id="Animation_3tbyb"]
+resource_name = "default"
+length = 0.5
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_s4pgn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1g6dm"]
+_data = {
+&"RESET": SubResource("Animation_s4pgn"),
+&"default": SubResource("Animation_3tbyb")
+}
+
+[sub_resource type="Gradient" id="Gradient_3tbyb"]
+offsets = PackedFloat32Array(0, 0.640801, 0.80851066, 0.91364205, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.9814641, 0.73500454, 0.23164117, 1, 0.9552198, 0.39404944, 0.105440535, 1, 0.6313726, 0.15686275, 0.09411765, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_s4pgn"]
+gradient = SubResource("Gradient_3tbyb")
+width = 192
+height = 192
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[node name="BrazierPot" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -9)
+texture = ExtResource("1_3tbyb")
+hframes = 6
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_s4pgn")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_1g6dm")
+}
+autoplay = "default"
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, -9)
+texture = SubResource("GradientTexture2D_s4pgn")
+script = ExtResource("2_s4pgn")

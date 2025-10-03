@@ -14,6 +14,7 @@ func update_direction(new_direction : Vector2) -> void:
 			rotation_degrees = 0
 		Vector2.UP:
 			rotation_degrees = 180
+			position.y = +6
 		Vector2.LEFT:
 			rotation_degrees = 90
 		Vector2.RIGHT:

@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="NPCResource" load_steps=7 format=3 uid="uid://c7w070qyd5080"]
+[gd_resource type="Resource" script_class="NPCResource" load_steps=8 format=3 uid="uid://c7w070qyd5080"]
 
 [ext_resource type="Texture2D" uid="uid://domrwliifv4tb" path="res://assets/character/bases/13hair/fbas_13hair_twists_00.png" id="1_p0jwn"]
+[ext_resource type="Texture2D" uid="uid://bkndxrxeua3ce" path="res://assets/character/bases/01body/fbas_01body_human_00.png" id="1_tb4ln"]
 [ext_resource type="Script" uid="uid://d3atdt6lnpa8l" path="res://npcs/scripts/npc_resource.gd" id="1_x0u4u"]
 [ext_resource type="Texture2D" uid="uid://bo3sotrow4pnt" path="res://assets/character/bases/11neck/fbas_11neck_scarf_00b.png" id="2_f5hqg"]
-[ext_resource type="Texture2D" uid="uid://g14isek2fadb" path="res://assets/character/bases/05shrt/fbas_05shrt_longshirt_00a.png" id="5_nf8o2"]
+[ext_resource type="Texture2D" uid="uid://ckugfrd6cec5e" path="res://assets/character/bases/05shrt/fbas_05shrt_shortshirt_00a.png" id="4_tb4ln"]
 [ext_resource type="Texture2D" uid="uid://cyd56rlu7inob" path="res://assets/character/bases/08lwr3/fbas_08lwr3_frillyskirt_00a.png" id="6_3wa0t"]
 [ext_resource type="Texture2D" uid="uid://yhj5uo3twjok" path="res://assets/character/bases/02sock/fbas_02sock_sockslow_00a.png" id="7_7c4wi"]
 
@@ -11,16 +12,16 @@
 script = ExtResource("1_x0u4u")
 npc_name = "Player"
 npc_pronouns = "they/them"
+npc_body = ExtResource("1_tb4ln")
 npc_skin_colour = 1
+npc_hair = ExtResource("1_p0jwn")
 npc_sock = ExtResource("7_7c4wi")
 npc_sock_colour = 47
-npc_shirt = ExtResource("5_nf8o2")
-npc_shirt_colour = 15
 npc_overalls_colour = 37
 npc_skirt = ExtResource("6_3wa0t")
 npc_skirt_colour = 17
+npc_shirt = ExtResource("4_tb4ln")
+npc_shirt_colour = 38
 npc_neck = ExtResource("2_f5hqg")
 npc_neck_colour = 41
-npc_hair = ExtResource("1_p0jwn")
-npc_hair_colour = 46
 metadata/_custom_type_script = "uid://d3atdt6lnpa8l"

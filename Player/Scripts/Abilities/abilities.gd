@@ -2,7 +2,7 @@
 
 class_name PlayerAbilities extends Node
 
-const BOOMERANG = preload("res://Player/boomerang.tscn")
+const BOOMERANG = preload("res://player/boomerang.tscn")
 
 enum abilities {BOOMERANG, GRAPPLE}
 

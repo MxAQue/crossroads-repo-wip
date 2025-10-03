@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d3up501cn717i"
-path="res://.godot/imported/water_bubble2.png-9e12a817c57dc5b41b26e8456090eb85.ctex"
+path="res://.godot/imported/water_bubble2.png-bdbf8b0fb482bd0a1a4542b0ddc00181.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tilesets/Animated/water_bubble2.png"
-dest_files=["res://.godot/imported/water_bubble2.png-9e12a817c57dc5b41b26e8456090eb85.ctex"]
+source_file="res://assets/tilesets/animated/water_bubble2.png"
+dest_files=["res://.godot/imported/water_bubble2.png-bdbf8b0fb482bd0a1a4542b0ddc00181.ctex"]
 
 [params]
 

@@ -1,11 +1,11 @@
 [gd_scene load_steps=16 format=3 uid="uid://c4mvq6sy3ach"]
 
-[ext_resource type="Script" uid="uid://cjyjj6ufjj5iw" path="res://Interactables/Containers/treasure_chest.gd" id="1_3mvqa"]
-[ext_resource type="Script" uid="uid://bjr7cuvu6nvw5" path="res://Items/item_effects/item_effect.gd" id="2_mxjt3"]
-[ext_resource type="Texture2D" uid="uid://1ps1plx1f0k" path="res://assets/items/Containers/treasure chests.png" id="2_snn0w"]
-[ext_resource type="Script" uid="uid://bb4agm2hy7hdd" path="res://Items/scripts/item_data.gd" id="3_ea3g3"]
+[ext_resource type="Script" uid="uid://cjyjj6ufjj5iw" path="res://interactables/containers/treasure_chest.gd" id="1_3mvqa"]
+[ext_resource type="Script" uid="uid://bjr7cuvu6nvw5" path="res://items/item_effects/item_effect.gd" id="2_mxjt3"]
+[ext_resource type="Texture2D" uid="uid://1ps1plx1f0k" path="res://assets/items/containers/treasure chests.png" id="2_snn0w"]
+[ext_resource type="Script" uid="uid://bb4agm2hy7hdd" path="res://items/scripts/item_data.gd" id="3_ea3g3"]
 [ext_resource type="AudioStream" uid="uid://d20w4olb0207g" path="res://assets/audio/treasure-open.wav" id="4_snn0w"]
-[ext_resource type="PackedScene" uid="uid://cthaximv8t5hq" path="res://General/PersistentDataHandler/persistent_data_handler.tscn" id="7_gc57y"]
+[ext_resource type="PackedScene" uid="uid://cthaximv8t5hq" path="res://general/persistent_data_handler/persistent_data_handler.tscn" id="7_gc57y"]
 
 [sub_resource type="Resource" id="Resource_gc57y"]
 script = ExtResource("3_ea3g3")

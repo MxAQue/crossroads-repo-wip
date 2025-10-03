@@ -1,32 +1,1120 @@
-[gd_scene load_steps=7 format=4 uid="uid://bhuyt28r6wjs"]
+[gd_scene load_steps=41 format=4 uid="uid://bhuyt28r6wjs"]
 
-[ext_resource type="Script" uid="uid://bnfpktjefhoc6" path="res://Regions/Scripts/region.gd" id="1_7n7lm"]
+[ext_resource type="Script" uid="uid://bnfpktjefhoc6" path="res://regions/scripts/region.gd" id="1_7n7lm"]
 [ext_resource type="AudioStream" uid="uid://jb27et2b7hfr" path="res://assets/audio/368092__junglebean__spooky-arcade-loop.mp3" id="2_c0ps2"]
-[ext_resource type="PackedScene" uid="uid://carisusg1ix80" path="res://TileMaps/base_layer.tscn" id="2_tddol"]
-[ext_resource type="TileSet" uid="uid://cb52uc5udwfcv" path="res://TileMaps/Scripts/GameTileSets.tres" id="3_c0ps2"]
-[ext_resource type="PackedScene" uid="uid://b5fskyuf2l05g" path="res://Regions/player_spawn.tscn" id="4_01pxr"]
-[ext_resource type="PackedScene" uid="uid://cbl86bufn1340" path="res://Regions/region_transition.tscn" id="5_t5ujp"]
+[ext_resource type="PackedScene" uid="uid://carisusg1ix80" path="res://tilemaps/base_layer.tscn" id="2_tddol"]
+[ext_resource type="TileSet" uid="uid://cb52uc5udwfcv" path="res://tilemaps/scripts/GameTileSets.tres" id="3_c0ps2"]
+[ext_resource type="PackedScene" uid="uid://b5fskyuf2l05g" path="res://regions/player_spawn.tscn" id="4_01pxr"]
+[ext_resource type="PackedScene" uid="uid://cbl86bufn1340" path="res://regions/region_transition.tscn" id="5_t5ujp"]
+[ext_resource type="PackedScene" uid="uid://dxdubpc4wvi30" path="res://props/lights/brazier_pot.tscn" id="7_x1i42"]
+[ext_resource type="PackedScene" uid="uid://cthaximv8t5hq" path="res://general/persistent_data_handler/persistent_data_handler.tscn" id="8_a1p57"]
+[ext_resource type="PackedScene" uid="uid://dhmrgx1lsc1ev" path="res://opponents/abilities/energy_beam.tscn" id="8_r02na"]
+[ext_resource type="Script" uid="uid://ts23n6l5bl7t" path="res://opponents/bosses/dark_wizard_boss.gd" id="8_s3xdb"]
+[ext_resource type="Texture2D" uid="uid://oafkhtjulmy8" path="res://assets/enemies/boss-cloak.png" id="8_yp6ys"]
+[ext_resource type="Texture2D" uid="uid://dy7b0lt66wdrs" path="res://assets/enemies/boss-hand.png" id="9_x2387"]
+[ext_resource type="PackedScene" uid="uid://dslwgjxc8xvap" path="res://general/hurt_box/hurt_box.tscn" id="10_a1p57"]
+[ext_resource type="PackedScene" uid="uid://b28rnsd6dtyju" path="res://general/hit_box/hit_box.tscn" id="11_s3xdb"]
+[ext_resource type="AudioStream" uid="uid://ddxdth1dkyqvh" path="res://assets/audio/effects/boss_destroy.wav" id="13_s3xdb"]
+
+[sub_resource type="Gradient" id="Gradient_vbkwu"]
+offsets = PackedFloat32Array(0, 0.9895833)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nl4ga"]
+gradient = SubResource("Gradient_vbkwu")
+width = 48
+height = 24
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="Animation" id="Animation_v3qrj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_wjrvp"]
+resource_name = "down"
+length = 0.3
+loop_mode = 2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_qyyp5"]
+resource_name = "left"
+length = 0.3
+loop_mode = 2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [6, 7, 8]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_0fxxq"]
+resource_name = "down"
+length = 0.3
+loop_mode = 2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [6, 7, 8]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_evmx5"]
+resource_name = "down"
+length = 0.3
+loop_mode = 2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_opra5"]
+_data = {
+&"RESET": SubResource("Animation_v3qrj"),
+&"down": SubResource("Animation_wjrvp"),
+&"left": SubResource("Animation_qyyp5"),
+&"right": SubResource("Animation_0fxxq"),
+&"up": SubResource("Animation_evmx5")
+}
+
+[sub_resource type="Gradient" id="Gradient_5pded"]
+offsets = PackedFloat32Array(0.203125, 1)
+colors = PackedColorArray(0.85782665, 0.3136, 0.98, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fxxt4"]
+gradient = SubResource("Gradient_5pded")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vc8mr"]
+radius = 13.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_coed5"]
+radius = 28.0
+
+[sub_resource type="Animation" id="Animation_x2387"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CloakSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -36)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CloakSprite/Hand01:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CloakSprite/Hand01:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-20, 5)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CloakSprite/Hand02:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CloakSprite/Hand02:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(20, 5)]
+}
+
+[sub_resource type="Animation" id="Animation_nl4ga"]
+resource_name = "appear"
+length = 0.6
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CloakSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.6),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector2(0, -50), Vector2(0, -32), Vector2(0, -36)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CloakSprite/Hand01:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.10000001, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [2, 1, 0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CloakSprite/Hand01:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.100000024, 0.6),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector2(-20, 5), Vector2(-20, 8), Vector2(-20, 5)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CloakSprite/Hand02:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.10000001, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [2, 1, 0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CloakSprite/Hand02:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.100000024, 0.6),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector2(20, 5), Vector2(20, 8), Vector2(20, 5)]
+}
+
+[sub_resource type="Animation" id="Animation_opra5"]
+resource_name = "cast_spell"
+length = 3.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CloakSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 2, 2.2, 3),
+"transitions": PackedFloat32Array(-2, -2, -2, -2, -2),
+"update": 0,
+"values": [Vector2(0, -36), Vector2(0, -36), Vector2(0, -30), Vector2(0, -40), Vector2(0, -36)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 2, 2.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1.8177285, 1.3567705, 1.8247963, 1), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CloakSprite/Hand01:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.6, 1.9, 2.1, 2.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CloakSprite/Hand01:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.8, 2.2, 2.3, 2.6),
+"transitions": PackedFloat32Array(-2, -2, -2, -2, -2, -2),
+"update": 0,
+"values": [Vector2(-20, 5), Vector2(-20, 5), Vector2(-20, -11), Vector2(-20, 8), Vector2(-20, 8), Vector2(-20, 5)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CloakSprite/Hand02:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.6, 1.9, 2.1, 2.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CloakSprite/Hand02:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.8, 2.2, 2.3, 2.6),
+"transitions": PackedFloat32Array(-2, -2, -2, -2, -2, -2),
+"update": 0,
+"values": [Vector2(20, 5), Vector2(20, 5), Vector2(20, -11), Vector2(20, 8), Vector2(20, 8), Vector2(20, 5)]
+}
+
+[sub_resource type="Animation" id="Animation_5pded"]
+resource_name = "destroy"
+length = 4.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CloakSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2.9),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector2(0, -36), Vector2(0, -42), Vector2(0, -36)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(2.454227, 2.454227, 2.454227, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CloakSprite/Hand01:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CloakSprite/Hand01:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.19999999, 0.8, 0.8001),
+"transitions": PackedFloat32Array(-2, -2, -2, 1),
+"update": 0,
+"values": [Vector2(-20, 5), Vector2(-20, 8), Vector2(-20, -8), Vector2(-20, -8)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CloakSprite/Hand02:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CloakSprite/Hand02:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.19999999, 0.8),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector2(20, 5), Vector2(20, 8), Vector2(20, -8)]
+}
+tracks/6/type = "audio"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AudioStreamPlayer2D")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("13_s3xdb")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/6/use_blend = true
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("..")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.2, 0.5, 0.8, 1.1, 1.4, 1.7, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [Vector2(10, -32)],
+"method": &"explosion"
+}, {
+"args": [Vector2(2, -15)],
+"method": &"explosion"
+}, {
+"args": [Vector2(-14, -36)],
+"method": &"explosion"
+}, {
+"args": [Vector2(12, -29)],
+"method": &"explosion"
+}, {
+"args": [Vector2(-2, -22)],
+"method": &"explosion"
+}, {
+"args": [Vector2(2, -27)],
+"method": &"explosion"
+}, {
+"args": [Vector2(6, -32)],
+"method": &"explosion"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_vbkwu"]
+resource_name = "disappear"
+length = 0.6
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CloakSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.099999994, 0.6),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector2(0, -36), Vector2(0, -32), Vector2(0, -50)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CloakSprite/Hand01:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CloakSprite/Hand01:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.6),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector2(-20, 5), Vector2(-20, 8), Vector2(-20, 5)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CloakSprite/Hand02:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CloakSprite/Hand02:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.6),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector2(20, 5), Vector2(20, 8), Vector2(20, 5)]
+}
+
+[sub_resource type="Animation" id="Animation_yp6ys"]
+resource_name = "idle"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CloakSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector2(0, -36), Vector2(0, -42), Vector2(0, -36)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CloakSprite/Hand01:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CloakSprite/Hand01:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector2(-20, 5), Vector2(-20, 8), Vector2(-20, 5)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CloakSprite/Hand02:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CloakSprite/Hand02:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector2(20, 5), Vector2(20, 8), Vector2(20, 5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a1p57"]
+_data = {
+&"RESET": SubResource("Animation_x2387"),
+&"appear": SubResource("Animation_nl4ga"),
+&"cast_spell": SubResource("Animation_opra5"),
+&"destroy": SubResource("Animation_5pded"),
+&"disappear": SubResource("Animation_vbkwu"),
+&"idle": SubResource("Animation_yp6ys")
+}
+
+[sub_resource type="Animation" id="Animation_vc8mr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../CloakSprite:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../CloakSprite/Hand01:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../CloakSprite/Hand02_UP:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../CloakSprite/Hand01_UP:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../CloakSprite/Hand01_LEFT:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../CloakSprite/Hand02_LEFT:self_modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../CloakSprite/Hand02_RIGHT:self_modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_s3xdb"]
+resource_name = "damaged"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../CloakSprite:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1.8247963, 1.8247963, 1.8247963, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../CloakSprite/Hand01:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.5), Color(1, 1, 1, 1), Color(1, 1, 1, 0.5), Color(1, 1, 1, 1), Color(1, 1, 1, 0.5), Color(1, 1, 1, 1), Color(1, 1, 1, 0.5), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../CloakSprite/Hand02:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.5), Color(1, 1, 1, 1), Color(1, 1, 1, 0.5), Color(1, 1, 1, 1), Color(1, 1, 1, 0.5), Color(1, 1, 1, 1), Color(1, 1, 1, 0.5), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../CloakSprite/Hand02_UP:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.5), Color(1, 1, 1, 1), Color(1, 1, 1, 0.5), Color(1, 1, 1, 1), Color(1, 1, 1, 0.5), Color(1, 1, 1, 1), Color(1, 1, 1, 0.5), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../CloakSprite/Hand01_UP:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.5), Color(1, 1, 1, 1), Color(1, 1, 1, 0.5), Color(1, 1, 1, 1), Color(1, 1, 1, 0.5), Color(1, 1, 1, 1), Color(1, 1, 1, 0.5), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../CloakSprite/Hand01_LEFT:self_modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.5), Color(1, 1, 1, 1), Color(1, 1, 1, 0.5), Color(1, 1, 1, 1), Color(1, 1, 1, 0.5), Color(1, 1, 1, 1), Color(1, 1, 1, 0.5), Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../CloakSprite/Hand02_LEFT:self_modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.5), Color(1, 1, 1, 1), Color(1, 1, 1, 0.5), Color(1, 1, 1, 1), Color(1, 1, 1, 0.5), Color(1, 1, 1, 1), Color(1, 1, 1, 0.5), Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../CloakSprite/Hand02_RIGHT:self_modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.5), Color(1, 1, 1, 1), Color(1, 1, 1, 0.5), Color(1, 1, 1, 1), Color(1, 1, 1, 0.5), Color(1, 1, 1, 1), Color(1, 1, 1, 0.5), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_fxxt4"]
+resource_name = "default"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../CloakSprite:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_coed5"]
+_data = {
+&"RESET": SubResource("Animation_vc8mr"),
+&"damaged": SubResource("Animation_s3xdb"),
+&"default": SubResource("Animation_fxxt4")
+}
+
+[sub_resource type="Gradient" id="Gradient_r02na"]
+offsets = PackedFloat32Array(0.35416666, 0.5729167, 0.78125)
+colors = PackedColorArray(1, 1, 1, 0, 1, 0, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pavw6"]
+gradient = SubResource("Gradient_r02na")
+width = 32
+height = 32
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
 
 [node name="d01_r04" type="Node2D"]
 script = ExtResource("1_7n7lm")
 music = ExtResource("2_c0ps2")
 
-[node name="BaseLayer" parent="." instance=ExtResource("2_tddol")]
-tile_map_data = PackedByteArray("AAD5/wkACAA0ABQAAAD5/woACAA0ABUAAAD5/wsACAA0ABQAAAD5/wwACAA0ABUAAAD5/w0ACAA1ABUAAAD5/w4ACAA0ABUAABD5/w8ACAA1ABQAAAD6/wkACAA1ABQAAAD6/woACAA1ABUAAAD6/wsACAA1ABQAAAD6/wwACAA1ABUAAAD6/w0ACAA0ABUAAAD6/w4ACAA0ABQAABD6/w8ACAA0ABQAAAD7/wkACAA0ABQAAAD7/woACAA0ABUAAAD7/wsACAA3ABcAAAD7/wwACAA1ABcAAAD7/w0ACAA3ABcAAAD7/w4ACAA0ABgAAAD7/w8ACAA1ABQAAAD8/wAACAAqAAIAAAD8/wEACAAqAAMAAAD8/wIACAArAAMAAAD8/wMACAAqAAIAAAD8/wQACAAqAAIAAAD8/wUACAAqAAIAAAD8/wYACAAqAAIAAAD8/wcACAAqAAIAAAD8/wgACAAqAAIAAAD8/wkACAAqAAIAAAD8/woACAAqAAIAAAD8/wsACAA4ABcAAAD8/w0ACAA0ABwAAAD8/w4ACAAqAAIAAAD8/w8ACAAqAAIAAAD8/xAACAAqAAIAAAD8/xEACAArAAIAAAD9/wYACAApAAMAAAD9/wcACAApAAIAAAD9/wgACAApAAMAAAD9/wkACAApAAIAAAD9/woACAApAAMAAAD9/wsACAA1ABgAAAD9/wwACAA2ABoAAAD9/w0ACAA2ABwAAAD9/w4ACAApAAMAAAD9/w8ACAApAAIAAAD9/xAACAApAAMAAAD9/xEACAApAAIAAAD+/wYACAAqAAMAAAD+/wcACAAqAAIAAAD+/wgACAAqAAMAAAD+/wkACAAqAAIAAAD+/woACAAqAAMAAAD+/wsACAA0ABcAAAD+/wwACAA1ABoAAAD+/w0ACAA1ABwAAAD+/w4ACAAqAAMAAAD+/w8ACAAqAAIAAAD+/xAACAAqAAMAAAD+/xEACAAqAAIAAAD//wYACAArAAMAAAD//wcACAArAAIAAAD//wgACAArAAMAAAD//wkACAArAAIAAAD//woACAArAAMAAAD//wsACAA1ABcAAAD//wwACAA1ABsAAAD//w0ACAA2ABwAAAD//w4ACAArAAMAAAD//w8ACAArAAIAAAD//xAACAArAAMAAAD//xEACAArAAIAAAD8/wwACAA0ABoAAAD8/xIACAArAAIAAAD9/xIACAApAAIAAAD9/xMACAArAAIAAAD+/xIACAAqAAIAAAD+/xMACAApAAIAAAD//xIACAArAAIAAAD//xMACAArAAIAAAD9/wAACAApAAIAAAD9/wEACAApAAMAAAD9/wIACAApAAMAAAD9/wMACAApAAIAAAD9/wQACAApAAMAAAD9/wUACAApAAIAAAD+/wAACAAqAAIAAAD+/wEACAAqAAMAAAD+/wIACAAqAAMAAAD+/wMACAAqAAIAAAD+/wQACAAqAAMAAAD+/wUACAAqAAIAAAD//wAACAArAAIAAAD//wEACAArAAMAAAD//wIACAArAAMAAAD//wMACAArAAIAAAD//wQACAArAAMAAAD//wUACAArAAIAAAD9//7/CAApAAMAAAD9////CAApAAMAAAD+////CAAqAAMAAAD///3/CAArAAMAAAD9//3/CAApAAMAAAD+//3/CAAqAAMAAAD+//7/CAAqAAMAAAD///7/CAArAAMAAAD/////CAArAAMAAAD9/xQACAArAAMAAAD9/xUACAArAAMAAAD+/xQACAApAAMAAAD+/xUACAApAAMAAAD//xQACAArAAMAAAD//xUACAArAAMAAADo/wIACAA4ABUAAADo/wMACAA1ABQAAADo/wQACAA1ABQAAADo/wUACAA1ABUAAADo/wYACAA1ABQAABDo/wcACAA0ABQAABDo/wgACAA0ABUAABDp/wIACAA0ABEAAADp/wMACAA0ABUAAADp/wQACAA4ABEAAADp/wUACAA0ABUAAADp/wYACAA1ABUAABDp/wcACAA1ABQAABDp/wgACAA1ABEAABDq/wIACAA0ABQAAADq/wMACAA4ABQAAADq/wQACAA4ABIAAADq/wUACAA3ABUAAADq/wYACAA3ABUAAADq/wcACAA0ABQAABDq/wgACAA0ABUAABDr/wIACAA0ABQAAADr/wMACAA0ABUAAADr/wQACAA4ABQAAADr/wUACAA0ABUAAADr/wYACAA0ABQAAADr/wcACAA1ABQAABDr/wgACAA1ABUAABDs/wIACAA1ABQAAADs/wMACAA1ABUAAADs/wQACAA1ABQAAADs/wUACAA1ABUAAADs/wYACAA0ABUAAADs/wcACAA0ABQAABDs/wgACAA4ABQAABDt/wIACAA0ABQAAADt/wMACAA0ABUAAADt/wQACAA0ABQAAADt/wUACAA3ABIAAADt/wYACAA1ABQAAADt/wcACAA3ABUAACDt/wgACAA3ABQAACDu/wIACAA3ABgAAADu/wMACAA1ABUAAADu/wQACAA1ABQAAADu/wUACAA1ABUAAADu/wYACAA0ABUAAADu/wcACAA1ABQAABDu/wgACAA1ABQAABDv/wIACAA0ABQAAADv/wMACAA0ABUAAADv/wQACAA0ABQAAADv/wUACAA0ABUAAADv/wYACAA1ABUAAADv/wcACAA0ABUAABDv/wgACAA3ABEAABDw/wIACAA1ABQAAADw/wMACAA4ABgAAADw/wQACAA1ABQAAADw/wUACAA1ABUAAADw/wYACAA0ABUAAADw/wcACAA3ABUAABDw/wgACAA1ABQAABDx/wIACAA0ABQAAADx/wMACAA0ABUAAADx/wQACAA0ABQAAADx/wUACAA0ABUAAADx/wYACAA1ABUAAADx/wcACAA1ABQAABDx/wgACAA0ABQAABDy/wIACAA1ABQAAADy/wMACAA0ABQAAADy/wQACAA1ABQAAADy/wUACAA1ABUAAADy/wYACAA0ABUAAADy/wcACAA1ABUAABDy/wgACAA3ABQAABDz/wIACAA0ABUAABDz/wMACAA4ABQAAADz/wQACAA4ABIAAADz/wUACAA3ABUAAADz/wYACAA3ABUAAADz/wcACAA0ABQAABDz/wgACAA0ABUAABD0/wIACAA1ABUAABD0/wMACAA0ABUAAAD0/wQACAA4ABQAAAD0/wUACAA0ABUAAAD0/wYACAA0ABQAAAD0/wcACAA1ABQAABD0/wgACAA1ABUAABD1/wIACAA4ABQAABD1/wMACAA1ABUAAAD1/wQACAA1ABQAAAD1/wUACAA1ABUAAAD1/wYACAA0ABUAAAD1/wcACAA0ABQAABD1/wgACAA4ABQAABD2/wIACAA3ABQAACD2/wMACAA0ABUAAAD2/wQACAA0ABQAAAD2/wUACAA3ABIAAAD2/wYACAA1ABQAAAD2/wcACAA3ABUAACD2/wgACAA3ABQAACD3/wIACAA1ABQAABD3/wMACAA1ABUAAAD3/wQACAA1ABQAAAD3/wUACAA1ABUAAAD3/wYACAA0ABUAAAD3/wcACAA1ABQAABD3/wgACAA1ABQAABD4/wIACAA3ABEAABD4/wMACAA0ABUAAAD4/wQACAA0ABQAAAD4/wUACAA0ABUAAAD4/wYACAA1ABUAAAD4/wcACAA0ABUAABD4/wgACAA3ABEAABD5/wIACAA1ABQAABD5/wMACAA4ABgAAAD5/wQACAA1ABQAAAD5/wUACAA1ABUAAAD5/wYACAA0ABUAAAD5/wcACAA3ABUAABD5/wgACAA1ABQAABD6/wIACAA0ABQAABD6/wMACAA0ABUAAAD6/wQACAA0ABQAAAD6/wUACAA0ABUAAAD6/wYACAA1ABUAAAD6/wcACAA1ABQAABD6/wgACAA0ABQAABD7/wIACAA3ABQAABD7/wMACAA0ABQAAAD7/wQACAA1ABQAAAD7/wUACAA1ABUAAAD7/wYACAA0ABUAAAD7/wcACAA1ABUAABD7/wgACAA3ABQAABDo/wAACAA0ABQAABDo/wEACAA0ABUAABDp/wAACAA1ABQAABDp/wEACAA1ABEAABDq/wAACAA0ABQAABDq/wEACAA0ABUAABDr/wAACAA1ABQAABDr/wEACAA1ABUAABDs/wAACAA0ABQAABDs/wEACAA4ABQAABDt/wAACAA3ABUAACDt/wEACAA3ABQAACDu/wAACAA1ABQAABDu/wEACAA1ABQAABDv/wAACAA0ABUAABDv/wEACAA3ABEAABDw/wAACAA3ABUAABDw/wEACAA1ABQAABDx/wAACAA1ABQAABDx/wEACAA0ABQAABDy/wAACAA1ABUAABDy/wEACAA3ABQAABDz/wAACAA3ABUAAADz/wEACAA0ABQAABD0/wAACAA0ABQAAAD0/wEACAA1ABQAABD1/wAACAA0ABUAAAD1/wEACAA0ABQAABD2/wAACAA1ABQAAAD2/wEACAA3ABUAACD3/wAACAA0ABUAAAD3/wEACAA1ABQAABD4/wAACAA1ABUAAAD4/wEACAA0ABUAABD5/wAACAA0ABUAAAD5/wEACAA3ABUAABD6/wAACAA1ABUAAAD6/wEACAA1ABQAABD7/wAACAA0ABUAAAD7/wEACAA1ABUAABDn/wAACAA1ABQAABDn/wEACAA1ABQAABDn/wIACAA0ABQAAADn/wMACAA4ABUAAADn/wQACAA1ABQAAADn/wUACAA0ABUAAADn/wYACAA1ABQAABDn/wcACAA1ABQAABDn/wgACAA1ABQAABDn/xAACAA4ABUAAADn/xEACAA1ABQAAADn/xIACAA0ABUAAADo/xAACAA1ABQAAADo/xEACAA0ABQAAADo/xIACAA1ABQAAADp/xAACAA3ABUAAADp/xEACAA1ABQAAADp/xIACAA1ABQAAADq/xAACAA4ABUAAADq/xEACAA0ABQAAADq/xIACAA0ABUAAADr/xAACAA1ABUAAADr/xEACAA1ABQAAADr/xIACAA0ABcAAADs/xAACAA3ABQAAADs/xEACAA0ABQAAADs/xIACAA0ABEAAADt/xAACAA0ABgAAADt/xEACAA1ABQAAADt/xIACAA1ABUAAADu/xAACAA0ABUAAADu/xEACAA0ABQAAADu/xIACAA0ABUAAADv/xAACAA1ABUAAADv/xEACAA1ABgAAADv/xIACAA1ABUAAADw/xAACAA4ABUAAADw/xEACAA1ABQAAADw/xIACAA0ABUAAADx/xAACAA1ABQAAADx/xEACAA1ABQAAADx/xIACAA1ABUAAADy/xAACAA0ABUAAADy/xEACAA4ABEAAADy/xIACAA0ABUAAADz/xAACAA4ABQAAADz/xEACAA4ABIAAADz/xIACAA3ABUAAAD0/xAACAA0ABUAAAD0/xEACAA4ABQAAAD0/xIACAA0ABUAAAD1/xAACAA1ABUAAAD1/xEACAA1ABQAAAD1/xIACAA1ABUAAAD2/xAACAA0ABUAAAD2/xEACAA0ABQAAAD2/xIACAA3ABIAAAD3/xAACAA1ABUAAAD3/xEACAA1ABQAAAD3/xIACAA1ABUAAAD4/xAACAA0ABUAAAD4/xEACAA0ABQAAAD4/xIACAA0ABUAAAD5/xAACAA4ABgAAAD5/xEACAA1ABQAAAD5/xIACAA1ABUAAAD6/xAACAA0ABUAAAD6/xEACAA0ABQAAAD6/xIACAA0ABUAAAD7/xAACAA0ABQAAAD7/xEACAA1ABQAAAD7/xIACAA1ABUAAADn/wkACAA0ABQAAADn/woACAA4ABUAAADn/wsACAA0ABQAAADn/wwACAA1ABQAABDn/w0ACAA4ABUAAADn/w4ACAA1ABQAAADn/w8ACAA1ABQAAADo/wkACAA1ABcAAADo/woACAA1ABUAAADo/wsACAA0ABUAAADo/wwACAA0ABQAABDo/w0ACAA0ABEAAADo/w4ACAA0ABUAAADo/w8ACAA4ABEAAADp/wkACAA0ABQAAADp/woACAA3ABQAAADp/wsACAA0ABQAAADp/wwACAA0ABEAAADp/w0ACAA0ABQAAADp/w4ACAA1ABQAABDp/w8ACAA1ABQAAADq/wkACAA1ABQAAADq/woACAA0ABgAAADq/wsACAA1ABQAAADq/wwACAA1ABUAAADq/w0ACAA1ABQAAADq/w4ACAA0ABQAABDq/w8ACAA0ABQAAADr/wkACAA0ABQAAADr/woACAA0ABUAAADr/wsACAA0ABQAAADr/wwACAA0ABUAAADr/w0ACAA3ABQAABDr/w4ACAA4ABQAABDr/w8ACAA1ABcAAADs/wkACAA1ABQAAADs/woACAA1ABUAAADs/wsACAA1ABgAAADs/wwACAA1ABUAAADs/w0ACAA1ABcAAADs/w4ACAA0ABQAABDs/w8ACAA0ABQAAADt/wkACAA0ABQAAADt/woACAA4ABUAAADt/wsACAA1ABQAAADt/wwACAA0ABUAAADt/w0ACAA1ABQAABDt/w4ACAA1ABQAABDt/w8ACAA1ABQAAADu/wkACAA4ABUAAADu/woACAA1ABQAAADu/wsACAA1ABQAAADu/wwACAA1ABUAAADu/w0ACAA1ABQAABDu/w4ACAA0ABQAABDu/w8ACAA0ABQAAADv/wkACAA0ABEAAADv/woACAA0ABUAAADv/wsACAA4ABEAAADv/wwACAA0ABUAAADv/w0ACAA1ABUAABDv/w4ACAA1ABQAABDv/w8ACAA1ABQAAADw/wkACAA0ABQAAADw/woACAA4ABQAAADw/wsACAA4ABIAAADw/wwACAA3ABUAAADw/w0ACAA3ABUAAADw/w4ACAA0ABQAABDw/w8ACAA0ABQAAADx/wkACAA0ABQAAADx/woACAA0ABUAAADx/wsACAA4ABQAAADx/wwACAA0ABUAAADx/w0ACAA0ABQAAADx/w4ACAA1ABQAABDx/w8ACAA4ABUAAADy/wkACAA1ABQAAADy/woACAA1ABUAAADy/wsACAA1ABQAAADy/wwACAA1ABUAAADy/w0ACAA0ABUAAADy/w4ACAA0ABQAABDy/w8ACAA0ABEAAADz/wkACAA0ABQAAADz/woACAA0ABUAAADz/wsACAA0ABQAAADz/wwACAA3ABIAAADz/w0ACAA1ABQAAADz/w4ACAA3ABUAACDz/w8ACAA0ABQAAAD0/wkACAA3ABgAAAD0/woACAA1ABUAAAD0/wsACAA1ABQAAAD0/wwACAA1ABUAAAD0/w0ACAA0ABUAAAD0/w4ACAA1ABQAABD0/w8ACAA0ABQAAAD1/wkACAA0ABQAAAD1/woACAA0ABUAAAD1/wsACAA0ABQAAAD1/wwACAA0ABUAAAD1/w0ACAA1ABUAAAD1/w4ACAA0ABUAABD1/w8ACAA1ABQAAAD2/wkACAA1ABQAAAD2/woACAA4ABgAAAD2/wsACAA1ABQAAAD2/wwACAA1ABUAAAD2/w0ACAA0ABUAAAD2/w4ACAA3ABUAABD2/w8ACAA0ABQAAAD3/wkACAA0ABQAAAD3/woACAA0ABUAAAD3/wsACAA0ABQAAAD3/wwACAA0ABUAAAD3/w0ACAA1ABUAAAD3/w4ACAA1ABQAABD3/w8ACAA3ABgAAAD4/wkACAA1ABQAAAD4/woACAA0ABQAAAD4/wsACAA1ABQAAAD4/wwACAA1ABUAAAD4/w0ACAA0ABUAAAD4/w4ACAA1ABUAABD4/w8ACAA0ABQAAAD6//3/CAAqAAIAAAD6//7/CAAqAAMAAAD6////CAAqAAMAAAD7//3/CAArAAIAAAD7//7/CAArAAMAAAD7////CAArAAMAAAD8//3/CAApAAIAAAD8//7/CAApAAMAAAD8////CAApAAMAAAD3//3/CAAqAAIAAAD3//7/CAAqAAMAAAD3////CAAqAAMAAAD4//3/CAArAAIAAAD4//7/CAArAAMAAAD4////CAArAAMAAAD5//3/CAApAAIAAAD5//7/CAApAAMAAAD5////CAApAAMAAADz//3/CAApAAIAAADz//7/CAApAAMAAADz////CAApAAMAAAD0//3/CAAqAAIAAAD0//7/CAAqAAMAAAD0////CAAqAAMAAAD1//3/CAArAAIAAAD1//7/CAArAAMAAAD1////CAArAAMAAAD2//3/CAApAAIAAAD2//7/CAApAAMAAAD2////CAApAAMAAADx//3/CAAqAAIAAADx//7/CAAqAAMAAADx////CAAqAAMAAADy//3/CAArAAIAAADy//7/CAArAAMAAADy////CAArAAMAAADu//3/CAAqAAIAAADu//7/CAAqAAMAAADu////CAAqAAMAAADv//3/CAArAAIAAADv//7/CAArAAMAAADv////CAArAAMAAADw//3/CAApAAIAAADw//7/CAApAAMAAADw////CAApAAMAAADr//3/CAAqAAIAAADr//7/CAAqAAMAAADr////CAAqAAMAAADs//3/CAArAAIAAADs//7/CAArAAMAAADs////CAArAAMAAADt//3/CAApAAIAAADt//7/CAApAAMAAADt////CAApAAMAAADo//3/CAAqAAIAAADo//7/CAAqAAMAAADo////CAAqAAMAAADp//3/CAArAAIAAADp//7/CAArAAMAAADp////CAArAAMAAADq//3/CAApAAIAAADq//7/CAApAAMAAADq////CAApAAMAAADl//3/CAArAAIAAADl//7/CAArAAMAAADl////CAArAAMAAADm//3/CAApAAIAAADm//7/CAApAAMAAADm////CAApAAMAAADn//3/CAApAAIAAADn//7/CAApAAMAAADn////CAApAAMAAADk//3/CAAqAAIAAADk//7/CAAqAAMAAADk////CAAqAAMAAADk/wEACAAqAAMAAADk/wIACAAqAAMAAADk/wMACAAqAAIAAADl/wEACAArAAMAAADl/wIACAArAAMAAADl/wMACAArAAIAAADm/wEACAApAAMAAADm/wIACAApAAMAAADm/wMACAApAAIAAADk/wAACAAqAAIAAADl/wAACAArAAIAAADm/wAACAApAAIAAADk/wQACAAqAAMAAADk/wUACAAqAAMAAADl/wQACAArAAMAAADl/wUACAArAAMAAADm/wQACAApAAMAAADm/wUACAApAAMAAADk/wYACAAqAAIAAADk/wcACAAqAAMAAADk/wgACAAqAAMAAADl/wYACAArAAIAAADl/wcACAArAAMAAADl/wgACAArAAMAAADm/wYACAApAAIAAADm/wcACAApAAMAAADm/wgACAApAAMAAADk/wkACAAqAAIAAADk/woACAAqAAMAAADk/wsACAAqAAMAAADl/wkACAArAAIAAADl/woACAArAAMAAADl/wsACAArAAMAAADm/wkACAApAAIAAADm/woACAApAAMAAADm/wsACAApAAMAAADk/wwACAAqAAIAAADk/w0ACAAqAAMAAADk/w4ACAAqAAIAAADl/wwACAArAAIAAADl/w0ACAArAAMAAADl/w4ACAArAAIAAADm/wwACAApAAIAAADm/w0ACAApAAMAAADm/w4ACAApAAIAAADk/w8ACAAqAAMAAADk/xAACAAqAAMAAADl/w8ACAArAAMAAADl/xAACAArAAMAAADm/w8ACAApAAMAAADm/xAACAApAAMAAADk/xEACAAqAAIAAADk/xIACAAqAAMAAADk/xMACAAqAAIAAADl/xEACAArAAIAAADl/xIACAArAAMAAADl/xMACAArAAIAAADm/xEACAApAAIAAADm/xIACAApAAMAAADm/xMACAApAAIAAADk/xQACAAqAAMAAADk/xUACAAqAAMAAADl/xQACAArAAMAAADl/xUACAArAAMAAADm/xQACAApAAMAAADm/xUACAApAAMAAADn/xMACAAqAAIAAADn/xQACAAqAAMAAADn/xUACAAqAAMAAADo/xMACAArAAIAAADo/xQACAArAAMAAADo/xUACAArAAMAAADp/xMACAApAAIAAADp/xQACAApAAMAAADp/xUACAApAAMAAADq/xMACAAqAAIAAADq/xQACAAqAAMAAADq/xUACAAqAAMAAADr/xMACAArAAIAAADr/xQACAArAAMAAADr/xUACAArAAMAAADs/xMACAApAAIAAADs/xQACAApAAMAAADs/xUACAApAAMAAADt/xMACAAqAAIAAADt/xQACAAqAAMAAADt/xUACAAqAAMAAADu/xMACAArAAIAAADu/xQACAArAAMAAADu/xUACAArAAMAAADv/xMACAApAAIAAADv/xQACAApAAMAAADv/xUACAApAAMAAADw/xMACAAqAAIAAADw/xQACAAqAAMAAADw/xUACAAqAAMAAADx/xMACAArAAIAAADx/xQACAArAAMAAADx/xUACAArAAMAAADy/xMACAApAAIAAADy/xQACAApAAMAAADy/xUACAApAAMAAADz/xMACAAqAAIAAADz/xQACAAqAAMAAADz/xUACAAqAAMAAAD0/xMACAArAAIAAAD0/xQACAArAAMAAAD0/xUACAArAAMAAAD1/xMACAApAAIAAAD1/xQACAApAAMAAAD1/xUACAApAAMAAAD2/xMACAAqAAIAAAD2/xQACAAqAAMAAAD2/xUACAAqAAMAAAD3/xMACAArAAIAAAD3/xQACAArAAMAAAD3/xUACAArAAMAAAD4/xMACAApAAIAAAD4/xQACAApAAMAAAD4/xUACAApAAMAAAD5/xMACAAqAAIAAAD5/xQACAAqAAMAAAD5/xUACAAqAAMAAAD6/xMACAArAAIAAAD6/xQACAArAAMAAAD6/xUACAArAAMAAAD7/xMACAApAAIAAAD7/xQACAApAAMAAAD7/xUACAApAAMAAAD8/xMACAAqAAIAAAD8/xQACAAqAAMAAAD8/xUACAAqAAMAAAA=")
+[node name="Map" type="Node2D" parent="."]
 
-[node name="Walls" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAD7/wkACAABAAcAAAD7/woACAABAAgAAAD7/wsACAABAAsAAAD8/wYACAACAAcAAAD8/wcACAACAAgAAAD8/wgACAACAAkAAAD8/wkACAACAAoAAAD8/woACAACAAoAAAD8/wsACAACAAsAAAD8/w4ACAACAAMAAAD9/wcACAAXABEAAAD9/wgACAAaABIAAAD9/wkACAAZABMAAAD9/woACAAaABMAAAD9/wsACAALAAsAAAD+/wcACAAVABEAAAD+/wgACAAVABIAAAD+/wkACAAUABIAAAD+/woACAAZABIAAAD+/wsACAAMAAsAAAD//wcACAAWABEAAAD//wgACAAWABIAAAD//wkACAATAA4AAAD//woACAATABMAAAD//wsACAANAAsAAAD9/wYACAAMAAcAAAD9/w4ACAAMAAMAAAD+/wYACAANAAcAAAD+/w4ACAANAAMAAAD//wYACAAIAAcAAAD//w4ACAAOAAMAAAD8/w8ACAACAAUAAAD7/xAACAABAAYAAAD7/w8ACAABAAUAAAD7/xEACAABAAcAAAD7/wYACAADAAcAAAD7/wcACAADAAgAAAD7/wgACAADAAkAAADn/wAACAAOAAEAAADn/wEACAAPAAQAAADn/wIACAAPAAQAAADn/wMACAAPAAUAAADn/wQACAAPAAYAAADn/wUACAAPAAQAAADo/wAACAAGAAcAAADo/wEACAAGAAgAAADo/wIACAARABIAAADo/wMACAARABMAAADo/wQACAAFAAoAAADo/wUACAAQAAQAAADp/wAACAAFAAcAAADp/wEACAALAA0AAADp/wIACAALAA4AAADp/wMACAAaABMAAADp/wQACAALAA8AAADp/wUACAALABAAAADq/wAACAAGAAcAAADq/wEACAAMAA0AAADq/wIACAAMAA4AAADq/wMACAAUABMAAADq/wQACAAMAA8AAADq/wUACAAMABAAAADr/wAACAAHAAcAAADr/wEACAANAA0AAADr/wIACAANAA4AAADr/wMACAAaABEAAADr/wQACAANAA8AAADr/wUACAANABAAAADs/wAACAAIAAcAAADs/wEACAAOAA0AAADs/wIACAAOAA4AAADs/wMACAAIAAkAAADs/wQACAAOAA8AAADs/wUACAAOABAAAADt/wAACAAHAAcAAADt/wEACAAHAAgAAADt/wIACAAVABIAAADt/wMACAAUABIAAADt/wQACAAHAAoAAADt/wUACAAMABAAAADu/wAACAAIAAcAAADu/wEACAAIAAgAAADu/wIACAAWABIAAADu/wMACAASABMAAADu/wQACAAZABMAAADu/wUACAANABAAAADv/wAACAAFAAcAAADv/wEACAAFAAgAAADv/wIACAAIAAkAAADv/wMACAAIAAkAAADv/wQACAAIAAkAAADv/wUACAAMABAAAADw/wAACAAGAAcAAADw/wEACAALAA0AAADw/wIACAALAA4AAADw/wMACAATABMAAADw/wQACAALABMAAADw/wUACAAOABAAAADx/wAACAAHAAcAAADx/wEACAAMAA0AAADx/wIACAAMAA4AAADx/wMACAAUABMAAADx/wQACAAMABMAAADx/wUACAAHAAsAAADy/wAACAAIAAcAAADy/wEACAANAA0AAADy/wIACAANAA4AAADy/wMACAAUABIAAADy/wQACAANABMAAADy/wUACAAIAAsAAADz/wAACAAFAAcAAADz/wEACAAOAA0AAADz/wIACAAOAA4AAADz/wMACAAIAAkAAADz/wQACAAOABMAAADz/wUACAAFAAsAAAD0/wAACAAGAAcAAAD0/wEACAASAA0AAAD0/wIACAASAA4AAAD0/wMACAASAA8AAAD0/wQACAAXABMAAAD0/wUACAALABAAAAD1/wAACAAHAAcAAAD1/wEACAAHAAgAAAD1/wIACAAVABIAAAD1/wMACAAUABIAAAD1/wQACAAHAAoAAAD1/wUACAAMABAAAAD2/wAACAAIAAcAAAD2/wEACAAIAAgAAAD2/wIACAAWABIAAAD2/wMACAASABMAAAD2/wQACAAZABMAAAD2/wUACAANABAAAAD3/wAACAAFAAcAAAD3/wEACAALAA0AAAD3/wIACAALAA4AAAD3/wMACAATABMAAAD3/wQACAALAA8AAAD3/wUACAAOABAAAAD4/wAACAAGAAcAAAD4/wEACAAMAA0AAAD4/wIACAAMAA4AAAD4/wMACAAUABMAAAD4/wQACAAMAA8AAAD4/wUACAAGAAsAAAD5/wAACAAHAAcAAAD5/wEACAANAA0AAAD5/wIACAANAA4AAAD5/wMACAAUABIAAAD5/wQACAANAA8AAAD5/wUACAAHAAsAAAD6/wAACAAIAAcAAAD6/wEACAAOAA0AAAD6/wIACAAOAA4AAAD6/wMACAAIAAkAAAD6/wQACAAOAA8AAAD6/wUACAAIAAsAAAD7/wAACAAFAAcAAAD7/wEACAAFAAgAAAD7/wIACAAFABMAAAD7/wMACAAIAAoAAAD7/wQACAAIAAoAAAD7/wUACAADAAQAAAD8/wAACAAFAAEAAAD8/wEACAAEAAQAAAD8/wIACAAEAAUAAAD8/wMACAAEAAYAAAD8/wQACAAEAAYAAAD8/wUACAAEAAQAAADn/wYACAAPAAQAAADn/wcACAAPAAUAAADn/wgACAAPAAYAAADn/wkACAAPAAQAAADn/woACAAPAAUAAADn/wsACAAPAAYAAADn/wwACAAPAAQAAADn/w0ACAAPAAUAAADn/w4ACAAPAAYAAADn/w8ACAAPAAQAAADn/xAACAAPAAYAAADn/xEACAAPAAYAAADo/wYACAAQAAgAAADo/wcACAAQAAkAAADo/wgACAAQAAoAAADo/wkACAAQAAcAAADo/woACAASAAoAAADo/wsACAAQAAYAAADo/wwACAAQAAcAAADo/w0ACAAQAAgAAADo/w4ACAAQAAkAAADo/w8ACAAQAAoAAADn/xIACAAIAAEAAADo/xAACAAQAAoAAADo/xEACAAQAAoAAADo/xIACAALAAMAAADp/xIACAAFAAMAAADq/xIACAAGAAMAAADr/xIACAAFAAMAAADs/xIACAAGAAMAAADt/xIACAAMAAMAAADu/xIACAANAAMAAADv/xIACAAOAAMAAADw/xIACAALAAMAAADx/xIACAAMAAMAAADy/xIACAANAAMAAADz/xIACAAOAAMAAAD0/xIACAALAAMAAAD1/xIACAAMAAMAAAD2/xIACAANAAMAAAD3/xIACAAOAAMAAAD4/xIACAALAAMAAAD5/xIACAAMAAMAAAD6/xIACAANAAMAAAD7/xIACAAOAAMAAAD8/xAACAAEAAYAAAD8/xEACAAEAAQAAAD8/xIACAALAAEAAAA=")
+[node name="BaseLayer" parent="Map" instance=ExtResource("2_tddol")]
+tile_map_data = PackedByteArray("AADk//3/CAAqAAIAAADk//7/CAAqAAMAAADk////CAAqAAMAAADk/wAACAAqAAIAAADk/wEACAAqAAMAAADk/wIACAAqAAMAAADk/wMACAAqAAIAAADk/wQACAAqAAMAAADk/wUACAAqAAMAAADk/wYACAAqAAIAAADk/wcACAAqAAMAAADk/wgACAAqAAMAAADk/wkACAAqAAIAAADk/woACAAqAAMAAADk/wsACAAqAAMAAADk/wwACAAqAAIAAADk/w0ACAAqAAMAAADk/w4ACAAqAAIAAADk/w8ACAAqAAMAAADk/xAACAAqAAMAAADl//3/CAArAAIAAADl//7/CAArAAMAAADl////CAArAAMAAADl/wAACAArAAIAAADl/wEACAArAAMAAADl/wIACAArAAMAAADl/wMACAArAAIAAADl/wQACAArAAMAAADl/wUACAArAAMAAADl/wYACAArAAIAAADl/wcACAArAAMAAADl/wgACAArAAMAAADl/wkACAArAAIAAADl/woACAArAAMAAADl/wsACAArAAMAAADl/wwACAArAAIAAADl/w0ACAArAAMAAADl/w4ACAArAAIAAADl/w8ACAArAAMAAADl/xAACAArAAMAAADm//3/CAApAAIAAADm//7/CAApAAMAAADm////CAApAAMAAADm/wAACAApAAIAAADm/wEACAApAAMAAADm/wIACAApAAMAAADm/wMACAApAAIAAADm/wQACAApAAMAAADm/wUACAApAAMAAADm/wYACAApAAIAAADm/wcACAApAAMAAADm/wgACAApAAMAAADm/wkACAApAAIAAADm/woACAApAAMAAADm/wsACAApAAMAAADm/wwACAApAAIAAADm/w0ACAApAAMAAADm/w4ACAApAAIAAADm/w8ACAApAAMAAADm/xAACAApAAMAAADn//3/CAApAAIAAADn//7/CAApAAMAAADn////CAApAAMAAADn/wAACAA1ABQAABDn/wEACAA1ABQAABDn/wIACAA0ABQAAADn/wMACAA4ABUAAADn/wQACAA1ABQAAADn/wUACAA0ABUAAADn/wYACAA1ABQAABDn/wcACAA1ABQAABDn/wgACAA1ABQAABDn/wkACAA0ABQAAADn/woACAA4ABUAAADn/wsACAA0ABQAAADn/wwACAA1ABQAABDn/w0ACAA4ABUAAADn/w4ACAA1ABQAAADn/w8ACAA1ABQAAADn/xAACAA4ABUAAADo//3/CAAqAAIAAADo//7/CAAqAAMAAADo////CAAqAAMAAADo/wAACAA0ABQAABDo/wEACAA0ABUAABDo/wIACAA4ABUAAADo/wMACAA1ABQAAADo/wQACAA1ABQAAADo/wUACAA1ABUAAADo/wYACAA1ABQAABDo/wcACAA0ABQAABDo/wgACAA0ABUAABDo/wkACAA1ABcAAADo/woACAA1ABUAAADo/wsACAA0ABUAAADo/wwACAA0ABQAABDo/w0ACAA0ABEAAADo/w4ACAA0ABUAAADo/w8ACAA4ABEAAADo/xAACAA1ABQAAADp//3/CAArAAIAAADp//7/CAArAAMAAADp////CAArAAMAAADp/wAACAA1ABQAABDp/wEACAA1ABEAABDp/wIACAA0ABEAAADp/wMACAA0ABUAAADp/wQACAA4ABEAAADp/wUACAA0ABUAAADp/wYACAA1ABUAABDp/wcACAA1ABQAABDp/wgACAA1ABEAABDp/wkACAA0ABQAAADp/woACAA3ABQAAADp/wsACAA0ABQAAADp/wwACAA0ABEAAADp/w0ACAA0ABQAAADp/w4ACAA1ABQAABDp/w8ACAA1ABQAAADp/xAACAA3ABUAAADq//3/CAApAAIAAADq//7/CAApAAMAAADq////CAApAAMAAADq/wAACAA0ABQAABDq/wEACAA0ABUAABDq/wIACAA0ABQAAADq/wMACAA4ABQAAADq/wQACAA4ABIAAADq/wUACAA3ABUAAADq/wYACAA3ABUAAADq/wcACAA0ABQAABDq/wgACAA0ABUAABDq/wkACAA1ABQAAADq/woACAA0ABgAAADq/wsACAA1ABQAAADq/wwACAA1ABUAAADq/w0ACAA1ABQAAADq/w4ACAA0ABQAABDq/w8ACAA0ABQAAADq/xAACAA4ABUAAADr//3/CAAqAAIAAADr//7/CAAqAAMAAADr////CAAqAAMAAADr/wAACAA1ABQAABDr/wEACAA1ABUAABDr/wIACAA0ABQAAADr/wMACAA0ABUAAADr/wQACAA4ABQAAADr/wUACAA0ABUAAADr/wYACAA0ABQAAADr/wcACAA1ABQAABDr/wgACAA1ABUAABDr/wkACAA0ABQAAADr/woACAA0ABUAAADr/wsACAA0ABQAAADr/wwACAA0ABUAAADr/w0ACAA3ABQAABDr/w4ACAA4ABQAABDr/w8ACAA1ABcAAADr/xAACAA1ABUAAADs//3/CAArAAIAAADs//7/CAArAAMAAADs////CAArAAMAAADs/wAACAA0ABQAABDs/wEACAA4ABQAABDs/wIACAA1ABQAAADs/wMACAA1ABUAAADs/wQACAA1ABQAAADs/wUACAA1ABUAAADs/wYACAA0ABUAAADs/wcACAA0ABQAABDs/wgACAA4ABQAABDs/wkACAA1ABQAAADs/woACAA1ABUAAADs/wsACAA1ABgAAADs/wwACAA1ABUAAADs/w0ACAA1ABcAAADs/w4ACAA0ABQAABDs/w8ACAA0ABQAAADs/xAACAA3ABQAAADt//3/CAApAAIAAADt//7/CAApAAMAAADt////CAApAAMAAADt/wAACAA3ABUAACDt/wEACAA3ABQAACDt/wIACAA0ABQAAADt/wMACAA0ABUAAADt/wQACAA0ABQAAADt/wUACAA3ABIAAADt/wYACAA1ABQAAADt/wcACAA3ABUAACDt/wgACAA3ABQAACDt/wkACAA0ABQAAADt/woACAA4ABUAAADt/wsACAA1ABQAAADt/wwACAA0ABUAAADt/w0ACAA1ABQAABDt/w4ACAA1ABQAABDt/w8ACAA1ABQAAADt/xAACAA0ABgAAADu//3/CAAqAAIAAADu//7/CAAqAAMAAADu////CAAqAAMAAADu/wAACAA1ABQAABDu/wEACAA1ABQAABDu/wIACAA3ABgAAADu/wMACAA1ABUAAADu/wQACAA1ABQAAADu/wUACAA1ABUAAADu/wYACAA0ABUAAADu/wcACAA1ABQAABDu/wgACAA1ABQAABDu/wkACAA4ABUAAADu/woACAA1ABQAAADu/wsACAA1ABQAAADu/wwACAA1ABUAAADu/w0ACAA1ABQAABDu/w4ACAA0ABQAABDu/w8ACAA0ABQAAADu/xAACAA0ABUAAADv//3/CAArAAIAAADv//7/CAArAAMAAADv////CAArAAMAAADv/wAACAA0ABUAABDv/wEACAA3ABEAABDv/wIACAA0ABQAAADv/wMACAA0ABUAAADv/wQACAA0ABQAAADv/wUACAA0ABUAAADv/wYACAA1ABUAAADv/wcACAA0ABUAABDv/wgACAA3ABEAABDv/wkACAA0ABEAAADv/woACAA0ABUAAADv/wsACAA4ABEAAADv/wwACAA0ABUAAADv/w0ACAA1ABUAABDv/w4ACAA1ABQAABDv/w8ACAA1ABQAAADv/xAACAA1ABUAAADv/xEACAA1ABgAAADw//3/CAApAAIAAADw//7/CAApAAMAAADw////CAApAAMAAADw/wAACAA3ABUAABDw/wEACAA1ABQAABDw/wIACAA1ABQAAADw/wMACAA4ABgAAADw/wQACAA1ABQAAADw/wUACAA1ABUAAADw/wYACAA0ABUAAADw/wcACAA3ABUAABDw/wgACAA1ABQAABDw/wkACAA0ABQAAADw/woACAA4ABQAAADw/wsACAA4ABIAAADw/wwACAA3ABUAAADw/w0ACAA3ABUAAADw/w4ACAA0ABQAABDw/w8ACAA0ABQAAADw/xAACAA3ABgAAADw/xEACAA0ABoAAADx//3/CAAqAAIAAADx//7/CAAqAAMAAADx////CAAqAAMAAADx/wAACAA1ABQAABDx/wEACAA0ABQAABDx/wIACAA0ABQAAADx/wMACAA0ABUAAADx/wQACAA0ABQAAADx/wUACAA0ABUAAADx/wYACAA1ABUAAADx/wcACAA1ABQAABDx/wgACAA0ABQAABDx/wkACAA0ABQAAADx/woACAA0ABUAAADx/wsACAA4ABQAAADx/wwACAA0ABUAAADx/w0ACAA0ABQAAADx/w4ACAA1ABQAABDx/w8ACAA4ABUAAADx/xAACAA0ABEAAADx/xEACAA1ABoAAADy//3/CAArAAIAAADy//7/CAArAAMAAADy////CAArAAMAAADy/wAACAA1ABUAABDy/wEACAA3ABQAABDy/wIACAA1ABQAAADy/wMACAA0ABQAAADy/wQACAA1ABQAAADy/wUACAA1ABUAAADy/wYACAA0ABUAAADy/wcACAA1ABUAABDy/wgACAA3ABQAABDy/wkACAA1ABQAAADy/woACAA1ABUAAADy/wsACAA1ABQAAADy/wwACAA1ABUAAADy/w0ACAA0ABUAAADy/w4ACAA0ABQAABDy/w8ACAA0ABEAAADy/xAACAA1ABIAAADy/xEACAA2ABoAAADz//3/CAApAAIAAADz//7/CAApAAMAAADz////CAApAAMAAADz/wAACAA3ABUAAADz/wEACAA0ABQAABDz/wIACAA0ABUAABDz/wMACAA4ABQAAADz/wQACAA4ABIAAADz/wUACAA3ABUAAADz/wYACAA3ABUAAADz/wcACAA0ABQAABDz/wgACAA0ABUAABDz/wkACAA0ABQAAADz/woACAA0ABUAAADz/wsACAA0ABQAAADz/wwACAA3ABIAAADz/w0ACAA1ABQAAADz/w4ACAA3ABUAACDz/w8ACAA0ABQAAADz/xAACAA4ABEAAADz/xEACAA3ABoAAAD0//3/CAAqAAIAAAD0//7/CAAqAAMAAAD0////CAAqAAMAAAD0/wAACAA0ABQAAAD0/wEACAA1ABQAABD0/wIACAA1ABUAABD0/wMACAA0ABUAAAD0/wQACAA4ABQAAAD0/wUACAA0ABUAAAD0/wYACAA0ABQAAAD0/wcACAA1ABQAABD0/wgACAA1ABUAABD0/wkACAA3ABgAAAD0/woACAA1ABUAAAD0/wsACAA1ABQAAAD0/wwACAA1ABUAAAD0/w0ACAA0ABUAAAD0/w4ACAA1ABQAABD0/w8ACAA0ABQAAAD0/xAACAA0ABUAAAD0/xEACAA4ABQAAAD1//3/CAArAAIAAAD1//7/CAArAAMAAAD1////CAArAAMAAAD1/wAACAA0ABUAAAD1/wEACAA0ABQAABD1/wIACAA4ABQAABD1/wMACAA1ABUAAAD1/wQACAA1ABQAAAD1/wUACAA1ABUAAAD1/wYACAA0ABUAAAD1/wcACAA0ABQAABD1/wgACAA4ABQAABD1/wkACAA0ABQAAAD1/woACAA0ABUAAAD1/wsACAA0ABQAAAD1/wwACAA0ABUAAAD1/w0ACAA1ABUAAAD1/w4ACAA0ABUAABD1/w8ACAA1ABQAAAD2//3/CAApAAIAAAD2//7/CAApAAMAAAD2////CAApAAMAAAD2/wAACAA1ABQAAAD2/wEACAA3ABUAACD2/wIACAA3ABQAACD2/wMACAA0ABUAAAD2/wQACAA0ABQAAAD2/wUACAA3ABIAAAD2/wYACAA1ABQAAAD2/wcACAA3ABUAACD2/wgACAA3ABQAACD2/wkACAA1ABQAAAD2/woACAA4ABgAAAD2/wsACAA1ABQAAAD2/wwACAA1ABUAAAD2/w0ACAA0ABUAAAD2/w4ACAA3ABUAABD2/w8ACAA0ABQAAAD3//3/CAAqAAIAAAD3//7/CAAqAAMAAAD3////CAAqAAMAAAD3/wAACAA0ABUAAAD3/wEACAA1ABQAABD3/wIACAA1ABQAABD3/wMACAA1ABUAAAD3/wQACAA1ABQAAAD3/wUACAA1ABUAAAD3/wYACAA0ABUAAAD3/wcACAA1ABQAABD3/wgACAA1ABQAABD3/wkACAA0ABQAAAD3/woACAA0ABUAAAD3/wsACAA0ABQAAAD3/wwACAA0ABUAAAD3/w0ACAA1ABUAAAD3/w4ACAA1ABQAABD3/w8ACAA3ABgAAAD4//3/CAArAAIAAAD4//7/CAArAAMAAAD4////CAArAAMAAAD4/wAACAA1ABUAAAD4/wEACAA0ABUAABD4/wIACAA3ABEAABD4/wMACAA0ABUAAAD4/wQACAA0ABQAAAD4/wUACAA0ABUAAAD4/wYACAA1ABUAAAD4/wcACAA0ABUAABD4/wgACAA3ABEAABD4/wkACAA1ABQAAAD4/woACAA0ABQAAAD4/wsACAA1ABQAAAD4/wwACAA1ABUAAAD4/w0ACAA0ABUAAAD4/w4ACAA1ABUAABD4/w8ACAA0ABQAAAD4/xAACAA0ABUAAAD4/xEACAApAAIAAAD5//3/CAApAAIAAAD5//7/CAApAAMAAAD5////CAApAAMAAAD5/wAACAA0ABUAAAD5/wEACAA3ABUAABD5/wIACAA1ABQAABD5/wMACAA4ABgAAAD5/wQACAA1ABQAAAD5/wUACAA1ABUAAAD5/wYACAA0ABUAAAD5/wcACAA3ABUAABD5/wgACAA1ABQAABD5/wkACAA0ABQAAAD5/woACAA0ABUAAAD5/wsACAA0ABQAAAD5/wwACAA0ABUAAAD5/w0ACAA1ABUAAAD5/w4ACAA0ABUAABD5/w8ACAA1ABQAAAD5/xAACAA4ABgAAAD5/xEACAAqAAIAAAD6//3/CAAqAAIAAAD6//7/CAAqAAMAAAD6////CAAqAAMAAAD6/wAACAA1ABUAAAD6/wEACAA1ABQAABD6/wIACAA0ABQAABD6/wMACAA0ABUAAAD6/wQACAA0ABQAAAD6/wUACAA0ABUAAAD6/wYACAA1ABUAAAD6/wcACAA1ABQAABD6/wgACAA0ABQAABD6/wkACAA1ABQAAAD6/woACAA1ABUAAAD6/wsACAA1ABQAAAD6/wwACAA1ABUAAAD6/w0ACAA0ABUAAAD6/w4ACAA0ABQAABD6/w8ACAA0ABQAAAD6/xAACAA0ABUAAAD6/xEACAArAAIAAAD7//3/CAArAAIAAAD7//7/CAArAAMAAAD7////CAArAAMAAAD7/wAACAA0ABUAAAD7/wEACAA1ABUAABD7/wIACAA3ABQAABD7/wMACAA0ABQAAAD7/wQACAA1ABQAAAD7/wUACAA1ABUAAAD7/wYACAA0ABUAAAD7/wcACAA1ABUAABD7/wgACAA3ABQAABD7/wkACAA0ABQAAAD7/woACAA0ABUAAAD7/wsACAA3ABcAAAD7/wwACAA1ABcAAAD7/w0ACAA3ABcAAAD7/w4ACAA0ABgAAAD7/w8ACAA1ABQAAAD7/xAACAA0ABQAAAD7/xEACAArAAIAAAD8//3/CAApAAIAAAD8//7/CAApAAMAAAD8////CAApAAMAAAD8/wAACAAqAAIAAAD8/wEACAAqAAMAAAD8/wIACAArAAMAAAD8/wMACAAqAAIAAAD8/wQACAAqAAIAAAD8/wUACAAqAAIAAAD8/wYACAAqAAIAAAD8/wcACAAqAAIAAAD8/wgACAAqAAIAAAD8/wkACAAqAAIAAAD8/woACAAqAAIAAAD8/wsACAA4ABcAAAD8/wwACAA0ABoAAAD8/w0ACAA0ABwAAAD8/w4ACAAqAAIAAAD8/w8ACAAqAAIAAAD8/xAACAAqAAIAAAD8/xEACAAqAAIAAAD9//3/CAApAAMAAAD9//7/CAApAAMAAAD9////CAApAAMAAAD9/wAACAApAAIAAAD9/wEACAApAAMAAAD9/wIACAApAAMAAAD9/wMACAApAAIAAAD9/wQACAApAAMAAAD9/wUACAApAAIAAAD9/wYACAApAAMAAAD9/wcACAApAAIAAAD9/wgACAApAAMAAAD9/wkACAApAAIAAAD9/woACAApAAMAAAD9/wsACAApAAIAAAD9/wwACAApAAMAAAD9/w0ACAApAAIAAAD9/w4ACAApAAMAAAD9/w8ACAApAAIAAAD9/xAACAApAAMAAAD9/xEACAApAAIAAAD+//3/CAAqAAMAAAD+//7/CAAqAAMAAAD+////CAAqAAMAAAD+/wAACAAqAAIAAAD+/wEACAAqAAMAAAD+/wIACAAqAAMAAAD+/wMACAAqAAIAAAD///3/CAArAAMAAAD///7/CAArAAMAAAD/////CAArAAMAAAD//wAACAArAAIAAAD//wEACAArAAMAAAD//wIACAArAAMAAAD//wMACAArAAIAAAD1/xAACAA1ABUAAAD1/xEACAArAAIAAAD2/xAACAA0ABUAAAD2/xEACAApAAIAAAD3/xAACAA1ABUAAAD3/xEACAArAAIAAAD//wkACAArAAIAAAD//wgACAArAAMAAAD//wcACAArAAIAAAD//wYACAArAAMAAAD+/wcACAAqAAIAAAD+/wgACAAqAAMAAAD+/wYACAAqAAMAAAD+/wUACAAqAAIAAAD+/wQACAAqAAMAAAD//wUACAArAAIAAAD//wQACAArAAMAAAD+/xEACAAqAAIAAAD+/xAACAAqAAMAAAD+/w8ACAAqAAIAAAD+/w4ACAAqAAMAAAD//w4ACAArAAMAAAD//w8ACAArAAIAAAD//xAACAArAAMAAAD//xEACAArAAIAAAD//w0ACAArAAIAAAD//wwACAArAAMAAAD//wsACAArAAIAAAD//woACAArAAMAAAD+/w0ACAAqAAIAAAD+/wwACAAqAAMAAAD+/wsACAAqAAIAAAD+/woACAAqAAMAAAD+/wkACAAqAAIAAADu/xEACAAqAAIAAADt/xEACAAqAAIAAADs/xEACAAqAAIAAADr/xEACAAqAAIAAADq/xEACAAqAAIAAADp/xEACAAqAAIAAADo/xEACAAqAAIAAADn/xEACAAqAAIAAADm/xEACAAqAAIAAADl/xEACAAqAAIAAADk/xEACAAqAAIAAAA=")
+
+[node name="Walls" type="TileMapLayer" parent="Map"]
+tile_map_data = PackedByteArray("AADn/wAACAAPAAQAAADn/wEACAAPAAQAAADn/wIACAAPAAUAAADn/wMACAAPAAYAAADn/wQACAAPAAQAAADn/wUACAAPAAQAAADn/wYACAAPAAUAAADn/wcACAAPAAYAAADn/wgACAAPAAQAAADn/wkACAAPAAUAAADn/woACAAPAAYAAADn/wsACAAPAAQAAADn/wwACAAPAAUAAADn/w0ACAAPAAYAAADn/w4ACAAPAAYAAADo/wAACAAGAAgAAADo/wEACAARABIAAADo/wIACAARABMAAADo/wMACAAFAAoAAADo/wQACAAQAAQAAADo/wUACAAQAAgAAADo/wYACAAQAAkAAADo/wcACAAQAAoAAADo/wgACAAQAAcAAADo/wkACAASAAoAAADo/woACAAQAAYAAADo/wsACAAQAAcAAADo/wwACAAQAAgAAADo/w0ACAAQAAkAAADo/w4ACAAQAAoAAADp/wAACAALAA0AAADp/wEACAALAA4AAADp/wIACAAaABMAAADp/wMACAALAA8AAADp/wQACAALABAAAADq/wAACAAMAA0AAADq/wEACAAMAA4AAADq/wIACAAUABMAAADq/wMACAAMAA8AAADq/wQACAAMABAAAADr/wAACAANAA0AAADr/wEACAANAA4AAADr/wIACAAaABEAAADr/wMACAANAA8AAADr/wQACAANABAAAADs/wAACAAOAA0AAADs/wEACAAOAA4AAADs/wIACAAIAAkAAADs/wMACAAOAA8AAADs/wQACAAOABAAAADt/wAACAAHAAgAAADt/wEACAAVABIAAADt/wIACAAUABIAAADt/wMACAAHAAoAAADt/wQACAAMABAAAADu/wAACAAIAAgAAADu/wEACAAWABIAAADu/wIACAASABMAAADu/wMACAAZABMAAADu/wQACAANABAAAADv/wQACAAbAAsAAAD0/wAACAAbAAgAAAD0/wEACAAbAAkAAAD0/wIACAAbAAoAAAD0/wMACAAbAAkAAAD0/wQACAAbAAsAABD1/wAACAAHAAgAAAD1/wEACAAVABIAAAD1/wIACAAUABIAAAD1/wMACAAHAAoAAAD1/wQACAAMABAAAAD2/wAACAAIAAgAAAD2/wEACAAWABIAAAD2/wIACAASABMAAAD2/wMACAAZABMAAAD2/wQACAANABAAAAD3/wAACAALAA0AAAD3/wEACAALAA4AAAD3/wIACAATABMAAAD3/wMACAALAA8AAAD3/wQACAAOABAAAAD4/wAACAAMAA0AAAD4/wEACAAMAA4AAAD4/wIACAAUABMAAAD4/wMACAAMAA8AAAD4/wQACAAGAAsAAAD5/wAACAANAA0AAAD5/wEACAANAA4AAAD5/wIACAAUABIAAAD5/wMACAANAA8AAAD5/wQACAAHAAsAAAD6/wAACAAOAA0AAAD6/wEACAAOAA4AAAD6/wIACAAIAAkAAAD6/wMACAAOAA8AAAD6/wQACAAIAAsAAAD7/wAACAAFAAgAAAD7/wEACAAFABMAAAD7/wIACAAIAAoAAAD7/wMACAAIAAoAAAD7/wQACAADAAQAAAD7/wUACAADAAcAAAD7/wYACAADAAgAAAD7/wcACAADAAkAAAD7/wgACAABAAcAAAD7/wkACAABAAgAAAD7/woACAABAAgAAAD7/wsACAABAAkAAAD7/wwACAABAAcAAAD7/w0ACAABAAoAAAD7/w4ACAABAAYAAAD8/wAACAAEAAQAAAD8/wEACAAEAAUAAAD8/wIACAAEAAYAAAD8/wMACAAEAAYAAAD8/wQACAAEAAQAAAD8/wUACAAEAAUAAAD8/wYACAAEAAYAAAD8/wcACAAEAAQAAAD8/wgACAAEAAUAAAD8/wkACAAEAAYAAAD8/woACAAEAAUAAAD8/wsACAAEAAYAAAD8/wwACAAEAAUAAAD8/w0ACAAEAAYAAAD8/w4ACAAEAAYAAADn////CAAOAAEAAADo////CAAGAAcAAADp////CAAFAAcAAADq////CAAGAAcAAADr////CAAHAAcAAADs////CAAIAAcAAADt////CAAHAAcAAADu////CAAIAAcAAAD0////CAAbAAcAAAD1////CAAHAAcAAAD2////CAAIAAcAAAD3////CAAFAAcAAAD4////CAAGAAcAAAD5////CAAHAAcAAAD6////CAAIAAcAAAD7////CAAFAAcAAAD8////CAAFAAEAAADn/w8ACAAPAAYAAADo/w8ACAAQAAoAAAD7/w8ACAABAAcAAAD8/w8ACAAEAAQAAADn/xAACAAIAAEAAADo/xAACAALAAMAAADp/xAACAAFAAMAAADq/xAACAAGAAMAAADr/xAACAAFAAMAAADs/xAACAAGAAMAAADt/xAACAAMAAMAAADu/xAACAANAAMAAADv/xAACAARAAMAAAD0/xAACAACAAMAAAD1/xAACAAMAAMAAAD2/xAACAANAAMAAAD3/xAACAAOAAMAAAD4/xAACAALAAMAAAD5/xAACAAMAAMAAAD6/xAACAANAAMAAAD7/xAACAAOAAMAAAD8/xAACAALAAEAAADv/xEACAAPAAQAAAD0/xEACAAEAAQAAADv////CAAbAAcAAADv/wAACAAbAAgAABDv/wEACAAbAAkAAADv/wIACAAbAAkAAADv/wMACAAbAAoAAADw////CAAMAAcAAADw/wAACAAXAA0AAADw/wEACAAXAA4AAADw/wIACAAXAA8AAADw/wMACAAQAAQAAADw/wQACAASAAsAAADz////CAAMAAcAAADz/wAACAAaAA0AAADz/wEACAAaAA4AAADz/wIACAAaAA8AAADz/wMACAADAAQAAADz/wQACAABAAsAAADx/wAACAAYAA0AAADx/wEACAAYAA4AAADx/wIACAAYAA8AAADy/wAACAAZAA0AAADy/wEACAAZAA4AAADy/wIACAAZAA8AAADy/wMACAANAAsAAADx/wMACAAMAAsAAADx////CAAMAAcAAADy////CAAMAAcAAAA=")
 tile_set = ExtResource("3_c0ps2")
 
-[node name="SetDressing" type="TileMapLayer" parent="."]
+[node name="SetDressing" type="TileMapLayer" parent="Map"]
 tile_set = ExtResource("3_c0ps2")
 
 [node name="PlayerSpawn" parent="." instance=ExtResource("4_01pxr")]
-position = Vector2(-64, 208)
+position = Vector2(-224, 240)
 
 [node name="RegionTransition" parent="." instance=ExtResource("5_t5ujp")]
-position = Vector2(-16, 184)
+position = Vector2(-224, 272)
 region = "uid://8ps6qgyahq38"
 target_transition_area = "RegionTransition2"
-size = 1
 side = 3
+
+[node name="Lights" type="Node2D" parent="."]
+
+[node name="BrazierPot" parent="Lights" instance=ExtResource("7_x1i42")]
+position = Vector2(-360, 80)
+
+[node name="BrazierPot2" parent="Lights" instance=ExtResource("7_x1i42")]
+position = Vector2(-88, 80)
+
+[node name="BrazierPot3" parent="Lights" instance=ExtResource("7_x1i42")]
+position = Vector2(-88, 240)
+
+[node name="BrazierPot44" parent="Lights" instance=ExtResource("7_x1i42")]
+position = Vector2(-360, 240)
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+position = Vector2(172, -33)
+color = Color(0.494, 0.65, 0.5122, 1)
+energy = 0.8
+blend_mode = 2
+
+[node name="DarkWizardBoss" type="Node2D" parent="."]
+y_sort_enabled = true
+script = ExtResource("8_s3xdb")
+max_boss_health = 3
+
+[node name="PersistentDataHandler" parent="DarkWizardBoss" instance=ExtResource("8_a1p57")]
+
+[node name="BossNode" type="Node2D" parent="DarkWizardBoss"]
+position = Vector2(-225, 175)
+
+[node name="ShadowSprite" type="Sprite2D" parent="DarkWizardBoss/BossNode"]
+texture = SubResource("GradientTexture2D_nl4ga")
+
+[node name="CloakSprite" type="Sprite2D" parent="DarkWizardBoss/BossNode"]
+position = Vector2(0, -36)
+texture = ExtResource("8_yp6ys")
+hframes = 9
+
+[node name="CloakAnimation" type="AnimationPlayer" parent="DarkWizardBoss/BossNode/CloakSprite"]
+libraries = {
+&"": SubResource("AnimationLibrary_opra5")
+}
+autoplay = "down"
+
+[node name="Hand01" type="Sprite2D" parent="DarkWizardBoss/BossNode/CloakSprite"]
+position = Vector2(-20, 5)
+texture = ExtResource("9_x2387")
+flip_h = true
+hframes = 16
+
+[node name="Hand02" type="Sprite2D" parent="DarkWizardBoss/BossNode/CloakSprite"]
+position = Vector2(20, 5)
+texture = ExtResource("9_x2387")
+hframes = 16
+
+[node name="Hand02_UP" type="Sprite2D" parent="DarkWizardBoss/BossNode/CloakSprite"]
+visible = false
+show_behind_parent = true
+position = Vector2(-20, 5)
+texture = ExtResource("9_x2387")
+flip_h = true
+hframes = 16
+
+[node name="Hand01_UP" type="Sprite2D" parent="DarkWizardBoss/BossNode/CloakSprite"]
+visible = false
+show_behind_parent = true
+position = Vector2(20, 5)
+texture = ExtResource("9_x2387")
+hframes = 16
+
+[node name="Hand01_RIGHT" type="Sprite2D" parent="DarkWizardBoss/BossNode/CloakSprite"]
+visible = false
+show_behind_parent = true
+position = Vector2(-20, 5)
+texture = ExtResource("9_x2387")
+offset = Vector2(15, 2)
+flip_h = true
+hframes = 16
+
+[node name="Hand02_RIGHT" type="Sprite2D" parent="DarkWizardBoss/BossNode/CloakSprite"]
+visible = false
+position = Vector2(20, 5)
+texture = ExtResource("9_x2387")
+offset = Vector2(-20, 5)
+flip_h = true
+hframes = 16
+
+[node name="Hand01_LEFT" type="Sprite2D" parent="DarkWizardBoss/BossNode/CloakSprite"]
+visible = false
+position = Vector2(-20, 5)
+texture = ExtResource("9_x2387")
+offset = Vector2(20, 5)
+hframes = 16
+
+[node name="Hand02_LEFT" type="Sprite2D" parent="DarkWizardBoss/BossNode/CloakSprite"]
+visible = false
+show_behind_parent = true
+position = Vector2(20, 5)
+texture = ExtResource("9_x2387")
+offset = Vector2(-10, -5)
+hframes = 16
+
+[node name="PointLight2D" type="PointLight2D" parent="DarkWizardBoss/BossNode"]
+texture = SubResource("GradientTexture2D_fxxt4")
+
+[node name="HurtBox" parent="DarkWizardBoss/BossNode" instance=ExtResource("10_a1p57")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DarkWizardBoss/BossNode/HurtBox"]
+position = Vector2(0, -23)
+shape = SubResource("CircleShape2D_vc8mr")
+debug_color = Color(0.9338184, 0.17923622, 0.47427702, 0.224)
+
+[node name="HitBox" parent="DarkWizardBoss/BossNode" instance=ExtResource("11_s3xdb")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DarkWizardBoss/BossNode/HitBox"]
+position = Vector2(0, -23)
+shape = SubResource("CircleShape2D_coed5")
+debug_color = Color(0.8987799, 0.6390162, 0.30153242, 0.19100001)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="DarkWizardBoss/BossNode"]
+position = Vector2(225, -175)
+max_polyphony = 3
+bus = &"SFX"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DarkWizardBoss/BossNode"]
+libraries = {
+&"": SubResource("AnimationLibrary_a1p57")
+}
+autoplay = "idle"
+
+[node name="DamagedAnimation" type="AnimationPlayer" parent="DarkWizardBoss/BossNode"]
+root_node = NodePath("../AnimationPlayer")
+libraries = {
+&"": SubResource("AnimationLibrary_coed5")
+}
+
+[node name="BeamAttacks" type="Node2D" parent="DarkWizardBoss"]
+position = Vector2(0, -16)
+
+[node name="EB_H1" parent="DarkWizardBoss/BeamAttacks" instance=ExtResource("8_r02na")]
+position = Vector2(-224, 112)
+
+[node name="EB_H2" parent="DarkWizardBoss/BeamAttacks" instance=ExtResource("8_r02na")]
+position = Vector2(-224, 176)
+
+[node name="EB_H3" parent="DarkWizardBoss/BeamAttacks" instance=ExtResource("8_r02na")]
+position = Vector2(-224, 240)
+
+[node name="EB_V1" parent="DarkWizardBoss/BeamAttacks" instance=ExtResource("8_r02na")]
+position = Vector2(-296, 176)
+rotation = 1.5707964
+
+[node name="EB_V2" parent="DarkWizardBoss/BeamAttacks" instance=ExtResource("8_r02na")]
+position = Vector2(-224, 176)
+rotation = 1.5707964
+
+[node name="EB_V3" parent="DarkWizardBoss/BeamAttacks" instance=ExtResource("8_r02na")]
+position = Vector2(-152, 176)
+rotation = 1.5707964
+
+[node name="PositionTargets" type="Node2D" parent="DarkWizardBoss"]
+position = Vector2(7, 6)
+
+[node name="Sprite2D" type="Sprite2D" parent="DarkWizardBoss/PositionTargets"]
+position = Vector2(-231, 74)
+texture = SubResource("GradientTexture2D_pavw6")
+
+[node name="Sprite2D2" type="Sprite2D" parent="DarkWizardBoss/PositionTargets"]
+position = Vector2(-111, 154)
+texture = SubResource("GradientTexture2D_pavw6")
+
+[node name="Sprite2D3" type="Sprite2D" parent="DarkWizardBoss/PositionTargets"]
+position = Vector2(-231, 242)
+texture = SubResource("GradientTexture2D_pavw6")
+
+[node name="Sprite2D4" type="Sprite2D" parent="DarkWizardBoss/PositionTargets"]
+position = Vector2(-351, 154)
+texture = SubResource("GradientTexture2D_pavw6")

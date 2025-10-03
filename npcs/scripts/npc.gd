@@ -9,21 +9,22 @@ signal do_behaviour_enabled
 
 # Outfit refs
 @onready var underneath_sprite = $"Skeleton/00undr"
-@onready var body_sprite = $"Skeleton/01body"
-@onready var sock_sprite = $"Skeleton/02sock"
-@onready var foot_sprite = $"Skeleton/03fot1"
-@onready var legs_sprite = $"Skeleton/04lwr1"
-@onready var shirt_sprite = $"Skeleton/05shrt"
-@onready var overalls_sprite = $"Skeleton/06lwr2"
-@onready var boots_sprite = $"Skeleton/07fot2"
-@onready var skirt_sprite = $"Skeleton/08lwr3"
-@onready var hands_sprite = $"Skeleton/09hand"
-@onready var outerwear_sprite = $"Skeleton/10outr"
-@onready var neck_sprite = $"Skeleton/11neck"
-@onready var face_sprite = $"Skeleton/12face"
-@onready var hair_sprite = $"Skeleton/13hair"
-@onready var head_sprite = $"Skeleton/14head"
-@onready var over_sprite = $"Skeleton/15over"
+@onready var body_sprite: Sprite2D = $"Skeleton/01body"
+@onready var sock_sprite: Sprite2D = $"Skeleton/02sock"
+@onready var foot_sprite: Sprite2D = $"Skeleton/03fot1"
+@onready var legs_sprite: Sprite2D = $"Skeleton/04lwr1"
+@onready var shirt_sprite: Sprite2D = $"Skeleton/05shrt"
+@onready var overalls_sprite: Sprite2D = $"Skeleton/06lwr2"
+@onready var boots_sprite: Sprite2D = $"Skeleton/07fot2"
+@onready var skirt_sprite: Sprite2D = $"Skeleton/08lwr3"
+@onready var hands_sprite: Sprite2D = $"Skeleton/09hand"
+@onready var outerwear_sprite: Sprite2D = $"Skeleton/10outr"
+@onready var neck_sprite: Sprite2D = $"Skeleton/11neck"
+@onready var face_sprite: Sprite2D = $"Skeleton/12face"
+@onready var hair_sprite: Sprite2D = $"Skeleton/13hair"
+@onready var head_sprite: Sprite2D = $"Skeleton/14head"
+@onready var ears_sprite: Sprite2D = $"Skeleton/14ears"
+@onready var over_sprite: Sprite2D = $"Skeleton/15over"
 @onready var name_label = $"Skeleton/NPC_Name"
 
 
@@ -75,6 +76,8 @@ func _on_interaction_finished() -> void:
 	do_behaviour_enabled.emit()
 	pass
 
+# Updates
+
 func update_animation() -> void:
 	animation.play(state + "_" + direction_name)
 
@@ -103,6 +106,7 @@ func _set_npc_resource (_npc : NPCResource) -> void:
 func setup_npc() -> void:
 	if npc_resource:
 		if body_sprite:
+			body_sprite.texture = npc_resource.npc_body
 			body_sprite.material = get_palette_shader(palettes["skincolor"]["base"], palettes["skincolor"]["palettes"][npc_resource.npc_skin_colour])
 		if underneath_sprite:
 			underneath_sprite.texture = npc_resource.npc_underneath
@@ -146,6 +150,9 @@ func setup_npc() -> void:
 		if head_sprite:
 			head_sprite.texture = npc_resource.npc_head
 			head_sprite.material = get_palette_shader(palettes["4color"]["base"], palettes["4color"]["palettes"][npc_resource.npc_head_colour])
+		if ears_sprite:
+			ears_sprite.texture = npc_resource.npc_ears
+			ears_sprite.material = get_palette_shader(palettes["skincolor"]["base"], palettes["skincolor"]["palettes"][npc_resource.npc_skin_colour])
 		if over_sprite:
 			over_sprite.texture = npc_resource.npc_over
 			over_sprite.material = get_palette_shader(palettes["3color"]["base"], palettes["3color"]["palettes"][npc_resource.npc_over_colour])

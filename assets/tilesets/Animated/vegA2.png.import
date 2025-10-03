@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cor5r064bmxc"
-path="res://.godot/imported/vegA2.png-3040b69c6aae486e90ef7716745637de.ctex"
+path="res://.godot/imported/vegA2.png-16414e8676406516da59e0e04302b636.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tilesets/Animated/vegA2.png"
-dest_files=["res://.godot/imported/vegA2.png-3040b69c6aae486e90ef7716745637de.ctex"]
+source_file="res://assets/tilesets/animated/vegA2.png"
+dest_files=["res://.godot/imported/vegA2.png-16414e8676406516da59e0e04302b636.ctex"]
 
 [params]
 

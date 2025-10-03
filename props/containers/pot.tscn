@@ -1,0 +1,182 @@
+[gd_scene load_steps=11 format=3 uid="uid://sm8ad4bs3ig"]
+
+[ext_resource type="Texture2D" uid="uid://dyth1jjmxgo4f" path="res://assets/items/containers/pot_grey.png" id="2_eewn5"]
+[ext_resource type="Texture2D" uid="uid://bfcup5rb8plqa" path="res://assets/items/containers/pot_shadows.png" id="3_lxy2i"]
+[ext_resource type="AudioStream" uid="uid://cld7c3lw3s6k1" path="res://assets/audio/effects/pot_destroy.wav" id="4_eewn5"]
+[ext_resource type="PackedScene" uid="uid://c2478q8kc0ssd" path="res://interactables/throwables/throwable.tscn" id="4_lxy2i"]
+
+[sub_resource type="Animation" id="Animation_lxy2i"]
+resource_name = "default"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpriteShadow:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+
+[sub_resource type="Animation" id="Animation_dy3ei"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpriteShadow:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpriteShadow:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_f7m2j"]
+resource_name = "destroy"
+length = 0.35
+step = 0.075
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.075, 0.15, 0.225, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11, 12]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpriteShadow:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpriteShadow:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.225),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer2D")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_eewn5")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/3/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gbnks"]
+_data = {
+&"RESET": SubResource("Animation_dy3ei"),
+&"default": SubResource("Animation_lxy2i"),
+&"destroy": SubResource("Animation_f7m2j")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_neta1"]
+size = Vector2(14, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dy3ei"]
+size = Vector2(16, 7)
+
+[node name="Pot" type="Node2D"]
+
+[node name="SpriteShadow" type="Sprite2D" parent="."]
+position = Vector2(0, -12)
+texture = ExtResource("3_lxy2i")
+hframes = 4
+vframes = 4
+frame = 8
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -12)
+texture = ExtResource("2_eewn5")
+hframes = 4
+vframes = 4
+frame = 8
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_gbnks")
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_neta1")
+debug_color = Color(0, 0.6, 0.69803923, 0.20392157)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+max_polyphony = 3
+bus = &"SFX"
+
+[node name="Throwable" parent="." instance=ExtResource("4_lxy2i")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Throwable"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_dy3ei")
+debug_color = Color(0.3019608, 0.6039216, 0.48235294, 0.050980393)

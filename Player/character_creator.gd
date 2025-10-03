@@ -12,7 +12,7 @@ func _on_edit_name_text_changed() -> void:
 # Change scene
 func _on_confirm_button_pressed() -> void:
 	Global.player_name = player_name
-	get_tree().change_scene_to_file("res://Regions/main.tscn")
+	get_tree().change_scene_to_file("res://regions/main.tscn")
 
 
 func _on_collection_back_button_pressed() -> void:

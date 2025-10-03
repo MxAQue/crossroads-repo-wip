@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://olboco4eula3"
-path="res://.godot/imported/animated_grass_water.png-f51d2e529fc13e13d00bcbbefc680d5d.ctex"
+path="res://.godot/imported/animated_grass_water.png-7d92f18143e238714de2aa2eaa39e258.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tilesets/Animated/animated_grass_water.png"
-dest_files=["res://.godot/imported/animated_grass_water.png-f51d2e529fc13e13d00bcbbefc680d5d.ctex"]
+source_file="res://assets/tilesets/animated/animated_grass_water.png"
+dest_files=["res://.godot/imported/animated_grass_water.png-7d92f18143e238714de2aa2eaa39e258.ctex"]
 
 [params]
 

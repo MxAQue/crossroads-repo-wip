@@ -1,11 +1,11 @@
 [gd_scene load_steps=12 format=3 uid="uid://dra0by7trsjrl"]
 
-[ext_resource type="Script" uid="uid://cxdy207l082ic" path="res://Player/Scripts/Abilities/boomerang.gd" id="1_q1tu1"]
+[ext_resource type="Script" uid="uid://cxdy207l082ic" path="res://player/scripts/abilities/boomerang.gd" id="1_q1tu1"]
 [ext_resource type="Texture2D" uid="uid://bn047gokpp1qq" path="res://assets/items/boomerang.png" id="2_j6qed"]
 [ext_resource type="AudioStream" uid="uid://brrqp6nw7gx7f" path="res://assets/audio/catch.wav" id="2_sj23e"]
-[ext_resource type="PackedScene" uid="uid://dslwgjxc8xvap" path="res://General/HurtBox/hurt_box.tscn" id="3_j6qed"]
+[ext_resource type="PackedScene" uid="uid://dslwgjxc8xvap" path="res://general/hurt_box/hurt_box.tscn" id="3_j6qed"]
 [ext_resource type="AudioStream" uid="uid://boaxmxynj4ew6" path="res://assets/audio/boomerang.wav" id="4_5u3cr"]
-[ext_resource type="PackedScene" uid="uid://c13exklhl2wn6" path="res://General/ItemMagnet/item_magnet.tscn" id="6_liud0"]
+[ext_resource type="PackedScene" uid="uid://c13exklhl2wn6" path="res://general/item_magnet/item_magnet.tscn" id="6_liud0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5u3cr"]
 radius = 13.0

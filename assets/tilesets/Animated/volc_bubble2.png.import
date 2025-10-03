@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b6y1jpkggkha1"
-path="res://.godot/imported/volc_bubble2.png-3213436b2bd28ecb99c061d7bec2e32a.ctex"
+path="res://.godot/imported/volc_bubble2.png-bd5cb87dc997f5721673ec2562c68d45.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tilesets/Animated/volc_bubble2.png"
-dest_files=["res://.godot/imported/volc_bubble2.png-3213436b2bd28ecb99c061d7bec2e32a.ctex"]
+source_file="res://assets/tilesets/animated/volc_bubble2.png"
+dest_files=["res://.godot/imported/volc_bubble2.png-bd5cb87dc997f5721673ec2562c68d45.ctex"]
 
 [params]
 

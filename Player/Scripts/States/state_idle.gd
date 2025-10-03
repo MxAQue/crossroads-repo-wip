@@ -31,5 +31,5 @@ func handle_input( _event: InputEvent ) -> State:
 	if _event.is_action_pressed("ui_attack"):
 		return attack
 	if _event.is_action_pressed("ui_interact"):
-		GlobalPlayerManager.interact_pressed.emit()
+		GlobalPlayerManager.interact()
 	return null

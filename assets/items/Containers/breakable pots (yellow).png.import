@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cccwwugnocyf6"
-path="res://.godot/imported/breakable pots (yellow).png-2282466a7884542ccb83c38c7b041a86.ctex"
+path="res://.godot/imported/breakable pots (yellow).png-1d0c1ad32dbfcf8acf61cc9ed2530bfa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/items/Containers/breakable pots (yellow).png"
-dest_files=["res://.godot/imported/breakable pots (yellow).png-2282466a7884542ccb83c38c7b041a86.ctex"]
+source_file="res://assets/items/containers/breakable pots (yellow).png"
+dest_files=["res://.godot/imported/breakable pots (yellow).png-1d0c1ad32dbfcf8acf61cc9ed2530bfa.ctex"]
 
 [params]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cbl86bufn1340"]
 
-[ext_resource type="Script" uid="uid://6lomncfh5m02" path="res://Regions/Scripts/region_transition.gd" id="1_crfs3"]
+[ext_resource type="Script" uid="uid://6lomncfh5m02" path="res://regions/scripts/region_transition.gd" id="1_crfs3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xs6k6"]
 resource_local_to_scene = true

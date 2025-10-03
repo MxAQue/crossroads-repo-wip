@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b84kpf5puqqm4"
-path="res://.godot/imported/lantern01.png-22a1f26914f6894068383e08ac12dccd.ctex"
+path="res://.godot/imported/lantern01.png-49da8cd4d81a44e80cf67add35d412f5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tilesets/Animated/lantern01.png"
-dest_files=["res://.godot/imported/lantern01.png-22a1f26914f6894068383e08ac12dccd.ctex"]
+source_file="res://assets/tilesets/animated/lantern01.png"
+dest_files=["res://.godot/imported/lantern01.png-49da8cd4d81a44e80cf67add35d412f5.ctex"]
 
 [params]
 

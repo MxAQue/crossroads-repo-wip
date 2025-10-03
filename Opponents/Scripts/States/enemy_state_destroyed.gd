@@ -2,7 +2,7 @@
 
 class_name EnemyStateDestroyed extends EnemyState
 
-const PICKUP = preload("res://Items/item_pickups/item_pickup.tscn")
+const PICKUP = preload("res://items/item_pickups/item_pickup.tscn")
 
 
 @export var anim_name : String = "death"

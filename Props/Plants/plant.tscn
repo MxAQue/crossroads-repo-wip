@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://ch12ybaxrmnt7"]
 
-[ext_resource type="Script" uid="uid://dahnxpyhcvvr5" path="res://Props/Plants/plant.gd" id="1_akllp"]
+[ext_resource type="Script" uid="uid://dahnxpyhcvvr5" path="res://props/plants/plant.gd" id="1_akllp"]
 [ext_resource type="Texture2D" uid="uid://dlhjqv6hdwx0x" path="res://assets/tilesets/volcanic_decorative_props.png" id="2_w3sfv"]
-[ext_resource type="PackedScene" uid="uid://b28rnsd6dtyju" path="res://General/HitBox/hit_box.tscn" id="3_oun8e"]
+[ext_resource type="PackedScene" uid="uid://b28rnsd6dtyju" path="res://general/hit_box/hit_box.tscn" id="3_oun8e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_akllp"]
 size = Vector2(25, 25.5)

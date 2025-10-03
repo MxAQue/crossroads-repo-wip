@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://c0qqpnwfefxy5"]
 
-[ext_resource type="Script" uid="uid://cybhhmjdyhl1c" path="res://Interactables/Puzzles/barred_door.gd" id="1_nrxx0"]
+[ext_resource type="Script" uid="uid://cybhhmjdyhl1c" path="res://interactables/puzzles/barred_door.gd" id="1_nrxx0"]
 [ext_resource type="Texture2D" uid="uid://cw35xfplr7cn1" path="res://assets/tilesets/catacombs_dungeon_doors.png" id="1_rsldu"]
 [ext_resource type="AudioStream" uid="uid://0l3ir62lmdh6" path="res://assets/audio/bars_open.wav" id="2_nrxx0"]
 

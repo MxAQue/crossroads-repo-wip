@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bmcetos6cil2q"
-path="res://.godot/imported/Marsh_effect3A.png-f3c281ff0849133ea9e7cda627952730.ctex"
+path="res://.godot/imported/Marsh_effect3A.png-a949b4966f2bc9581d68b43f4fa3dc31.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tilesets/Animated/Marsh_effect3A.png"
-dest_files=["res://.godot/imported/Marsh_effect3A.png-f3c281ff0849133ea9e7cda627952730.ctex"]
+source_file="res://assets/tilesets/animated/Marsh_effect3A.png"
+dest_files=["res://.godot/imported/Marsh_effect3A.png-a949b4966f2bc9581d68b43f4fa3dc31.ctex"]
 
 [params]
 

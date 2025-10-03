@@ -1,12 +1,12 @@
 [gd_scene load_steps=8 format=4 uid="uid://8ps6qgyahq38"]
 
-[ext_resource type="Script" uid="uid://bnfpktjefhoc6" path="res://Regions/Scripts/region.gd" id="1_u6dy5"]
-[ext_resource type="PackedScene" uid="uid://carisusg1ix80" path="res://TileMaps/base_layer.tscn" id="2_njoo3"]
+[ext_resource type="Script" uid="uid://bnfpktjefhoc6" path="res://regions/scripts/region.gd" id="1_u6dy5"]
+[ext_resource type="PackedScene" uid="uid://carisusg1ix80" path="res://tilemaps/base_layer.tscn" id="2_njoo3"]
 [ext_resource type="AudioStream" uid="uid://jb27et2b7hfr" path="res://assets/audio/368092__junglebean__spooky-arcade-loop.mp3" id="2_onrf1"]
-[ext_resource type="TileSet" uid="uid://cb52uc5udwfcv" path="res://TileMaps/Scripts/GameTileSets.tres" id="3_xmw78"]
-[ext_resource type="PackedScene" uid="uid://b5fskyuf2l05g" path="res://Regions/player_spawn.tscn" id="4_18ac4"]
-[ext_resource type="PackedScene" uid="uid://cme2dklwc57h7" path="res://Interactables/Puzzles/locked_door.tscn" id="5_pdfq2"]
-[ext_resource type="PackedScene" uid="uid://cbl86bufn1340" path="res://Regions/region_transition.tscn" id="6_s47a4"]
+[ext_resource type="TileSet" uid="uid://cb52uc5udwfcv" path="res://tilemaps/scripts/GameTileSets.tres" id="3_xmw78"]
+[ext_resource type="PackedScene" uid="uid://b5fskyuf2l05g" path="res://regions/player_spawn.tscn" id="4_18ac4"]
+[ext_resource type="PackedScene" uid="uid://cme2dklwc57h7" path="res://interactables/puzzles/locked_door.tscn" id="5_pdfq2"]
+[ext_resource type="PackedScene" uid="uid://cbl86bufn1340" path="res://regions/region_transition.tscn" id="6_s47a4"]
 
 [node name="d01_r02" type="Node2D"]
 script = ExtResource("1_u6dy5")

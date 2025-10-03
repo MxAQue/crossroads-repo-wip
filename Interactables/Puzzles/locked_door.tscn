@@ -1,9 +1,9 @@
 [gd_scene load_steps=15 format=3 uid="uid://cme2dklwc57h7"]
 
-[ext_resource type="Script" uid="uid://cuy0od6iovnvu" path="res://Interactables/Puzzles/locked_door.gd" id="1_kprqc"]
-[ext_resource type="Resource" uid="uid://8neroda7xtr2" path="res://Items/key_dungeon.tres" id="2_ihvhw"]
+[ext_resource type="Script" uid="uid://cuy0od6iovnvu" path="res://interactables/puzzles/locked_door.gd" id="1_kprqc"]
+[ext_resource type="Resource" uid="uid://8neroda7xtr2" path="res://items/key_dungeon.tres" id="2_ihvhw"]
 [ext_resource type="Texture2D" uid="uid://bggeqcldur3pi" path="res://assets/tilesets/catacombs_wooden_doors.png" id="2_pfltp"]
-[ext_resource type="PackedScene" uid="uid://cthaximv8t5hq" path="res://General/PersistentDataHandler/persistent_data_handler.tscn" id="3_pfltp"]
+[ext_resource type="PackedScene" uid="uid://cthaximv8t5hq" path="res://general/persistent_data_handler/persistent_data_handler.tscn" id="3_pfltp"]
 [ext_resource type="AudioStream" uid="uid://cghakevf2pigu" path="res://assets/audio/locked_door.wav" id="3_vjae5"]
 [ext_resource type="AudioStream" uid="uid://bkt7hp0scewb4" path="res://assets/audio/unlock_door.wav" id="4_tq4s7"]
 
