@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=4 uid="uid://dr0rj2k88vnfd"]
 
 [ext_resource type="Script" uid="uid://bnfpktjefhoc6" path="res://regions/scripts/region.gd" id="1_nwi4o"]
-[ext_resource type="TileSet" uid="uid://cb52uc5udwfcv" path="res://tilemaps/scripts/GameTileSets.tres" id="2_7lro6"]
+[ext_resource type="TileSet" uid="uid://cb52uc5udwfcv" path="res://assets/tilesets/GameTileSets.tres" id="2_7lro6"]
 [ext_resource type="AudioStream" uid="uid://jb27et2b7hfr" path="res://assets/audio/368092__junglebean__spooky-arcade-loop.mp3" id="2_gyxw2"]
-[ext_resource type="PackedScene" uid="uid://carisusg1ix80" path="res://tilemaps/base_layer.tscn" id="3_8r0kx"]
+[ext_resource type="PackedScene" uid="uid://carisusg1ix80" path="res://regions/base_layer.tscn" id="3_8r0kx"]
 [ext_resource type="PackedScene" uid="uid://b5fskyuf2l05g" path="res://regions/player_spawn.tscn" id="4_qcoyj"]
 [ext_resource type="PackedScene" uid="uid://cbl86bufn1340" path="res://regions/region_transition.tscn" id="5_7lro6"]
 [ext_resource type="PackedScene" uid="uid://c4mvq6sy3ach" path="res://interactables/containers/treasure_chest.tscn" id="6_101wq"]

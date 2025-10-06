@@ -12,6 +12,13 @@ var hearts : Array[HeartGUI] = []
 @onready var title_button: Button = $Control/GameOver/VBoxContainer/TitleButton
 @onready var animation_player: AnimationPlayer = $Control/GameOver/AnimationPlayer
 @onready var audio: AudioStreamPlayer = $AudioStreamPlayer
+@onready var notifications: NotificationUI = $Control/Notifications
+
+
+#BossBar
+@onready var boss_ui: Control = $Control/BossUI
+@onready var boss_progress_bar: TextureProgressBar = $Control/BossUI/TextureProgressBar
+@onready var boss_label: Label = $Control/BossUI/Label
 
 
 func _ready():
@@ -25,6 +32,8 @@ func _ready():
 	title_button.focus_entered.connect(play_audio.bind(button_focus_audio))
 	title_button.pressed.connect(title_screen)
 	GlobalRegionManager.region_load_started.connect(hide_game_over_screen)
+	
+	hide_boss_health()
 
 func update_health(_health : int, _max_health:int) -> void:
 	update_max_health(_max_health)
@@ -84,3 +93,19 @@ func fade_out() -> bool:
 func play_audio(_a : AudioStream) -> void:
 	audio.stream = _a
 	audio.play()
+
+func show_boss_health(boss_name : String) -> void:
+	boss_ui.visible = true
+	boss_label.text = boss_name
+	update_boss_health(1,1)
+	
+
+func hide_boss_health() -> void:
+	boss_ui.visible = false
+
+func update_boss_health(boss_health : int, max_boss_health : int) -> void:
+	boss_progress_bar.value = clampf( float(boss_health) / float(max_boss_health) * 100, 0, 100)
+
+func queue_notification(_title : String, _message : String) -> void:
+	notifications.add_notification_to_queue(_title, _message)
+	pass

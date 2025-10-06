@@ -1,13 +1,15 @@
-## dialogue_branche.gd
+## dialogue_branch.gd
 @tool
 @icon("res://assets/icons/dialogue/answer_bubble.svg")
 class_name DialogueBranch extends DialogueItem
+
+signal selected
 
 @export var text: String = "ok..." : set = _set_text
 
 var dialogue_items : Array[DialogueItem]
 
-## ------------- FUNCTIONS ---------
+## ---------------------- FUNCTIONS -----------------------
 
 func _ready() -> void:
 	super()
@@ -18,6 +20,7 @@ func _ready() -> void:
 		if c is DialogueItem:
 			dialogue_items.append(c)
 
+
 func _set_editor_display() -> void:
 	var _p = get_parent()
 	if _p is DialogueChoice:
@@ -25,6 +28,7 @@ func _set_editor_display() -> void:
 		if _p.dialogue_branches.size() < 2:
 			return
 		example_dialogue.set_dialogue_choice( _p as DialogueChoice )
+
 
 func set_related_text() -> void:
 	var _p = get_parent()
@@ -34,6 +38,7 @@ func set_related_text() -> void:
 	if _t is DialogueText:
 		example_dialogue.set_dialogue_text( _t )
 		example_dialogue.content.visible_characters = -1
+
 
 func _set_text( value : String ) -> void:
 	text = value

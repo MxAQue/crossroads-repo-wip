@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=4 uid="uid://dsn5nikavxt07"]
 
 [ext_resource type="Script" uid="uid://bnfpktjefhoc6" path="res://regions/scripts/region.gd" id="1_1ljqc"]
-[ext_resource type="TileSet" uid="uid://cb52uc5udwfcv" path="res://tilemaps/scripts/GameTileSets.tres" id="2_yb64b"]
-[ext_resource type="PackedScene" uid="uid://carisusg1ix80" path="res://tilemaps/base_layer.tscn" id="3_ibb4w"]
+[ext_resource type="TileSet" uid="uid://cb52uc5udwfcv" path="res://assets/tilesets/GameTileSets.tres" id="2_yb64b"]
+[ext_resource type="PackedScene" uid="uid://carisusg1ix80" path="res://regions/base_layer.tscn" id="3_ibb4w"]
 [ext_resource type="PackedScene" uid="uid://b5fskyuf2l05g" path="res://regions/player_spawn.tscn" id="4_w6m7t"]
 [ext_resource type="PackedScene" uid="uid://cbl86bufn1340" path="res://regions/region_transition.tscn" id="5_yb64b"]
 [ext_resource type="PackedScene" uid="uid://deh6mswqic1y6" path="res://opponents/enemy_slime_large.tscn" id="6_7bv7g"]

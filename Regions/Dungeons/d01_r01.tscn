@@ -1,14 +1,17 @@
-[gd_scene load_steps=10 format=4 uid="uid://bphf2aaan1ps1"]
+[gd_scene load_steps=13 format=4 uid="uid://bphf2aaan1ps1"]
 
 [ext_resource type="Script" uid="uid://bnfpktjefhoc6" path="res://regions/scripts/region.gd" id="1_g0vlr"]
-[ext_resource type="PackedScene" uid="uid://carisusg1ix80" path="res://tilemaps/base_layer.tscn" id="2_dpf16"]
+[ext_resource type="PackedScene" uid="uid://carisusg1ix80" path="res://regions/base_layer.tscn" id="2_dpf16"]
 [ext_resource type="AudioStream" uid="uid://jb27et2b7hfr" path="res://assets/audio/368092__junglebean__spooky-arcade-loop.mp3" id="2_e2xw1"]
-[ext_resource type="TileSet" uid="uid://cb52uc5udwfcv" path="res://tilemaps/scripts/GameTileSets.tres" id="3_e2xw1"]
+[ext_resource type="TileSet" uid="uid://cb52uc5udwfcv" path="res://assets/tilesets/GameTileSets.tres" id="3_e2xw1"]
 [ext_resource type="PackedScene" uid="uid://b5fskyuf2l05g" path="res://regions/player_spawn.tscn" id="4_w2hrf"]
 [ext_resource type="PackedScene" uid="uid://cbl86bufn1340" path="res://regions/region_transition.tscn" id="5_c7bgs"]
 [ext_resource type="PackedScene" uid="uid://c47jatbk5yq38" path="res://interactables/puzzles/pressure_plate.tscn" id="6_hchyc"]
+[ext_resource type="PackedScene" uid="uid://dhlkasq7rsrlw" path="res://quests/resources/quest-advance-trigger.tscn" id="7_4itcw"]
 [ext_resource type="PackedScene" uid="uid://c0qqpnwfefxy5" path="res://interactables/puzzles/barred_door.tscn" id="7_y044w"]
 [ext_resource type="PackedScene" uid="uid://bgmtmn2xu6bdw" path="res://interactables/puzzles/pushable_crate.tscn" id="8_2m4w4"]
+[ext_resource type="Resource" uid="uid://cxaouhyvclmu0" path="res://quests/000_recover_lost_flute.tres" id="8_v18gf"]
+[ext_resource type="PackedScene" uid="uid://dsgymiuk4l32y" path="res://quests/resources/quest-activated-switch.tscn" id="9_v18gf"]
 
 [node name="d01_r01" type="Node2D"]
 script = ExtResource("1_g0vlr")
@@ -35,6 +38,25 @@ target_transition_area = "RegionTransition3"
 size = 1
 side = 3
 
+[node name="QuestActivatedSwitch" parent="RegionTransition" instance=ExtResource("9_v18gf")]
+check_type = 1
+remove_when_activated = true
+free_on_remove = true
+react_to_global_signal = true
+linked_quest = ExtResource("8_v18gf")
+quest_step = 1
+settings_summary = "UPDATE QUEST:
+Quest: Recover Oren's Lost Flute
+Checking if player has completed step: find the cave enterance"
+
+[node name="QuestAdvanceTrigger" parent="RegionTransition/QuestActivatedSwitch" instance=ExtResource("7_4itcw")]
+linked_quest = ExtResource("8_v18gf")
+quest_step = 1
+settings_summary = "UPDATE QUEST:
+Quest: Recover Oren's Lost Flute
+Step: 1 - find the cave enterance
+Complete: false"
+
 [node name="RegionTransition2" parent="." instance=ExtResource("5_c7bgs")]
 position = Vector2(-368, 80)
 region = "uid://8ps6qgyahq38"
@@ -47,7 +69,10 @@ position = Vector2(-272, 168)
 position = Vector2(-400, 136)
 
 [node name="PushableCrate" parent="." instance=ExtResource("8_2m4w4")]
-position = Vector2(-208, 208)
+position = Vector2(-199, 221)
+persistent = true
+persistent_location = Vector2(-270, 170)
 
+[connection signal="entered_from_here" from="RegionTransition" to="RegionTransition/QuestActivatedSwitch/QuestAdvanceTrigger" method="advance_quest"]
 [connection signal="activated" from="PressurePlate" to="BarredDoor" method="open_door"]
 [connection signal="deactivated" from="PressurePlate" to="BarredDoor" method="close_door"]

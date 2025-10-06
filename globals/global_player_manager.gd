@@ -13,6 +13,8 @@ var player_node: Node = null
 var player_spawned : bool = false
 var interact_handled : bool = true
 
+var xp : int = 0
+
 func _ready() -> void:
 	add_player_instance()
 	#await get_tree().create_timer(0.2).timeout
@@ -26,6 +28,11 @@ func set_health(health : int, max_health : int) -> void:
 	player.max_health = max_health
 	player.health = health
 	player.update_health(0)
+
+
+func reward_xp(_xp : int) -> void:
+	xp += _xp
+	print("XP =", str(xp) )
 
 func set_player_position(_new_pos : Vector2) -> void:
 	player.global_position = _new_pos

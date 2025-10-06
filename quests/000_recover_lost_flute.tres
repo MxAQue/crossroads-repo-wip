@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="Quest" load_steps=7 format=3 uid="uid://cxaouhyvclmu0"]
+
+[ext_resource type="Script" uid="uid://db8v62cue0o6o" path="res://quests/scripts/quest_reward_item.gd" id="1_ffxej"]
+[ext_resource type="Resource" uid="uid://bnu3wdax37evv" path="res://items/potion.tres" id="2_j7qqw"]
+[ext_resource type="Resource" uid="uid://btd624rq33cab" path="res://items/gem.tres" id="3_pmyqf"]
+[ext_resource type="Script" uid="uid://cq06jnx6ak66m" path="res://quests/scripts/quest_resource.gd" id="3_vhxec"]
+
+[sub_resource type="Resource" id="Resource_18kc5"]
+script = ExtResource("1_ffxej")
+item = ExtResource("2_j7qqw")
+quantity = 5
+metadata/_custom_type_script = "uid://db8v62cue0o6o"
+
+[sub_resource type="Resource" id="Resource_clh5w"]
+script = ExtResource("1_ffxej")
+item = ExtResource("3_pmyqf")
+quantity = 100
+metadata/_custom_type_script = "uid://db8v62cue0o6o"
+
+[resource]
+script = ExtResource("3_vhxec")
+title = "Recover Oren's Lost Flute"
+description = "Oren has tasked you with recovering its lost, magical flute from her ex."
+steps = Array[String](["Find the cave enterance", "Gain access to Oren's ex's lair", "Retrieve Oren's magical flute", "Return Oren's flute to her."])
+reward_xp = 100
+reward_items = Array[ExtResource("1_ffxej")]([SubResource("Resource_18kc5"), SubResource("Resource_clh5w")])
+metadata/_custom_type_script = "uid://cq06jnx6ak66m"

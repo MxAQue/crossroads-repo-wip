@@ -3,6 +3,8 @@
 
 class_name RegionTransition extends Area2D
 
+signal entered_from_here
+
 enum SIDE {LEFT, RIGHT, TOP, BOTTOM}
 
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
@@ -54,6 +56,7 @@ func _place_player() -> void:
 	if name != GlobalRegionManager.target_transition:
 		return
 	GlobalPlayerManager.set_player_position(global_position + GlobalRegionManager.position_offset)
+	entered_from_here.emit()
 
 func get_offset() -> Vector2:
 	var offset : Vector2 = Vector2.ZERO

@@ -1,8 +1,22 @@
-[gd_scene load_steps=7 format=3 uid="uid://ch4noaj7me84e"]
+[gd_scene load_steps=6 format=3 uid="uid://ch4noaj7me84e"]
 
-[ext_resource type="Script" uid="uid://l78io7vujmf3" path="res://opponents/abilities/energy_explosion.gd" id="1_0qnxc"]
 [ext_resource type="Material" uid="uid://dkf1e4c4bk8ut" path="res://assets/materials/energy_orb.tres" id="1_70447"]
 [ext_resource type="Texture2D" uid="uid://dg2dbodf76apm" path="res://assets/enemies/abilities/energy-explosion.png" id="1_giw0p"]
+
+[sub_resource type="Animation" id="Animation_i7hgt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_70447"]
 resource_name = "explode"
@@ -34,21 +48,6 @@ tracks/1/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_i7hgt"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_33mpu"]
 _data = {
 &"RESET": SubResource("Animation_i7hgt"),
@@ -61,7 +60,6 @@ z_index = 1
 material = ExtResource("1_70447")
 texture = ExtResource("1_giw0p")
 hframes = 8
-script = ExtResource("1_0qnxc")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

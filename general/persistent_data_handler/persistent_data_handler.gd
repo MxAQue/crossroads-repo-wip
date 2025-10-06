@@ -15,6 +15,9 @@ func get_value() -> void:
 	value = GlobalSaveManager.check_persistent_value(_get_name())
 	data_loaded.emit()
 
+func remove_value() -> void:
+	GlobalSaveManager.remove_persistent_value( _get_name() )
+
 func _get_name() -> String:
 	# "res//Regions/dungeon_001.tscn/treasurechest/PersistentDataHandler"
 	return get_tree().current_scene.scene_file_path + "/" + get_parent().name + "/" + name

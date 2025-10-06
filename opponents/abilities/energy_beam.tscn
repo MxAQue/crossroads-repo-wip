@@ -232,7 +232,7 @@ bus = &"SFX"
 libraries = {
 &"": SubResource("AnimationLibrary_u3gc0")
 }
-autoplay = "attack"
+autoplay = "default"
 
 [node name="HurtBox" parent="." instance=ExtResource("5_4alv6")]
 monitoring = false

@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Quest" load_steps=7 format=3 uid="uid://ba2jpj5qsjgua"]
+
+[ext_resource type="Script" uid="uid://db8v62cue0o6o" path="res://quests/scripts/quest_reward_item.gd" id="1_mhaee"]
+[ext_resource type="Script" uid="uid://cq06jnx6ak66m" path="res://quests/scripts/quest_resource.gd" id="2_gafsk"]
+[ext_resource type="Resource" uid="uid://krdenli77jyi" path="res://items/apple.tres" id="2_oa05a"]
+[ext_resource type="Resource" uid="uid://bnu3wdax37evv" path="res://items/potion.tres" id="3_oa05a"]
+
+[sub_resource type="Resource" id="Resource_18kc5"]
+script = ExtResource("1_mhaee")
+item = ExtResource("2_oa05a")
+quantity = 3
+metadata/_custom_type_script = "uid://db8v62cue0o6o"
+
+[sub_resource type="Resource" id="Resource_clh5w"]
+script = ExtResource("1_mhaee")
+item = ExtResource("3_oa05a")
+metadata/_custom_type_script = "uid://db8v62cue0o6o"
+
+[resource]
+script = ExtResource("2_gafsk")
+title = "Long Quest"
+description = "An example long, with multiple steps."
+steps = Array[String](["step 1", "step 2", "step 3", "step 4", "step 5"])
+reward_xp = 50
+reward_items = Array[ExtResource("1_mhaee")]([SubResource("Resource_18kc5"), SubResource("Resource_clh5w")])
+metadata/_custom_type_script = "uid://cq06jnx6ak66m"

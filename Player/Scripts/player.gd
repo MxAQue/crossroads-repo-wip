@@ -6,7 +6,6 @@ class_name Player extends CharacterBody2D
 @onready var animation_player : AnimationPlayer = $Skeleton/AnimationPlayer
 @onready var effect_animation_player : AnimationPlayer = $Effects/EffectAnimationPlayer
 @onready var sprite = $Skeleton
-@onready var ray_cast = $RayCast2D
 @onready var state_machine : PlayerStateMachine = $StateMachine
 @onready var name_label = $"Skeleton/Name"
 @onready var hit_box : HitBox = $HitBox
@@ -82,9 +81,10 @@ func _process(_delta):
 func _physics_process(_delta):
 	move_and_slide()
 
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_test"):
-		GlobalPlayerManager.shake_camera()
+func _unhandled_input(_event: InputEvent) -> void:
+	#if event.is_action_pressed("ui_test"):
+	#	GlobalPlayerManager.shake_camera()
+	pass
 
 # Animation Direction
 func set_direction() -> bool:

@@ -1901,6 +1901,7 @@ drops = Array[ExtResource("13_jlp1q")]([SubResource("Resource_q68a6"), SubResour
 script = ExtResource("16_6iym0")
 vision_area = NodePath("../../VisionArea")
 attack_area = NodePath("../../AttackHurtBox")
+state_aggro_duration = 5.0
 next_state = NodePath("../Idle")
 
 [node name="VisionArea" parent="." instance=ExtResource("16_btiiu")]

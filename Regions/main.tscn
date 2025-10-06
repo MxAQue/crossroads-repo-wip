@@ -1,8 +1,8 @@
-[gd_scene load_steps=24 format=4 uid="uid://byppvylp5b133"]
+[gd_scene load_steps=29 format=4 uid="uid://byppvylp5b133"]
 
 [ext_resource type="Script" uid="uid://bnfpktjefhoc6" path="res://regions/scripts/region.gd" id="1_ietre"]
-[ext_resource type="PackedScene" uid="uid://carisusg1ix80" path="res://tilemaps/base_layer.tscn" id="2_kwxat"]
-[ext_resource type="TileSet" uid="uid://boc5gqb8whklg" path="res://tilemaps/scripts/FoliageTileSet.tres" id="5_g4qk0"]
+[ext_resource type="PackedScene" uid="uid://carisusg1ix80" path="res://regions/base_layer.tscn" id="2_kwxat"]
+[ext_resource type="TileSet" uid="uid://boc5gqb8whklg" path="res://assets/tilesets/FoliageTileSet.tres" id="5_g4qk0"]
 [ext_resource type="PackedScene" uid="uid://sm8ad4bs3ig" path="res://props/containers/pot.tscn" id="7_t0i2n"]
 [ext_resource type="PackedScene" uid="uid://dfpesivisbp85" path="res://npcs/npc.tscn" id="10_aq83j"]
 [ext_resource type="Resource" uid="uid://dnrlqfaav458s" path="res://npcs/npc/npc_001.tres" id="11_e0twn"]
@@ -16,7 +16,12 @@
 [ext_resource type="PackedScene" uid="uid://brjt8gvsw105u" path="res://npcs/npc_behaviour_wander.tscn" id="15_w6vwa"]
 [ext_resource type="Script" uid="uid://dq1jdu708ooq" path="res://interactables/dialogue/scripts/dialogue_choice.gd" id="19_y3e0x"]
 [ext_resource type="Script" uid="uid://bufo1j05x8g8i" path="res://interactables/dialogue/scripts/dialogue_branch.gd" id="20_rnhwu"]
-[ext_resource type="TileSet" uid="uid://cb52uc5udwfcv" path="res://tilemaps/scripts/GameTileSets.tres" id="40_kwxat"]
+[ext_resource type="Resource" uid="uid://cxaouhyvclmu0" path="res://quests/000_recover_lost_flute.tres" id="23_f3r1b"]
+[ext_resource type="PackedScene" uid="uid://c47jatbk5yq38" path="res://interactables/puzzles/pressure_plate.tscn" id="24_djiyu"]
+[ext_resource type="PackedScene" uid="uid://dhlkasq7rsrlw" path="res://quests/resources/quest-advance-trigger.tscn" id="25_vnldv"]
+[ext_resource type="Resource" uid="uid://ba2jpj5qsjgua" path="res://quests/long_quest.tres" id="26_o6idx"]
+[ext_resource type="PackedScene" uid="uid://dsgymiuk4l32y" path="res://quests/resources/quest-activated-switch.tscn" id="28_870vf"]
+[ext_resource type="TileSet" uid="uid://cb52uc5udwfcv" path="res://assets/tilesets/GameTileSets.tres" id="40_kwxat"]
 [ext_resource type="PackedScene" uid="uid://ch12ybaxrmnt7" path="res://props/plants/plant.tscn" id="41_1tvlp"]
 [ext_resource type="PackedScene" uid="uid://b5fskyuf2l05g" path="res://regions/player_spawn.tscn" id="42_o1aky"]
 [ext_resource type="PackedScene" uid="uid://cawuidfqm3rkp" path="res://opponents/enemy_slime.tscn" id="42_wl4bb"]
@@ -48,6 +53,20 @@ tile_set = ExtResource("40_kwxat")
 [node name="Cliffs" type="TileMapLayer" parent="Map"]
 z_index = -1
 tile_map_data = PackedByteArray("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AAAdAPj/GAAnAAgAAAAdAPn/GAAnAAkAAAAdAPr/GAAnAAoAAAAdAPv/GAAnAAsAAAAdAPz/GAAnAAsAAAAdAP3/GAAnAAwAAAAeAPX/GAAjAAQAAAAeAPb/GAAkAAkAAAAeAPf/GAAkAAYAAAAeAPj/GAAkAAYAAAAeAPn/GAAjAAYAAAAeAPr/GAAjAAcAAAAeAPv/GAAjAAgAAAAeAPz/GAAjAAkAAAAeAP3/GAAjAAoAAAAfAPX/GAAkAAQAAAAfAPb/GAAlAAkAAAAfAPf/GAAlAAYAAAAfAPj/GAAlAAYAAAAfAPn/GAAkAAYAAAAfAPr/GAAkAAcAAAAfAPv/GAAkAAgAAAAfAPz/GAAkAAkAAAAfAP3/GAAkAAoAAAAgAPX/GAAlAAQAAAAgAPb/GAAiAAoAAAAgAPf/GAAmAAYAAAAgAPj/GAAmAAYAAAAgAPn/GAAlAAYAAAAgAPr/GAAlAAcAAAAgAPv/GAAlAAgAAAAgAPz/GAAlAAkAAAAgAP3/GAAlAAoAAAAgAP7/GAA5AA0AAAAgAP//GAA5AA4AAAAgAAAAGAA5AA8AAAAgAAEAGAA5ABAAAAAgAAIAGAA5ABEAAAAhAPX/GAAmAAQAAAAhAPb/GAAjAAoAAAAhAPf/GAAnAAYAAAAhAPj/GAAnAAYAAAAhAPn/GAAmAAYAAAAhAPr/GAAmAAcAAAAhAPv/GAAmAAgAAAAhAPz/GAAmAAkAAAAhAP3/GAAmAAoAAAAhAP7/GAA6AA0AAAAhAP//GAAyADAAAAAhAAAAGAAyADEAAAAhAAEAGAAyADIAAAAhAAIAGAAyADMAAAAiAPX/GAAnAAQAAAAiAPb/GAAkAAoAAAAiAPf/GAAkAAoAAAAiAPj/GAAkAAYAAAAiAPn/GAAnAAYAAAAiAPr/GAAnAAcAAAAiAPv/GAAnAAgAAAAiAPz/GAAnAAkAAAAiAP3/GAAnAAoAAAAiAP7/GAA7AA0AAAAiAP//GAAzADAAAAAiAAAAGAAzADEAAAAiAAEAGAAzADIAAAAiAAIAGAAzADMAAAAjAPX/GAAmAAQAAAAjAPb/GAAlAAoAAAAjAPf/GAAlAAoAAAAjAPj/GAAlAAYAAAAjAPn/GAAmAAYAAAAjAPr/GAAmAAcAAAAjAPv/GAAmAAgAAAAjAPz/GAAmAAkAAAAjAP3/GAAmAAoA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AAAWAPv/GAAjAAsAAAAVAPb/GAAnAAYAAAAWAPb/GAAjAAYAAAAXAPb/GAAkAAYAAAAXAPf/GAAkAAcAAAAXAPj/GAAkAAgAAAAXAPn/GAAkAAkAAAAXAPr/GAAkAAoAAAAXAPv/GAAkAAsAAAAYAPb/GAAiAAYAAAAYAPf/GAAiAAcAAAAYAPj/GAAiAAgAAAAYAPn/GAAiAAkAAAAYAPr/GAAiAAoAAAAZAPb/GAAjAAYAAAAZAPf/GAAjAAcAAAAZAPj/GAAjAAgAAAAZAPn/GAAjAAkAAAAZAPr/GAAjAAoAAAAaAPb/GAAkAAYAAAAaAPf/GAAkAAcAAAAaAPj/GAAkAAgAAAAaAPn/GAAkAAkAAAAaAPr/GAAkAAoAAAASAPb/GAAkAAYAAAATAPb/GAAlAAYAAAAUAPb/GAAmAAYAAAASAPX/GAAjAAQAAAATAPX/GAAkAAQAAAAUAPX/GAAlAAQAAAAVAPX/GAAmAAQAAAAWAPX/GAAnAAQAAAAXAPX/GAAiAAQAAAAYAPX/GAAjAAQAAAAZAPX/GAAkAAQAAAAaAPX/GAAlAAQAAAAZAP7/GAAlAA0AAAAaAP7/GAAkAA0AAAA=")
+tile_set = ExtResource("40_kwxat")
+
+[node name="QuestActivatedSwitch" parent="Map" instance=ExtResource("28_870vf")]
+remove_when_activated = true
+free_on_remove = true
+react_to_global_signal = true
+linked_quest = ExtResource("23_f3r1b")
+settings_summary = "UPDATE QUEST:
+Quest: Recover Oren's Lost Flute
+Checking if player has quest"
+
+[node name="BlockedCave" type="TileMapLayer" parent="Map/QuestActivatedSwitch"]
+position = Vector2(1, 0)
+tile_map_data = PackedByteArray("AAAaAP//GAAjABgAAAAZAP//GAAiABgAAAAYAP//GAAiABgAAAAbAP//GAAkABgAAAAcAP//GAAlABgAAAAcAAAAGAAlABkAAAAcAAEAGAAlABoAAAAdAAEAGAAmABoAAAAcAAIAGAAlABsAAAAbAAAAGAAkABkAAAAbAAEAGAAkABoAAAAbAAIAGAAkABsAAAAaAAAAGAAjABkAAAAaAAEAGAAjABoAAAAaAAIAGAAjABsAAAAZAAIAGAAiABsAAAAZAAAAGAAiABkAAAAZAAEAGAAlABoAAAA=")
 tile_set = ExtResource("40_kwxat")
 
 [node name="Paths" type="TileMapLayer" parent="Map"]
@@ -86,17 +105,14 @@ position = Vector2(122, -83)
 [node name="Plant" parent="Breakables" instance=ExtResource("41_1tvlp")]
 position = Vector2(135, -63)
 
-[node name="Pot" parent="Breakables" instance=ExtResource("7_t0i2n")]
-position = Vector2(307, 260)
-
 [node name="Pot2" parent="Breakables" instance=ExtResource("7_t0i2n")]
-position = Vector2(342, 218)
+position = Vector2(218, 163)
 
 [node name="Pot3" parent="Breakables" instance=ExtResource("7_t0i2n")]
-position = Vector2(350, 215)
+position = Vector2(207, 196)
 
 [node name="Pot4" parent="Breakables" instance=ExtResource("7_t0i2n")]
-position = Vector2(302, 322)
+position = Vector2(186, 192)
 
 [node name="Pot5" parent="Breakables" instance=ExtResource("7_t0i2n")]
 position = Vector2(243, -94)
@@ -138,7 +154,7 @@ item_data = ExtResource("49_3otmd")
 y_sort_enabled = true
 
 [node name="NPC2" parent="NPCs" instance=ExtResource("10_aq83j")]
-position = Vector2(107, 320)
+position = Vector2(184, 268)
 npc_resource = ExtResource("13_g4qk0")
 
 [node name="NPC_Wander_Behaviour" parent="NPCs/NPC2" instance=ExtResource("15_w6vwa")]
@@ -199,53 +215,142 @@ modulate = Color(0.5, 0, 1, 1)
 position = Vector2(-67, 59)
 wait_time = 0.2
 
-[node name="DialogueInteraction" parent="NPCs/NPC" instance=ExtResource("13_artn0")]
+[node name="GiveQuest" parent="NPCs/NPC" instance=ExtResource("28_870vf")]
+position = Vector2(-0.111083984, -1.4912415)
+remove_when_activated = true
+react_to_global_signal = true
+linked_quest = ExtResource("23_f3r1b")
+settings_summary = "UPDATE QUEST:
+Quest: Recover Oren's Lost Flute
+Checking if player has quest"
 
-[node name="DialogueText" type="Node" parent="NPCs/NPC/DialogueInteraction"]
+[node name="DialogueInteraction" parent="NPCs/NPC/GiveQuest" instance=ExtResource("13_artn0")]
+
+[node name="DialogueText" type="Node" parent="NPCs/NPC/GiveQuest/DialogueInteraction"]
 script = ExtResource("14_y72ik")
-text = "Hey, stranger! Can you help me? I've lost my magical flute in the dungeon..."
+text = "Hey, stranger! Can you help me? My ex stole my magical flute, and now he's gone back to his dungeon..."
 pose = "fidget"
 npc_info = ExtResource("11_e0twn")
 metadata/_custom_type_script = "uid://bnv6yisdl2fgy"
 
-[node name="DialogueChoice" type="Node" parent="NPCs/NPC/DialogueInteraction"]
+[node name="DialogueChoice" type="Node" parent="NPCs/NPC/GiveQuest/DialogueInteraction"]
 script = ExtResource("19_y3e0x")
 npc_info = ExtResource("11_e0twn")
 metadata/_custom_type_script = "uid://dq1jdu708ooq"
 
-[node name="DialogueBranch" type="Node" parent="NPCs/NPC/DialogueInteraction/DialogueChoice"]
+[node name="DialogueBranch" type="Node" parent="NPCs/NPC/GiveQuest/DialogueInteraction/DialogueChoice"]
 script = ExtResource("20_rnhwu")
 text = "Sure, why not? I'm not busy."
 npc_info = ExtResource("11_e0twn")
 metadata/_custom_type_script = "uid://bufo1j05x8g8i"
 
-[node name="DialogueText" type="Node" parent="NPCs/NPC/DialogueInteraction/DialogueChoice/DialogueBranch"]
+[node name="QuestAdvanceTrigger" parent="NPCs/NPC/GiveQuest/DialogueInteraction/DialogueChoice/DialogueBranch" instance=ExtResource("25_vnldv")]
+position = Vector2(439, 295)
+signal_name = "selected"
+linked_quest = ExtResource("23_f3r1b")
+settings_summary = "UPDATE QUEST:
+Quest: Recover Oren's Lost Flute
+Step: 0 - N/A
+Complete: false"
+
+[node name="DialogueText" type="Node" parent="NPCs/NPC/GiveQuest/DialogueInteraction/DialogueChoice/DialogueBranch"]
 script = ExtResource("14_y72ik")
-text = "Thank you so much! I really, really, really need it."
+text = "Thank you so much! I really, really, really want it back."
 pose = "wait"
-pose_two = "fidget"
 npc_info = ExtResource("11_e0twn")
 metadata/_custom_type_script = "uid://bnv6yisdl2fgy"
 
-[node name="DialogueText2" type="Node" parent="NPCs/NPC/DialogueInteraction/DialogueChoice/DialogueBranch"]
+[node name="DialogueText2" type="Node" parent="NPCs/NPC/GiveQuest/DialogueInteraction/DialogueChoice/DialogueBranch"]
 script = ExtResource("14_y72ik")
-text = "Just remember to be careful in the dungeon! I've heard some scary rumours..."
+text = "Just be careful in the dungeon! You might have to get past some creatures to gain access to his lair..."
 pose = "fidget"
 npc_info = ExtResource("11_e0twn")
 metadata/_custom_type_script = "uid://bnv6yisdl2fgy"
 
-[node name="DialogueBranch2" type="Node" parent="NPCs/NPC/DialogueInteraction/DialogueChoice"]
+[node name="DialogueBranch2" type="Node" parent="NPCs/NPC/GiveQuest/DialogueInteraction/DialogueChoice"]
 script = ExtResource("20_rnhwu")
 text = "Uh, sorry, I can't help you right now."
 npc_info = ExtResource("11_e0twn")
 metadata/_custom_type_script = "uid://bufo1j05x8g8i"
 
-[node name="DialogueText3" type="Node" parent="NPCs/NPC/DialogueInteraction/DialogueChoice/DialogueBranch2"]
+[node name="DialogueText3" type="Node" parent="NPCs/NPC/GiveQuest/DialogueInteraction/DialogueChoice/DialogueBranch2"]
 script = ExtResource("14_y72ik")
 text = "Oh. Well, okay then. Bye..."
 pose = "impatient"
 npc_info = ExtResource("11_e0twn")
 metadata/_custom_type_script = "uid://bnv6yisdl2fgy"
+
+[node name="QuestOver" parent="NPCs/NPC" instance=ExtResource("28_870vf")]
+check_type = 3
+remove_when_activated = true
+free_on_remove = true
+react_to_global_signal = true
+linked_quest = ExtResource("23_f3r1b")
+settings_summary = "UPDATE QUEST:
+Quest: Recover Oren's Lost Flute
+Checking if quest is complete."
+
+[node name="QuestInProgress" parent="NPCs/NPC/QuestOver" instance=ExtResource("28_870vf")]
+react_to_global_signal = true
+linked_quest = ExtResource("23_f3r1b")
+settings_summary = "UPDATE QUEST:
+Quest: Recover Oren's Lost Flute
+Checking if player has quest"
+
+[node name="QuestWaiting" parent="NPCs/NPC/QuestOver/QuestInProgress" instance=ExtResource("28_870vf")]
+check_type = 2
+remove_when_activated = true
+react_to_global_signal = true
+linked_quest = ExtResource("23_f3r1b")
+quest_step = 4
+settings_summary = "UPDATE QUEST:
+Quest: Recover Oren's Lost Flute
+Checking if player is on step: return oren's flute to her."
+
+[node name="DialogueInteraction" parent="NPCs/NPC/QuestOver/QuestInProgress/QuestWaiting" instance=ExtResource("13_artn0")]
+
+[node name="DialogueText" type="Node" parent="NPCs/NPC/QuestOver/QuestInProgress/QuestWaiting/DialogueInteraction"]
+script = ExtResource("14_y72ik")
+text = "Thank you, hero! I lost my flute in the cave in the north."
+pose = "fidget"
+npc_info = ExtResource("11_e0twn")
+metadata/_custom_type_script = "uid://bnv6yisdl2fgy"
+
+[node name="QuestEnd" parent="NPCs/NPC/QuestOver/QuestInProgress" instance=ExtResource("28_870vf")]
+check_type = 2
+react_to_global_signal = true
+linked_quest = ExtResource("23_f3r1b")
+quest_step = 4
+quest_complete = true
+settings_summary = "UPDATE QUEST:
+Quest: Recover Oren's Lost Flute
+Checking if player is on step: return oren's flute to her."
+
+[node name="DialogueInteraction2" parent="NPCs/NPC/QuestOver/QuestInProgress/QuestEnd" instance=ExtResource("13_artn0")]
+
+[node name="DialogueText" type="Node" parent="NPCs/NPC/QuestOver/QuestInProgress/QuestEnd/DialogueInteraction2"]
+script = ExtResource("14_y72ik")
+text = "Whoa, you managed to get it back? That's great - it'll be a while before that jerk comes back here again."
+pose = "laugh"
+npc_info = ExtResource("11_e0twn")
+metadata/_custom_type_script = "uid://bnv6yisdl2fgy"
+
+[node name="DialogueText2" type="Node" parent="NPCs/NPC/QuestOver/QuestInProgress/QuestEnd/DialogueInteraction2"]
+script = ExtResource("14_y72ik")
+text = "It's not much, but here is a small reward as a token of my gratitude."
+pose = "fidget"
+npc_info = ExtResource("11_e0twn")
+metadata/_custom_type_script = "uid://bnv6yisdl2fgy"
+
+[node name="QuestAdvanceTrigger" parent="NPCs/NPC/QuestOver/QuestInProgress/QuestEnd/DialogueInteraction2" instance=ExtResource("25_vnldv")]
+signal_name = "finished"
+linked_quest = ExtResource("23_f3r1b")
+quest_step = 4
+quest_complete = true
+settings_summary = "UPDATE QUEST:
+Quest: Recover Oren's Lost Flute
+Step: 4 - return oren's flute to her.
+Complete: true"
 
 [node name="PlayerSpawn" parent="." instance=ExtResource("42_o1aky")]
 position = Vector2(238.19589, 280.21478)
@@ -262,6 +367,133 @@ target_transition_area = "RegionTransition2"
 side = 3
 
 [node name="RegionTransition3" parent="." instance=ExtResource("44_aa8k8")]
-position = Vector2(452, 12)
+position = Vector2(448, 0)
 region = "uid://bphf2aaan1ps1"
 centre_player = true
+size = 1
+
+[node name="PressurePlate" parent="." instance=ExtResource("24_djiyu")]
+position = Vector2(280, 280)
+
+[node name="QuestAdvanceTrigger" parent="PressurePlate" instance=ExtResource("25_vnldv")]
+signal_name = "activated"
+linked_quest = ExtResource("26_o6idx")
+settings_summary = "UPDATE QUEST:
+Quest: Long Quest
+Step: 0 - N/A
+Complete: false"
+
+[node name="QuestActivatedSwitch" parent="." instance=ExtResource("28_870vf")]
+position = Vector2(304, 280)
+react_to_global_signal = true
+linked_quest = ExtResource("26_o6idx")
+settings_summary = "UPDATE QUEST:
+Quest: Long Quest
+Checking if player has quest"
+
+[node name="PressurePlate" parent="QuestActivatedSwitch" instance=ExtResource("24_djiyu")]
+
+[node name="QuestAdvanceTrigger" parent="QuestActivatedSwitch/PressurePlate" instance=ExtResource("25_vnldv")]
+signal_name = "activated"
+linked_quest = ExtResource("26_o6idx")
+quest_step = 1
+settings_summary = "UPDATE QUEST:
+Quest: Long Quest
+Step: 1 - step 1
+Complete: false"
+
+[node name="QuestActivatedSwitch2" parent="." instance=ExtResource("28_870vf")]
+position = Vector2(328, 280)
+check_type = 1
+react_to_global_signal = true
+linked_quest = ExtResource("26_o6idx")
+quest_step = 1
+settings_summary = "UPDATE QUEST:
+Quest: Long Quest
+Checking if player has completed step: step 1"
+
+[node name="PressurePlate" parent="QuestActivatedSwitch2" instance=ExtResource("24_djiyu")]
+
+[node name="QuestAdvanceTrigger" parent="QuestActivatedSwitch2/PressurePlate" instance=ExtResource("25_vnldv")]
+signal_name = "activated"
+linked_quest = ExtResource("26_o6idx")
+quest_step = 2
+settings_summary = "UPDATE QUEST:
+Quest: Long Quest
+Step: 2 - step 2
+Complete: false"
+
+[node name="QuestActivatedSwitch3" parent="." instance=ExtResource("28_870vf")]
+position = Vector2(352, 280)
+check_type = 1
+react_to_global_signal = true
+linked_quest = ExtResource("26_o6idx")
+quest_step = 2
+settings_summary = "UPDATE QUEST:
+Quest: Long Quest
+Checking if player has completed step: step 2"
+
+[node name="PressurePlate" parent="QuestActivatedSwitch3" instance=ExtResource("24_djiyu")]
+
+[node name="QuestAdvanceTrigger" parent="QuestActivatedSwitch3/PressurePlate" instance=ExtResource("25_vnldv")]
+signal_name = "activated"
+linked_quest = ExtResource("26_o6idx")
+quest_step = 3
+settings_summary = "UPDATE QUEST:
+Quest: Long Quest
+Step: 3 - step 3
+Complete: false"
+
+[node name="QuestActivatedSwitch4" parent="." instance=ExtResource("28_870vf")]
+position = Vector2(352, 256)
+check_type = 1
+react_to_global_signal = true
+linked_quest = ExtResource("26_o6idx")
+quest_step = 3
+settings_summary = "UPDATE QUEST:
+Quest: Long Quest
+Checking if player has completed step: step 3"
+
+[node name="PressurePlate" parent="QuestActivatedSwitch4" instance=ExtResource("24_djiyu")]
+
+[node name="QuestAdvanceTrigger" parent="QuestActivatedSwitch4/PressurePlate" instance=ExtResource("25_vnldv")]
+signal_name = "activated"
+linked_quest = ExtResource("26_o6idx")
+quest_step = 4
+settings_summary = "UPDATE QUEST:
+Quest: Long Quest
+Step: 4 - step 4
+Complete: false"
+
+[node name="QuestActivatedSwitch5" parent="." instance=ExtResource("28_870vf")]
+position = Vector2(352, 232)
+check_type = 1
+react_to_global_signal = true
+linked_quest = ExtResource("26_o6idx")
+quest_step = 4
+settings_summary = "UPDATE QUEST:
+Quest: Long Quest
+Checking if player has completed step: step 4"
+
+[node name="PressurePlate" parent="QuestActivatedSwitch5" instance=ExtResource("24_djiyu")]
+
+[node name="QuestAdvanceTrigger" parent="QuestActivatedSwitch5/PressurePlate" instance=ExtResource("25_vnldv")]
+signal_name = "activated"
+linked_quest = ExtResource("26_o6idx")
+quest_step = 5
+quest_complete = true
+settings_summary = "UPDATE QUEST:
+Quest: Long Quest
+Step: 5 - step 5
+Complete: true"
+
+[node name="QuestActivatedSwitch6" parent="." instance=ExtResource("28_870vf")]
+position = Vector2(400, 256)
+check_type = 3
+react_to_global_signal = true
+linked_quest = ExtResource("26_o6idx")
+settings_summary = "UPDATE QUEST:
+Quest: Long Quest
+Checking if quest is complete."
+
+[node name="Pot" parent="QuestActivatedSwitch6" instance=ExtResource("7_t0i2n")]

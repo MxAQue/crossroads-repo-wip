@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://bg6b3ll20hto6"]
+
+[ext_resource type="FontFile" uid="uid://bjnoh35ax06ho" path="res://assets/fonts/Abaddon Bold.ttf" id="1_d8cc4"]
+[ext_resource type="Script" uid="uid://cr7skue3vi7l" path="res://gui/pause_menu/quests/quest_item.gd" id="1_ks7gl"]
+[ext_resource type="FontFile" uid="uid://heb5g0smtkn3" path="res://assets/fonts/m5x7.ttf" id="2_jrprh"]
+
+[node name="QuestItem" type="Button"]
+custom_minimum_size = Vector2(200, 45)
+script = ExtResource("1_ks7gl")
+
+[node name="TitleLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 195.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("1_d8cc4")
+text = "Quest Title, test, test, test, test"
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="StepLabel" type="Label" parent="."]
+modulate = Color(0.67058825, 0.67058825, 0.67058825, 1)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -23.0
+offset_right = 195.0
+offset_bottom = -5.0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_jrprh")
+text = "Quest Title, test, test, test, test"
+clip_text = true
+text_overrun_behavior = 3

@@ -180,8 +180,8 @@ func set_dialogue_choice(_d : DialogueChoice) -> void:
 
 func _dialogue_choice_selected(_d : DialogueBranch) -> void:
 	choice_options.visible = false
+	_d.selected.emit()
 	show_dialogue(_d.dialogue_items)
-	pass
 
 
 func _on_timer_timeout() -> void:

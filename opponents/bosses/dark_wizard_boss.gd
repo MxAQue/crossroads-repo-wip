@@ -3,11 +3,15 @@
 class_name DarkWizardBoss extends Node2D
 
 const ENERGY_EXPLOSION_SCENE : PackedScene = preload("res://opponents/abilities/energy_explosion.tscn")
+const ENERGY_ORB_SCENE : PackedScene = preload("res://opponents/abilities/energy_orb.tscn")
 
 @export var max_boss_health : int = 10
 var boss_health : int = 10
+var damage_count : int = 0
 
 var audio_hurt : AudioStream = preload("res://assets/audio/effects/boss_hurt.wav")
+var audio_shoot : AudioStream = preload("res://assets/audio/effects/boss_fireball.wav")
+
 
 # Positions
 var current_position : int = 0
@@ -36,13 +40,21 @@ var beam_attacks : Array[EnergyBeamAttack]
 @onready var hand_01_left: Sprite2D = $BossNode/CloakSprite/Hand01_LEFT
 @onready var hand_02_left: Sprite2D = $BossNode/CloakSprite/Hand02_LEFT
 
+@onready var sealed_wall: TileMapLayer = $"../Map/SealedWall"
+
 
 ## -------------------- FUNCTIONS ------------------
 
 func _ready() -> void:
+	persistent_data_handler.get_value()
+	if persistent_data_handler.value == true:
+		sealed_wall.enabled = false
+		queue_free()
+		return
 	
 	# Boss Health
 	boss_health = max_boss_health
+	PlayerHUD.show_boss_health("Dark Wizard")
 	
 	hit_box.damaged.connect(damage_taken)
 	
@@ -76,7 +88,9 @@ func _process(_delta: float) -> void:
 func teleport(_location : int) -> void:
 	animation_player.play("disappear")
 	enable_hit_boxes(false)
-	#shoot fireball
+	damage_count = 0
+	if boss_health < max_boss_health:
+		shoot_orb()
 	await get_tree().create_timer(1).timeout
 	boss_node.global_position = positions[_location]
 	current_position = _location
@@ -88,13 +102,20 @@ func teleport(_location : int) -> void:
 
 func idle() -> void:
 	enable_hit_boxes()
-	animation_player.play("idle")
-	await animation_player.animation_finished
+	# Skip Idle sometimes
+	if randf() <= float(boss_health) / float(max_boss_health):
+		animation_player.play("idle")
+		await animation_player.animation_finished
 	
 	#Energy Beam Attack
-	energy_beam_attack()
-	animation_player.play("cast_spell")
-	await animation_player.animation_finished
+	if damage_count < 1:
+		energy_beam_attack()
+		animation_player.play("cast_spell")
+		await animation_player.animation_finished
+	
+	# Destroy Boss
+	if boss_health < 1:
+		return
 	
 	# Teleport Again
 	var _t : int = current_position
@@ -132,8 +153,6 @@ func update_animations() -> void:
 		cloak_animation.play("left")
 		hand_01_left.visible = true
 		hand_02_left.visible = true
-		
-
 
 func energy_beam_attack() -> void:
 	var _b: Array[int]
@@ -145,17 +164,33 @@ func energy_beam_attack() -> void:
 			else:
 				_b.append(2)
 				_b.append(randi_range(0,1))
-			#scale with difficulty
+			if boss_health < 5:
+				_b.append(randi_range(3,5))
+		1,3:
+			if current_position == 3:
+				_b.append(5)
+				_b.append(randi_range(3,4))
+			else:
+				_b.append(3)
+				_b.append(randi_range(4,5))
+			if boss_health < 5:
+				_b.append(randi_range(0,2))
 	for b in _b:
 		beam_attacks[b].attack()
 
+func shoot_orb() -> void:
+	var eo : Node2D = ENERGY_ORB_SCENE.instantiate()
+	eo.global_position = boss_node.global_position + Vector2(0,-34)
+	get_parent().add_child.call_deferred(eo)
+	play_audio(audio_shoot)
 
 func damage_taken(_hurt_box : HurtBox) -> void:
 	if damaged_animation.current_animation == "damaged" or _hurt_box.damage == 0:
 		return
 	play_audio(audio_hurt)
 	boss_health = clampi(boss_health - _hurt_box.damage, 0, max_boss_health)
-	#update boss health bar
+	damage_count += 1
+	PlayerHUD.update_boss_health(boss_health, max_boss_health)
 	damaged_animation.play("damaged")
 	damaged_animation.seek(0)
 	damaged_animation.queue("default")
@@ -169,10 +204,16 @@ func play_audio( _a : AudioStream) -> void:
 func defeat() -> void:
 	animation_player.play("destroy")
 	enable_hit_boxes(false)
-	persistent_data_handler.set_value()
 	boss_light.visible = false
 	await animation_player.animation_finished
-	#reopen the room
+	PlayerHUD.hide_boss_health()
+	$ItemDropper.position = boss_node.position
+	$ItemDropper.drop_item()
+	$ItemDropper.drop_collected.connect(open_dungeon)
+
+func open_dungeon() -> void:
+	persistent_data_handler.set_value()
+	sealed_wall.enabled = false
 
 func enable_hit_boxes(_v : bool = true) -> void:
 	hit_box.set_deferred("monitorable", _v)

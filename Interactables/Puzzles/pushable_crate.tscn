@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bgmtmn2xu6bdw"]
+[gd_scene load_steps=6 format=3 uid="uid://bgmtmn2xu6bdw"]
 
 [ext_resource type="Script" uid="uid://mkuk45wjyuqq" path="res://interactables/puzzles/pushable_crate.gd" id="1_q8tg7"]
 [ext_resource type="Texture2D" uid="uid://de3cv6pi5bsm1" path="res://assets/tilesets/catacombs_dungeon_extras.png" id="2_yrxbo"]
 [ext_resource type="AudioStream" uid="uid://dvxawuq8bsij" path="res://assets/audio/stone_dragging_thanvannispen_loop.wav" id="3_yrxbo"]
+[ext_resource type="PackedScene" uid="uid://cthaximv8t5hq" path="res://general/persistent_data_handler/persistent_data_handler.tscn" id="4_iqkhi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yrxbo"]
 size = Vector2(11.999999, 16)
@@ -28,3 +29,5 @@ bus = &"SFX"
 position = Vector2(0, 2.3841858e-07)
 rotation = 1.5707964
 shape = SubResource("RectangleShape2D_yrxbo")
+
+[node name="OnTarget" parent="." instance=ExtResource("4_iqkhi")]

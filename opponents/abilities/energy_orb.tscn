@@ -23,6 +23,7 @@ fill_to = Vector2(1, 0.5)
 
 [node name="EnergyOrb" type="Node2D"]
 script = ExtResource("1_fu561")
+speed = 100.0
 shoot_audio = ExtResource("2_rc1ri")
 hit_audio = ExtResource("3_a6i3x")
 

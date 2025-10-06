@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" uid="uid://cbluw20nx8v42" path="res://gui/title_screen/title_scene.gd" id="1_85t6e"]
 [ext_resource type="AudioStream" uid="uid://dlkfj17u0rxdx" path="res://assets/audio/waves.mp3" id="2_ldfm5"]
-[ext_resource type="PackedScene" uid="uid://carisusg1ix80" path="res://tilemaps/base_layer.tscn" id="3_873vb"]
+[ext_resource type="PackedScene" uid="uid://carisusg1ix80" path="res://regions/base_layer.tscn" id="3_873vb"]
 [ext_resource type="Texture2D" uid="uid://cwgg7l6dgrd6a" path="res://assets/ui/title.png" id="3_ncv3k"]
 [ext_resource type="AudioStream" uid="uid://22qp3n1odpps" path="res://assets/audio/ui/menu_focus.wav" id="3_wean7"]
-[ext_resource type="TileSet" uid="uid://cb52uc5udwfcv" path="res://tilemaps/scripts/GameTileSets.tres" id="4_5l71h"]
+[ext_resource type="TileSet" uid="uid://cb52uc5udwfcv" path="res://assets/tilesets/GameTileSets.tres" id="4_5l71h"]
 [ext_resource type="AudioStream" uid="uid://xsjek22xs47f" path="res://assets/audio/ui/menu_select.wav" id="4_aweys"]
 [ext_resource type="PackedScene" uid="uid://b5fskyuf2l05g" path="res://regions/player_spawn.tscn" id="5_324rb"]
 
