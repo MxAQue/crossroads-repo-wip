@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dfvdorujjuvr2"]
-
-[ext_resource type="Script" uid="uid://7le6o71jou5i" path="res://opponents/scripts/vision_area.gd" id="1_yyn4o"]
-
-[node name="VisionArea" type="Area2D"]
-collision_layer = 0
-monitorable = false
-script = ExtResource("1_yyn4o")
