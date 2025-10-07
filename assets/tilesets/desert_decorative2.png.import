@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwyhe6xjxnwpt"
-path="res://.godot/imported/grasslands_mainlev2.png-9829a766e8afec0ff8c27ab9a80c865d.ctex"
+uid="uid://bcd73hlgh8m6t"
+path="res://.godot/imported/desert_decorative2.png-345ceeaeaf12ca25bb3f317ce9db9c0a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/audio/grasslands_mainlev2.png"
-dest_files=["res://.godot/imported/grasslands_mainlev2.png-9829a766e8afec0ff8c27ab9a80c865d.ctex"]
+source_file="res://assets/tilesets/desert_decorative2.png"
+dest_files=["res://.godot/imported/desert_decorative2.png-345ceeaeaf12ca25bb3f317ce9db9c0a.ctex"]
 
 [params]
 

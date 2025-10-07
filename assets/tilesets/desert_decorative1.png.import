@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkd1eqxrs1wdv"
-path="res://.godot/imported/desert_mainlev2.png-6c600c7b8003c33a60adb2d9d60a3423.ctex"
+uid="uid://gh7cfr3aldpp"
+path="res://.godot/imported/desert_decorative1.png-e7cf5100372f7238cb15650c3708fe28.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/audio/desert_mainlev2.png"
-dest_files=["res://.godot/imported/desert_mainlev2.png-6c600c7b8003c33a60adb2d9d60a3423.ctex"]
+source_file="res://assets/tilesets/desert_decorative1.png"
+dest_files=["res://.godot/imported/desert_decorative1.png-e7cf5100372f7238cb15650c3708fe28.ctex"]
 
 [params]
 

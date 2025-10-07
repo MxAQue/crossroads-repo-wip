@@ -19,7 +19,7 @@ var _damage_position
 var _direction : Vector2
 
 
-
+## ------------- FUNCTIONS ---------
 
 func _ready():
 	pass
@@ -40,6 +40,7 @@ func enter() -> void:
 	enemy.animation_player.animation_finished.connect(_on_animation_finished)
 	disable_hurt_box()
 	drop_items()
+	GlobalPlayerManager.reward_xp(enemy.xp_reward)
 
 # What happens when the player exits this state?s
 func exit() -> void:

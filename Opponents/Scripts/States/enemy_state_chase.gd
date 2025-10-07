@@ -38,7 +38,6 @@ func enter() -> void:
 	enemy.update_animation(anim_name)
 	if attack_area:
 		attack_area.monitoring = true
-	pass
 
 # What happens when the player exits this state?
 func exit() -> void:
@@ -46,7 +45,6 @@ func exit() -> void:
 	if attack_area:
 		attack_area.monitoring = false
 	_can_see_player = false
-	pass
 
 # What happens during the _process update in this state?
 func process( _delta: float ) -> EnemyState:

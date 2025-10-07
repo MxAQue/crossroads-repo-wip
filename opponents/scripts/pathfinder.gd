@@ -76,9 +76,6 @@ func set_path() -> void:
 		# the "overlap" between their directions. Higher values means more similar vectors
 		interests.append( v.dot( player_dir ) )
 	# Populate outcomes array, by combining interest and obstacle arrays
-	print("interests", interests)
-	print("obstacles", obstacles)
-	print("outcomes", outcomes)
 	for i in 8:
 		outcomes[ i ] = interests[ i ] - obstacles[ i ]
 	

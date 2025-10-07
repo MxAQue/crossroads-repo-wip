@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://gh7cfr3aldpp"
-path="res://.godot/imported/desert_decorative1.png-bee8d862b496aee18823e8983c42dfc9.ctex"
+uid="uid://b1vn8tdf2vb6k"
+path="res://.godot/imported/grasslands_mainlev_autotiling.png-f9ed225d5783a48492d109225c3f355c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/audio/desert_decorative1.png"
-dest_files=["res://.godot/imported/desert_decorative1.png-bee8d862b496aee18823e8983c42dfc9.ctex"]
+source_file="res://assets/tilesets/grasslands_mainlev_autotiling.png"
+dest_files=["res://.godot/imported/grasslands_mainlev_autotiling.png-f9ed225d5783a48492d109225c3f355c.ctex"]
 
 [params]
 

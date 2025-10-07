@@ -43,10 +43,7 @@ side = 1
 position = Vector2(-456, 40)
 
 [node name="Large Slime2" parent="EnemyCounter" instance=ExtResource("8_oeue2")]
-position = Vector2(-135, 104)
-
-[node name="Large Slime3" parent="EnemyCounter" instance=ExtResource("8_oeue2")]
-position = Vector2(-145, 288)
+position = Vector2(-135, 98)
 
 [node name="ItemDropper" parent="." instance=ExtResource("9_n1gab")]
 position = Vector2(-288, 0)

@@ -31,8 +31,10 @@ func exit() -> void:
 	if throwable:
 		if player.direction == Vector2.ZERO:
 			throwable.throw_direction = player.cardinal_direction
+			player.update_animation("carry_throw")
 		else:
 			throwable.throw_direction = player.direction
+			player.update_animation("carry_throw")
 		if state_machine.next_state == stun:
 			throwable.throw_direction = throwable.throw_direction.rotated(PI)
 			throwable.drop()
@@ -41,6 +43,7 @@ func exit() -> void:
 			player.audio.stream = throw_audio
 			player.audio.play()
 			throwable.throw()
+			print("throw")
 			pass
 		pass
 

@@ -1,4 +1,4 @@
-## Enemy.gd
+## enemy.gd
 
 class_name Enemy extends CharacterBody2D
 
@@ -15,6 +15,7 @@ signal enemy_destroyed(hurt_box)
 
 # Variables
 @export var health : int = 3
+@export var xp_reward : int = 5
 
 const DIR_4 = [Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT, Vector2.UP]
 var cardinal_direction : Vector2 = Vector2.DOWN
@@ -75,6 +76,7 @@ func _take_damage(hurt_box : HurtBox) -> void:
 		return
 	health -= hurt_box.damage
 	GlobalPlayerManager.shake_camera()
+	GlobalEffectManager.damage_text( hurt_box.damage, global_position + Vector2(0,-36) )
 	if health > 0:
 		enemy_damaged.emit(hurt_box)
 	else:

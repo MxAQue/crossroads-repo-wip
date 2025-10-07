@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0x8023i1bphp"]
+
+[ext_resource type="Script" uid="uid://77a1kegsjhdn" path="res://globals/effects/damage_text.gd" id="1_xn4lu"]
+[ext_resource type="FontFile" uid="uid://heb5g0smtkn3" path="res://assets/fonts/m5x7.ttf" id="2_6ti8a"]
+
+[node name="DamageText" type="Node2D"]
+z_index = 10
+script = ExtResource("1_xn4lu")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -24.0
+offset_right = 24.0
+offset_bottom = 18.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 1
+theme_override_fonts/font = ExtResource("2_6ti8a")
+text = "999"
+horizontal_alignment = 1

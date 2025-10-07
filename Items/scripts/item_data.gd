@@ -9,6 +9,8 @@ class_name ItemData extends Resource
 @export_category("Item Use Effects")
 @export var effects : Array[ItemEffect]
 
+### ------------------- FUNCTIONS --------------------
+
 func use() -> bool:
 	if effects.size() == 0:
 		return false

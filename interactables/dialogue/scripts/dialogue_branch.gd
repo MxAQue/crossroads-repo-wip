@@ -3,6 +3,7 @@
 @icon("res://assets/icons/dialogue/answer_bubble.svg")
 class_name DialogueBranch extends DialogueItem
 
+@warning_ignore("unused_signal")
 signal selected
 
 @export var text: String = "ok..." : set = _set_text

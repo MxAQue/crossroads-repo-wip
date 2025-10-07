@@ -71,7 +71,6 @@ func _on_save_pressed() -> void:
 		return
 	GlobalSaveManager.save_game()
 	hide_pause_menu()
-	print("game saved")
 
 func _on_load_pressed() -> void:
 	if is_paused == false:

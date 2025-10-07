@@ -49,7 +49,7 @@ func check_is_activated() -> void:
 			else:
 				set_is_activated(false)
 				
-		elif check_type == CheckType.QUEST_STEP_COMPLETE:
+		elif check_type == CheckType.ON_CURRENT_QUEST_STEP:
 			var step : String = get_step()
 			if step == "N/A":
 				set_is_activated(false)
@@ -75,7 +75,6 @@ func set_is_activated(_v : bool) -> void:
 	if is_activated == true:
 		if remove_when_activated == true:
 			hide_children()
-			pass
 		else:
 			show_children()
 	else:

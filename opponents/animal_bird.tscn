@@ -17,6 +17,7 @@
 [ext_resource type="Resource" uid="uid://krdenli77jyi" path="res://items/apple.tres" id="15_iykv0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_plyn4"]
+radius = 6.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_043kf"]
 radius = 6.0
@@ -1506,10 +1507,9 @@ collision_mask = 16
 script = ExtResource("1_aw24r")
 
 [node name="HurtBox" parent="." instance=ExtResource("2_uhkl5")]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-position = Vector2(0, 3)
+position = Vector2(0, -4)
 shape = SubResource("CircleShape2D_plyn4")
 debug_color = Color(0.50390613, 0.57653666, 0.19086808, 0.41960785)
 
@@ -1522,23 +1522,23 @@ shape = SubResource("CircleShape2D_plyn4")
 debug_color = Color(0.50390613, 0.57653666, 0.19086808, 0.41960785)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(0, 3)
+position = Vector2(0, -4)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_043kf")
 
 [node name="ShadowSprite2D" type="Sprite2D" parent="."]
+show_behind_parent = true
 texture = ExtResource("4_irs4u")
-offset = Vector2(0, 8)
 hframes = 8
 vframes = 8
 frame = 32
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+top_level = true
 position = Vector2(0, -16)
 texture = ExtResource("5_aw24r")
 hframes = 12
-vframes = 8
+vframes = 12
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

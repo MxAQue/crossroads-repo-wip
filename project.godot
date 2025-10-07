@@ -29,9 +29,10 @@ PlayerHUD="*res://gui/player_hud/player_hud.tscn"
 GlobalPlayerManager="*res://globals/global_player_manager.gd"
 SceneTransition="*res://gui/scene_transitions/scene_transition.tscn"
 GlobalSaveManager="*res://globals/global_save_manager.gd"
-PauseMenu="*res://gui/pause_menu/pause_menu.tscn"
 DialogueSystem="*res://gui/dialogue_system/dialogue_system.tscn"
+PauseMenu="*res://gui/pause_menu/pause_menu.tscn"
 GlobalQuestManager="*res://globals/global_quest_manager.gd"
+GlobalEffectManager="*res://globals/global_effect_manager.gd"
 
 [display]
 

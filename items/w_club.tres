@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="EquipableItemData" load_steps=7 format=3 uid="uid://d0l3thkjlkapi"]
+
+[ext_resource type="Script" uid="uid://bjr7cuvu6nvw5" path="res://items/item_effects/item_effect.gd" id="1_wv0wo"]
+[ext_resource type="Script" uid="uid://bpc8g7e7slmjo" path="res://items/scripts/equipable_item_modifier.gd" id="2_32gd7"]
+[ext_resource type="Script" uid="uid://q8vdfjl27vgs" path="res://items/scripts/equipable_item_data.gd" id="3_xhtjm"]
+[ext_resource type="Texture2D" uid="uid://d0j4tta5cn5mu" path="res://assets/character/effects/farmer icons 16x16 v00.png" id="4_3snwb"]
+
+[sub_resource type="Resource" id="Resource_oypgj"]
+script = ExtResource("2_32gd7")
+type = 1
+metadata/_custom_type_script = "uid://bpc8g7e7slmjo"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_124pu"]
+atlas = ExtResource("4_3snwb")
+region = Rect2(48, 16, 16, 16)
+
+[resource]
+script = ExtResource("3_xhtjm")
+type = 1
+modifiers = Array[ExtResource("2_32gd7")]([SubResource("Resource_oypgj")])
+name = "Club"
+description = "A stick. But, you know - a nice, big, heavy one. Good for hitting."
+texture = SubResource("AtlasTexture_124pu")
+metadata/_custom_type_script = "uid://q8vdfjl27vgs"
